@@ -5,3 +5,4 @@ Todo's
 * fabfile models
 * forms
 * admins
+* permissions (django-guardian?)
