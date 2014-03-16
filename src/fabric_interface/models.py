@@ -129,16 +129,3 @@ class User(AbstractBaseUser):
         msg = EmailMultiAlternatives(subject, text_content, from_email, [self.email])
         msg.attach_alternative(html_content, "text/html")
         msg.send()
-
-
-class Project(TimeStampedModel):
-    pass
-
-
-class Stage(TimeStampedModel):
-    pass
-
-
-class Host(TimeStampedModel):
-    ip = models.IPAddressField(blank=True, null=True)
-    alias = models.URLField(blank=True, null=True)

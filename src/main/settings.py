@@ -37,6 +37,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'fabric_interface',
+    'fabric_interface.projects',
+    'fabric_interface.stages',
+    'fabric_interface.hosts',
     'south',
 )
 
