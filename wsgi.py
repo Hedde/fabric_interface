@@ -6,7 +6,7 @@ import site
 
 version_string = "{0}.{1}".format(sys.version_info[0], sys.version_info[1])
 LOCAL_PROJECT_ROOT = os.path.abspath(os.path.dirname(os.path.realpath(__file__)))
-VENV_PACKAGES = os.path.join(LOCAL_PROJECT_ROOT, 'deploy/lib/python' + version_string + '/site-packages')
+VENV_PACKAGES = os.path.join(LOCAL_PROJECT_ROOT, 'venv/lib/python' + version_string + '/site-packages')
 
 site.addsitedir(LOCAL_PROJECT_ROOT)
 site.addsitedir(VENV_PACKAGES)
