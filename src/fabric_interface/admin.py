@@ -10,7 +10,7 @@ from django.contrib.auth.models import Group
 from django.utils.translation import ugettext_lazy as _
 
 # App specific
-from fabric_interface.models import User
+from fabric_interface.models import User, Project, Host, Stage
 
 
 class UserCreationForm(forms.ModelForm):
@@ -106,3 +106,8 @@ admin.site.register(User, UserAdmin)
 # ... and, since we're not using Django's builtin permissions,
 # unregister the Group model from admin.
 admin.site.unregister(Group)
+
+
+admin.site.register(Project)
+admin.site.register(Host)
+admin.site.register(Stage)

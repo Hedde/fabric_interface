@@ -11,6 +11,9 @@ from django.template.defaultfilters import striptags
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
+# App specific
+from django_extensions.db.models import TimeStampedModel
+
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None):
@@ -128,13 +131,14 @@ class User(AbstractBaseUser):
         msg.send()
 
 
-class Project(models.Model):
+class Project(TimeStampedModel):
     pass
 
 
-class Stage(models.Model):
+class Stage(TimeStampedModel):
     pass
 
 
-class Host(models.Model):
-    pass
+class Host(TimeStampedModel):
+    ip = models.IPAddressField(blank=True, null=True)
+    alias = models.URLField(blank=True, null=True)
