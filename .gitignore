@@ -1,5 +1,6 @@
-venv
-*.pyc
-settings.py
-fabfile.py
 .idea
+*.pyc
+venv
+dev.db
+local_settings.py
+fabfile.py
