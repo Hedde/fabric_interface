@@ -1,36 +1,28 @@
-# -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
-from south.db import db
-from south.v2 import SchemaMigration
-from django.db import models
+# encoding: utf8
+from django.db import models, migrations
+import django.utils.timezone
+import django_extensions.db.fields
 
 
-class Migration(SchemaMigration):
+class Migration(migrations.Migration):
 
-    def forwards(self, orm):
-        # Adding model 'Project'
-        db.create_table(u'projects_project', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now, blank=True)),
-            ('modified', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now, blank=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=125, null=True, blank=True)),
-        ))
-        db.send_create_signal(u'projects', ['Project'])
+    dependencies = [
+    ]
 
-
-    def backwards(self, orm):
-        # Deleting model 'Project'
-        db.delete_table(u'projects_project')
-
-
-    models = {
-        u'projects.project': {
-            'Meta': {'ordering': "('-modified', '-created')", 'object_name': 'Project'},
-            'created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'modified': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '125', 'null': 'True', 'blank': 'True'})
-        }
-    }
-
-    complete_apps = ['projects']
+    operations = [
+        migrations.CreateModel(
+            name='Project',
+            fields=[
+                (u'id', models.AutoField(verbose_name=u'ID', serialize=False, auto_created=True, primary_key=True)),
+                ('created', django_extensions.db.fields.CreationDateTimeField(default=django.utils.timezone.now, verbose_name=u'created', editable=False, blank=True)),
+                ('modified', django_extensions.db.fields.ModificationDateTimeField(default=django.utils.timezone.now, verbose_name=u'modified', editable=False, blank=True)),
+                ('name', models.CharField(max_length=125, null=True, blank=True)),
+            ],
+            options={
+                u'ordering': ('-modified', '-created'),
+                u'abstract': False,
+                u'get_latest_by': 'modified',
+            },
+            bases=(models.Model,),
+        ),
+    ]
