@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
@@ -29,6 +28,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'grappelli.dashboard',
+    'grappelli',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -66,11 +68,27 @@ DATABASES = {
     }
 }
 
+# Templates
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.request",
+    "django.core.context_processors.i18n",
+    'django.contrib.messages.context_processors.messages',
+)
+
 # Auth
 AUTH_USER_MODEL = 'fabric_interface.User'
 
-# Templates
-TEMPLATE_DIRS = '/'.join([BASE_DIR, 'main/templates'])
+# Grappelli
+GRAPPELLI_ADMIN_TITLE = 'Fabric Interface'
+GRAPPELLI_INDEX_DASHBOARD = {
+    'django.contrib.admin.site': 'fabric_interface.dashboard.CustomIndexDashboard',
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
