@@ -26,7 +26,6 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = (
@@ -54,7 +53,6 @@ ROOT_URLCONF = 'main.urls'
 
 WSGI_APPLICATION = 'wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
@@ -64,6 +62,12 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'dev.db'),
     }
 }
+
+# Auth
+AUTH_USER_MODEL = 'fabric_interface.User'
+
+# Templates
+TEMPLATE_DIRS = '/'.join([BASE_DIR, 'main/templates'])
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
