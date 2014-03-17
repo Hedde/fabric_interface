@@ -9,7 +9,8 @@ from django_extensions.db.models import TimeStampedModel
 
 
 class Project(TimeStampedModel):
-    name = models.CharField(max_length=125, blank=True, null=True)
+    title = models.CharField(max_length=125, blank=True, null=True)
+    slug = models.SlugField()
 
     def __unicode__(self):
-        return self.name
+        return self.title
