@@ -1,0 +1,8 @@
+{% extends "fabric_interface/base.html" %}
+
+{% block base_content %}
+    <form method="post" class="form-horizontal">
+        {{ form.as_p }}{% csrf_token %}
+        <input type="submit" class="btn btn-primary" value="create" />
+    </form>
+{% endblock %}

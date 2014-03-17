@@ -5,6 +5,5 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^grappelli/', include('grappelli.urls')),
-    url(r'', include(admin.site.urls)),
+    url('', include('fabric_interface.urls'))
 )

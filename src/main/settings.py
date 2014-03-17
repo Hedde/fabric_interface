@@ -28,15 +28,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'grappelli.dashboard',
-    'grappelli',
-
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'bootstrap3',
 
     'fabric_interface',
     'fabric_interface.projects',
@@ -68,6 +66,10 @@ DATABASES = {
 }
 
 # Templates
+TEMPLATE_DIRS = (
+    '/'.join(['main/templates']),
+)
+
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
@@ -82,12 +84,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 # Auth
 AUTH_USER_MODEL = 'fabric_interface.User'
-
-# Grappelli
-GRAPPELLI_ADMIN_TITLE = 'Fabric Interface'
-GRAPPELLI_INDEX_DASHBOARD = {
-    'django.contrib.admin.site': 'fabric_interface.dashboard.CustomIndexDashboard',
-}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -107,6 +103,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+
+# Bootstrap3 using bootstrapper
+BOOTSTRAP3 = {
+    'jquery_url': '//code.jquery.com/jquery.min.js',
+    'base_url': STATIC_URL,
+    'theme_url': STATIC_URL + 'ccs/bootstrap-theme.min.css',
+}
 
 try:
     from local_settings import *

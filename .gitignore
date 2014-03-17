@@ -1,6 +1,7 @@
 .idea
 *.pyc
 venv
+bootstrapper
 dev.db
 local_settings.py
 fabfile.py
