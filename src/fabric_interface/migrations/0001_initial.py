@@ -6,7 +6,7 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        (u'contenttypes', '__first__'),
+        ('contenttypes', '__first__'),
     ]
 
     operations = [
@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
                 ('first_name', models.CharField(max_length=125, verbose_name=u'First name')),
                 ('family_name_prefix', models.CharField(max_length=125, null=True, verbose_name=u'Family name prefix', blank=True)),
                 ('family_name', models.CharField(max_length=125, verbose_name=u'Family name')),
-                ('content_type', models.ForeignKey(to_field=u'id', editable=False, to=u'contenttypes.ContentType', null=True)),
+                ('content_type', models.ForeignKey(to_field=u'id', editable=False, to='contenttypes.ContentType', null=True)),
             ],
             options={
                 u'abstract': False,

@@ -16,7 +16,8 @@ class Migration(migrations.Migration):
                 (u'id', models.AutoField(verbose_name=u'ID', serialize=False, auto_created=True, primary_key=True)),
                 ('created', django_extensions.db.fields.CreationDateTimeField(default=django.utils.timezone.now, verbose_name=u'created', editable=False, blank=True)),
                 ('modified', django_extensions.db.fields.ModificationDateTimeField(default=django.utils.timezone.now, verbose_name=u'modified', editable=False, blank=True)),
-                ('name', models.CharField(max_length=125, null=True, blank=True)),
+                ('title', models.CharField(max_length=125)),
+                ('slug', models.SlugField(unique=True)),
             ],
             options={
                 u'ordering': ('-modified', '-created'),
