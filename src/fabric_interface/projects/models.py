@@ -1,7 +1,7 @@
 __author__ = 'heddevanderheide'
 
-
 # Django specific
+from django.core.urlresolvers import reverse
 from django.db import models
 
 # App specific

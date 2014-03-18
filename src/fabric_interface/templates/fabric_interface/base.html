@@ -22,9 +22,8 @@
         <![endif]-->
     </head>
     <body>
-        <div class="container-fluid margin-top-120px">
-            {% block base_content %}{% endblock %}
-        </div>
+        {% include "fabric_interface/navigation.html" %}
+        {% block base_content %}{% endblock %}
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <!-- Include all compiled plugins (below), or include individual files as needed -->

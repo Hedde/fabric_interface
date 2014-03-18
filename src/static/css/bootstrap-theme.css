@@ -426,4 +426,87 @@
 
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe8e8e8', endColorstr='#fff5f5f5', GradientType=0);
 }
+.nav-header
+{
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 1.5;
+
+    display: block;
+
+    padding: 3px 15px;
+
+    text-transform: uppercase;
+
+    color: #999;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+}
+.nav li + .nav-header
+{
+    margin-top: 9px;
+}
+.nav-list
+{
+    margin-bottom: 0;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+.nav-list > li > a,
+.nav-list .nav-header
+{
+    margin-right: -15px;
+    margin-left: -15px;
+
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+}
+.nav-list > li > a
+{
+    font-size: 12px;
+    font-weight: bold;
+
+    padding: 3px 15px;
+
+    text-transform: uppercase;
+}
+.nav-list > li > a:hover
+{
+    color: #fff;
+    background-color: #6aa3d5;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+}
+.nav-list > .active > a,
+.nav-list > .active > a:hover,
+.nav-list > .active > a:focus
+{
+    color: #fff;
+    background-color: #428bca;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+}
+.nav-list [class^='glyphicon-'],
+.nav-list [class*=' glyphicon-']
+{
+    font-size: 10px;
+
+    top: 0;
+
+    margin-right: 2px;
+}
+.nav-list li.active [class^='glyphicon-'],
+.nav-list li.active [class*=' glyphicon-']
+{
+    top: 3px;
+}
+.nav-list li.action
+{
+    margin-top: 20px;
+}
+.nav-list .divider
+{
+    overflow: hidden;
+
+    height: 1px;
+    margin: 9px 0;
+
+    background-color: #e5e5e5;
+}
 /*# sourceMappingURL=bootstrap-theme.css.map */

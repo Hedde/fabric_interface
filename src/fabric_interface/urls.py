@@ -10,6 +10,6 @@ from viewsets import ModelViewSet, SLUG
 from fabric_interface.projects.models import Project
 
 urlpatterns = patterns('',
-    url('^$', lambda request: HttpResponseRedirect(reverse_lazy('project_index'))),
+    url('^$', lambda request: HttpResponseRedirect(reverse_lazy('project_index')), name='home'),
     url('', include(ModelViewSet(Project, id_pattern=SLUG).urls)),
 )
