@@ -15,7 +15,11 @@
                                 <a href="{% url 'project_detail' slug=project.slug %}">{{ project.title }}</a>
                             </li>
                         {% endfor %}
-                        <li class="action"><a href=""><i class="glyphicon glyphicon-plus"></i> {% trans "Add project" %}</a></li>
+                        <li class="action">
+                            <a href="{% url 'project_create' %}">
+                                <i class="glyphicon glyphicon-plus"></i> {% trans "Add project" %}
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <!-- panel/hosts -->
@@ -42,6 +46,8 @@
                 </div>
             </div>
             <div class="col-sm-8">
+                <h4>{% trans "Project" %}</h4>
+                <hr />
                 {{ object }}
             </div>
         </div>

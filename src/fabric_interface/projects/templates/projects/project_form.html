@@ -1,8 +1,66 @@
 {% extends "fabric_interface/base.html" %}
 
+{% load i18n %}
+
 {% block base_content %}
-    <form method="post" class="form-horizontal">
-        {{ form.as_p }}{% csrf_token %}
-        <input type="submit" class="btn btn-primary" value="create" />
-    </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <!-- panel/projects -->
+                <div class="well well-sm">
+                    <ul class="nav nav-list">
+                        <li class="nav-header">{% trans "Projects" %}</li>
+                        {% for project in project_list %}
+                            <li class="{% if project.slug == object.slug %}active{% endif %}">
+                                <a href="{% url 'project_detail' slug=project.slug %}">{{ project.title }}</a>
+                            </li>
+                        {% endfor %}
+                        <li class="action">
+                            <a href="{% url 'project_create' %}">
+                                <i class="glyphicon glyphicon-plus"></i> {% trans "Add project" %}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- panel/hosts -->
+                <div class="well well-sm">
+                    <ul class="nav nav-list">
+                        <li class="nav-header">{% trans "Hosts" %}</li>
+                        <li><a href="#">Host X</a></li>
+                        {% for host in host_list %}
+                            <li><a href="{% url 'project_detail' slug=host.slug %}">{{ host.title }}</a></li>
+                        {% endfor %}
+                        <li class="action"><a href=""><i class="glyphicon glyphicon-plus"></i> {% trans "Add host" %}</a></li>
+                    </ul>
+                </div>
+                <!-- panel/users -->
+                <div class="well well-sm">
+                    <ul class="nav nav-list">
+                        <li class="nav-header">{% trans "Users" %}</li>
+                        <li><a href="#">John Doe</a></li>
+                        {% for user in user_list %}
+                            <li><a href="{% url 'project_detail' pk=user.pk %}">{{ user.name }}</a></li>
+                        {% endfor %}
+                        <li class="action"><a href=""><i class="glyphicon glyphicon-plus"></i> {% trans "Add user" %}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <h4>{% trans "Add project" %}</h4>
+                <hr />
+                <form role="form">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" placeholder="Enter title">
+                    </div>
+                    <div class="form-group">
+                        <label for="slug">Slug</label>
+                        <input type="slug" class="form-control" id="slug" placeholder="Enter slug">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}
