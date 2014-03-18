@@ -510,4 +510,12 @@
 
     background-color: #e5e5e5;
 }
+.form-control
+{
+    border-radius: 0;
+}
+.btn
+{
+    border-radius: 0;
+}
 /*# sourceMappingURL=bootstrap-theme.css.map */
