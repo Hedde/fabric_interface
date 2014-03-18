@@ -50,14 +50,12 @@
                 <hr />
                 <form method="post" role="form">
                     {% csrf_token %}
-                    <div class="form-group">
-                        <label for="title">Title</label>
-                        <input type="text" class="form-control" id="title" placeholder="Enter title">
-                    </div>
-                    <div class="form-group">
-                        <label for="slug">Slug</label>
-                        <input type="slug" class="form-control" id="slug" placeholder="Enter slug">
-                    </div>
+                    {% for field in form %}
+                        <div class="form-group">
+                            <label for="{{ field.auto_id }}">{{ field.label }}</label>
+                            <input type="text" class="form-control" id="{{ field.auto_id }}" name="{{ field.name }}" placeholder="Enter {{ field.name }}">
+                        </div>
+                    {% endfor %}
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>
             </div>
