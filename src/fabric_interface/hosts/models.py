@@ -8,7 +8,7 @@ from django_extensions.db.models import TimeStampedModel
 
 
 class Host(TimeStampedModel):
-    ip = models.IPAddressField(blank=True, null=True)
+    ip = models.GenericIPAddressField(blank=True, null=True)
     alias = models.CharField(max_length=175, blank=True, null=True)
 
     def __unicode__(self):

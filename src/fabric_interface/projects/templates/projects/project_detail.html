@@ -48,7 +48,16 @@
             <div class="col-sm-8">
                 <h4>{% trans "Project" %}</h4>
                 <hr />
-                {{ object }}
+                <div class="row">
+                    <div class="col-md-8">{{ object }}</div>
+                    <div class="col-md-4">
+                        <ul class="list-group">
+                            {% for stage in object.stage_set.all %}
+                                <li class="list-group-item">{{ stage.title }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
