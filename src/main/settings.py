@@ -82,7 +82,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.messages.context_processors.messages",
 
     "fabric_interface.projects.context_processors.projects",
-    "fabric_interface.hosts.context_processors.hosts",
 )
 
 # Auth

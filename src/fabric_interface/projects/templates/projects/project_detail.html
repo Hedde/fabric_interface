@@ -61,13 +61,15 @@
             {% empty %}
                 <li>No stages.</li>
             {% endfor %}
+            <li class="action"><a href=""><i class="glyphicon glyphicon-plus"></i> {% trans "Add stage" %}</a></li>
         </ul>
     </div>
     <!-- panel/danger_zone -->
     <div class="well well-sm">
         <li class="nav-header">{% trans "Danger Zone" %}</li>
         <ul class="nav nav-list">
-            <li><a href="{% url 'project_delete' slug=object.slug %}">{{ object.title }}</a></li>
+            <li><a href="{% url 'project_update' slug=object.slug %}">EDIT</a></li>
+            <li><a href="{% url 'project_delete' slug=object.slug %}">DELETE</a></li>
         </ul>
     </div>
 {% endblock %}

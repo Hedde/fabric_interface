@@ -1,6 +1,6 @@
 {% extends "fabric_interface/layouts/sidebar_double.html" %}
 
-{% load i18n %}
+{% load i18n debug %}
 
 {% block sidebar_left %}
     <!-- panel/projects -->
@@ -44,16 +44,18 @@
 {% endblock %}
 
 {% block content %}
-    <h4>{% trans "Add project" %}</h4>
+    <h4>{% if object %}{% trans "Edit project" %}{% else %}{% trans "Add project" %}{% endif %}</h4>
     <hr />
     <form method="post" role="form">
         {% csrf_token %}
-        {% for field in form %}
-            <div class="form-group">
-                <label for="{{ field.auto_id }}">{{ field.label }}</label>
-                <input type="text" class="form-control" id="{{ field.auto_id }}" name="{{ field.name }}" placeholder="Enter {{ field.name }}">
-            </div>
+        {% for form in form %}
+            {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.auto_id }}">{{ field.label }}</label>
+                    <input type="text" class="form-control" id="{{ field.auto_id }}" name="{{ field.name }}" {% if field.value %}value="{{ field.value }}"{% else %}placeholder="Enter {{ field.name }}"{% endif %}>
+                </div>
+            {% endfor %}
         {% endfor %}
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default">{% if object %}{% trans "Update" %}{% else %}{% trans "Create" %}{% endif %}</button>
     </form>
 {% endblock %}
