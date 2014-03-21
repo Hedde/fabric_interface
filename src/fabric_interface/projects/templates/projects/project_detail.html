@@ -57,7 +57,7 @@
         <li class="nav-header">{% trans "Stages" %}</li>
         <ul class="nav nav-list">
             {% for stage in object.stage_set.all %}
-                <li><a href="{% url 'project_stage_detail' slug=object.slug role=stage.role %}">{{ stage.role }}</a></li>
+                <li><a href="{% url 'project_stage_detail' slug=object.slug role_slug=stage.slug %}">{{ stage.role }}</a></li>
             {% empty %}
                 <li>No stages.</li>
             {% endfor %}
