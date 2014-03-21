@@ -11,7 +11,11 @@ from django.views.generic import (
 
 # App specific
 from fabric_interface.projects.models import Project
+from fabric_interface.stages.views import (
+    StageCreateView, StageDetailView
+)
 from viewsets import ModelViewSet, SLUG
+from viewsets.patterns import PLACEHOLDER_PATTERN
 
 
 class ProjectListView(RedirectView):
@@ -60,8 +64,22 @@ class ProjectViewSet(ModelViewSet):
     id_pattern = SLUG
 
     def __init__(self, *args, **kwargs):
+        # Project CRUD
         self.views[b'list_view']['view'] = ProjectListView
         self.views[b'create_view']['view'] = ProjectCreateView
         self.views[b'delete_view']['view'] = ProjectDeleteView
         self.views[b'update_view']['view'] = ProjectUpdateView
+
+        # Stage CRUD
+        self.views[b'stage_create_view'] = {
+            b'view': StageCreateView,
+            b'pattern': PLACEHOLDER_PATTERN + br'/stage/create/',
+            b'name': b'stage_create',
+        }
+        self.views[b'stage_view'] = {
+            b'view': StageDetailView,
+            b'pattern': PLACEHOLDER_PATTERN + br'/stage/' + br'(?P<role_slug>[\w-]+)',
+            b'name': b'stage_detail',
+        }
+
         super(ProjectViewSet, self).__init__(*args, **kwargs)

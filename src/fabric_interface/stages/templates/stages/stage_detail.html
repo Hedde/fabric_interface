@@ -1,6 +1,6 @@
 {% extends "fabric_interface/layouts/sidebar_double.html" %}
 
-{% load i18n %}
+{% load i18n bootstrap3 %}
 
 {% block sidebar_left %}
     <!-- panel/projects -->
@@ -44,11 +44,9 @@
 {% endblock %}
 
 {% block content %}
-    <h4>{% trans "Project" %}</h4>
+    <h4>{% if object %}{% trans "Edit stage" %}{% endif %}</h4>
     <hr />
-    <div class="row">
-        <div class="col-md-12">{{ object }} SLUG={{ object.slug }} STAGES={{ object.stage_set.all }}</div>
-    </div>
+    {{ object }}
 {% endblock %}
 
 {% block sidebar_right %}
@@ -56,20 +54,20 @@
     <div class="well well-sm">
         <li class="nav-header">{% trans "Stages" %}</li>
         <ul class="nav nav-list">
-            {% for stage in object.stage_set.all %}
-                <li><a href="{% url 'project_stage_detail' slug=object.slug role=stage.role %}">{{ stage.role }}</a></li>
+            {% for stage in object.project.stage_set.all %}
+                <li><a href="{% url 'project_stage_detail' slug=object.project.slug role=stage.role %}">{{ stage.role }}</a></li>
             {% empty %}
                 <li>No stages.</li>
             {% endfor %}
-            <li class="action"><a href="{% url 'project_stage_create' slug=object.slug %}"><i class="glyphicon glyphicon-plus"></i> {% trans "Add stage" %}</a></li>
+            <li class="action"><a href="{% url 'project_stage_create' slug=object.project.slug %}"><i class="glyphicon glyphicon-plus"></i> {% trans "Add stage" %}</a></li>
         </ul>
     </div>
     <!-- panel/danger_zone -->
     <div class="well well-sm">
         <li class="nav-header">{% trans "Danger Zone" %}</li>
         <ul class="nav nav-list">
-            <li><a href="{% url 'project_update' slug=object.slug %}">EDIT</a></li>
-            <li><a href="{% url 'project_delete' slug=object.slug %}">DELETE</a></li>
+{#            <li><a href="{% url 'stage_update' slug=object.slug %}">EDIT</a></li>#}
+{#            <li><a href="{% url 'stage_delete' slug=object.slug %}">DELETE</a></li>#}
         </ul>
     </div>
 {% endblock %}

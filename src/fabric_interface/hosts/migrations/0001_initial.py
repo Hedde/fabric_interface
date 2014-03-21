@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
                 (u'id', models.AutoField(verbose_name=u'ID', serialize=False, auto_created=True, primary_key=True)),
                 ('created', django_extensions.db.fields.CreationDateTimeField(default=django.utils.timezone.now, verbose_name=u'created', editable=False, blank=True)),
                 ('modified', django_extensions.db.fields.ModificationDateTimeField(default=django.utils.timezone.now, verbose_name=u'modified', editable=False, blank=True)),
-                ('ip', models.IPAddressField(null=True, blank=True)),
+                ('ip', models.GenericIPAddressField(null=True, blank=True)),
                 ('alias', models.CharField(max_length=175, null=True, blank=True)),
             ],
             options={
