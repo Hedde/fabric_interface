@@ -1,14 +1,13 @@
-from django.http import HttpResponseRedirect
-
 __author__ = 'heddevanderheide'
 
 # Django specific
 from django.contrib import messages
 from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import (
-    DetailView, CreateView,
-    DeleteView)
+    DetailView, CreateView, DeleteView
+)
 
 # App specific
 from fabric_interface.stages.forms import StageForm
