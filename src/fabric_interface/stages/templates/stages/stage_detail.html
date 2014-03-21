@@ -67,7 +67,7 @@
         <ul class="nav nav-list">
             <li class="nav-header">{% trans "Danger Zone" %}</li>
 {#            <li><a href="{% url 'stage_update' slug=object.slug %}">EDIT</a></li>#}
-{#            <li><a href="{% url 'stage_delete' slug=object.slug %}">DELETE</a></li>#}
+            <li><a href="{% url 'project_stage_delete' slug=object.project.slug role_slug=object.slug %}">DELETE</a></li>
         </ul>
     </div>
 {% endblock %}

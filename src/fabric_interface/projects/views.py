@@ -12,7 +12,7 @@ from django.views.generic import (
 # App specific
 from fabric_interface.projects.models import Project
 from fabric_interface.stages.views import (
-    StageCreateView, StageDetailView
+    StageCreateView, StageDetailView, StageDeleteView
 )
 from viewsets import ModelViewSet, SLUG
 from viewsets.patterns import PLACEHOLDER_PATTERN
@@ -75,6 +75,11 @@ class ProjectViewSet(ModelViewSet):
             b'view': StageCreateView,
             b'pattern': PLACEHOLDER_PATTERN + br'/stage/create/',
             b'name': b'stage_create',
+        }
+        self.views[b'stage_delete_view'] = {
+            b'view': StageDeleteView,
+            b'pattern': PLACEHOLDER_PATTERN + br'/stage/' + br'(?P<role_slug>[\w-]+)' + br'/delete/',
+            b'name': b'stage_delete',
         }
         self.views[b'stage_view'] = {
             b'view': StageDetailView,
