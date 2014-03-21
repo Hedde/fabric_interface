@@ -28,7 +28,7 @@ class StageCreateView(CreateView):
     def get_success_url(self):
         messages.add_message(
             self.request, messages.SUCCESS, _(u"Created {model} '{slug}' succesfully.".format(
-                model=self.model._meta.verbose_name,
+                model=self.object._meta.verbose_name,
                 slug=self.object.role
             ))
         )
