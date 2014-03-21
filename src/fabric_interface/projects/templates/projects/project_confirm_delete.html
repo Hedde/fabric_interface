@@ -44,30 +44,17 @@
 {% endblock %}
 
 {% block content %}
-    <h4>{% trans "Project" %}</h4>
+    <h4>{% trans "Delete project" %}</h4>
     <hr />
-    <div class="row">
-        <div class="col-md-12">{{ object }} SLUG={{ object.slug }}</div>
-    </div>
-{% endblock %}
-
-{% block sidebar_right %}
-    <!-- panel/stages -->
-    <div class="well well-sm">
-        <li class="nav-header">{% trans "Stages" %}</li>
-        <ul class="nav nav-list">
-            {% for stage in object.stage_set.all %}
-                <li>{{ stage.title }}</li>
-            {% empty %}
-                <li>No stages.</li>
-            {% endfor %}
-        </ul>
-    </div>
-    <!-- panel/danger_zone -->
-    <div class="well well-sm">
-        <li class="nav-header">{% trans "Danger Zone" %}</li>
-        <ul class="nav nav-list">
-            <li><a href="{% url 'project_delete' slug=object.slug %}">{{ object.title }}</a></li>
-        </ul>
-    </div>
+    <h3>Are you sure? There's no going back!</h3>
+    <form method="post" role="form">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.auto_id }}">{{ field.label }}</label>
+                <input type="text" class="form-control" id="{{ field.auto_id }}" name="{{ field.name }}" placeholder="Enter {{ field.name }}">
+            </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-danger">{% trans "Confirm" %}</button>
+    </form>
 {% endblock %}

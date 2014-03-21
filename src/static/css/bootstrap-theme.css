@@ -501,6 +501,10 @@
 {
     margin-top: 20px;
 }
+.nav-list li.action a
+{
+    float: right;
+}
 .nav-list .divider
 {
     overflow: hidden;
