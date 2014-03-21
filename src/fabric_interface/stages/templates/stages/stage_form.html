@@ -44,7 +44,7 @@
 {% endblock %}
 
 {% block content %}
-    <h4>{% if object %}{% trans "Edit project" %}{% else %}{% trans "Add stage" %}{% endif %}</h4>
+    <h4>{% if object %}{% trans "Edit stage" %}{% else %}{% trans "Add stage" %}{% endif %}</h4>
     <hr />
     <form method="post" role="form">
         {% csrf_token %}
