@@ -3,7 +3,6 @@ Todo's
 
 # Base
 
-* host views and templates
 * configuration views, models and templates
 * formulae/recipes views, models and templates
 * user views, models and templates
