@@ -22,9 +22,13 @@
         <![endif]-->
     </head>
     <body>
-        {% include "fabric_interface/navigation.html" %}
+        {% block navigation %}
+            {% include "fabric_interface/navigation.html" %}
+        {% endblock %}
         {% block base_content %}{% endblock %}
-        {% include "fabric_interface/footer.html" %}
+        {% block footer %}
+            {% include "fabric_interface/footer.html" %}
+        {% endblock %}
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <!-- Include all compiled plugins (below), or include individual files as needed -->

@@ -1,0 +1,25 @@
+{% extends "fabric_interface/layouts/full_width.html" %}
+
+{% load i18n bootstrap3 %}
+
+{% block title %}{% trans "Login" %}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-4">
+            <form class="form-signin" method="post" role="form">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="form-group">
+                        {% bootstrap_field field %}
+                    </div>
+                {% endfor %}
+                {% buttons %}
+                    <button type="submit" class="btn btn-default">
+                        {% trans "Login" %}
+                    </button>
+                {% endbuttons %}
+            </form>
+        </div>
+    </div>
+{% endblock %}

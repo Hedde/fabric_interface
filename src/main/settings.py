@@ -34,8 +34,10 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # 3rd party
     'bootstrap3',
 
+    # Application
     'fabric_interface',
     'fabric_interface.projects',
     'fabric_interface.stages',
@@ -49,6 +51,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'fabric_interface.middleware.LoginRequiredMiddleware',
 )
 
 ROOT_URLCONF = 'main.urls'
@@ -111,6 +115,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
 
 # Bootstrap3 using bootstrapper
 BOOTSTRAP3 = {
