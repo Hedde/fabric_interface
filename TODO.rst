@@ -1,8 +1,17 @@
 Todo's
 ------
 
-* sessions (Redis)
-* fabfile models
-* forms
-* admins
-* permissions (django-guardian?)
+# Base
+* host views and templates
+* configuration views, models and templates
+# formulae/recipes views, models and templates
+* user views, models and templates
+
+# Features
+* fabfile rendering using configuration inheritance and formulae ordering logic
+* fab execution (sub process)
+# supressing stdout / verbosity levels
+
+# Release candidate requires
+* user row permissions (django-guardian / django-rules ?)
+* non db sessions (e.g. Redis)
