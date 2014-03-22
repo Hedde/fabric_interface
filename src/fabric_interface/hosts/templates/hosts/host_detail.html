@@ -1,6 +1,6 @@
 {% extends "fabric_interface/layouts/sidebar_double.html" %}
 
-{% load i18n bootstrap3 %}
+{% load i18n debug %}
 
 {% block title %}{{ title }}{% endblock %}
 
@@ -10,8 +10,14 @@
         <ul class="nav nav-list">
             <li class="nav-header">{% trans "All projects" %}</li>
             {% for project in project_list %}
-                <li class="{% if project.slug == object.slug or project.slug == object.project.slug %}active{% endif %}">
-                    <a href="{% url 'project_detail' slug=project.slug %}">{{ project }}</a>
+                <li class="{% if project.slug == object.slug %}active{% endif %}">
+                    <a href="{% url 'project_detail' slug=project.slug %}">
+                        {% if project in object.projects.all %}
+                            <i class="glyphicon glyphicon-check"></i>
+                        {% else %}
+                            <i class="glyphicon glyphicon-unchecked"></i>
+                        {% endif %} {{ project }}
+                    </a>
                 </li>
             {% endfor %}
             <li class="action">
@@ -26,19 +32,9 @@
         <ul class="nav nav-list">
             <li class="nav-header">{% trans "Hosts" %}</li>
             {% for host in host_list %}
-                <li>
-                    <a href="{% url 'host_detail' slug=host.slug %}">
-                        {% if host in object.hosts.all %}
-                            <i class="glyphicon glyphicon-check"></i>
-                        {% else %}
-                            <i class="glyphicon glyphicon-unchecked"></i>
-                        {% endif %} {{ host }}
-                    </a>
-                </li>
-            {% empty %}
-                <li>{% trans "No hosts available." %}</li>
+                <li class="{% if host.slug == object.slug %}active{% endif %}"><a href="{% url 'host_detail' slug=host.slug %}">{{ host }}</a></li>
             {% endfor %}
-            <li class="action"><a href="{% url 'host_create' %}"><i class="glyphicon glyphicon-plus"></i> {% trans "Add host" %}</a></li>
+            <li class="action"><a href=""><i class="glyphicon glyphicon-plus"></i> {% trans "Add host" %}</a></li>
         </ul>
     </div>
     <!-- panel/users -->
@@ -55,20 +51,18 @@
 {% endblock %}
 
 {% block content %}
-    <h4>{% trans "Delete stage" %} '{{ object.role }}'</h4>
+    <h4>{% trans "Host" %} '{{ host }}'</h4>
     <hr />
-    <h3>Are you sure? There's no going back!</h3>
-    <form method="post" role="form">
-        {% csrf_token %}
-        {% for field in form %}
-            <div class="form-group">
-                {% bootstrap_field field %}
-            </div>
-        {% endfor %}
-        {% buttons %}
-            <button type="submit" class="btn btn-danger">
-                {% bootstrap_icon "remove" %} {{ title }}
-            </button>
-        {% endbuttons %}
-    </form>
+    {{ host }} AVAILABLE_FOR={{ host.projects.all }}
+{% endblock %}
+
+{% block sidebar_right %}
+    <!-- panel/danger_zone -->
+    <div class="well well-sm">
+        <ul class="nav nav-list">
+            <li class="nav-header">{% trans "Danger Zone" %}</li>
+            <li><a href="{% url 'host_update' slug=object.slug %}">{% trans "Edit" %}</a></li>
+            <li><a href="{% url 'host_delete' slug=object.slug %}">{% trans "Delete" %}</a></li>
+        </ul>
+    </div>
 {% endblock %}

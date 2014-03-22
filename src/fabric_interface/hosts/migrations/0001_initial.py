@@ -7,6 +7,7 @@ import django_extensions.db.fields
 class Migration(migrations.Migration):
 
     dependencies = [
+        ('projects', '0001_initial'),
     ]
 
     operations = [
@@ -17,7 +18,9 @@ class Migration(migrations.Migration):
                 ('created', django_extensions.db.fields.CreationDateTimeField(default=django.utils.timezone.now, verbose_name=u'created', editable=False, blank=True)),
                 ('modified', django_extensions.db.fields.ModificationDateTimeField(default=django.utils.timezone.now, verbose_name=u'modified', editable=False, blank=True)),
                 ('ip', models.GenericIPAddressField(null=True, blank=True)),
-                ('alias', models.CharField(max_length=175, null=True, blank=True)),
+                ('alias', models.CharField(max_length=175)),
+                ('slug', models.SlugField(unique=True)),
+                ('projects', models.ManyToManyField(to='projects.Project', null=True, verbose_name=u'Projects', blank=True)),
             ],
             options={
                 u'ordering': ('-modified', '-created'),

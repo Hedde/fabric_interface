@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('project', models.ForeignKey(to_field=u'id', blank=True, to='projects.Project', null=True)),
                 ('role', models.CharField(max_length=125, null=True, blank=True)),
                 ('slug', models.SlugField(unique=True)),
-                ('host', models.ManyToManyField(to='hosts.Host', null=True, verbose_name=u'Hosts', blank=True)),
+                ('hosts', models.ManyToManyField(to='hosts.Host', null=True, verbose_name=u'Hosts', blank=True)),
             ],
             options={
                 u'unique_together': set([('project', 'slug')]),
