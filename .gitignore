@@ -2,7 +2,6 @@
 *.pyc
 docs/build
 venv
-bootstrapper
 dev.db
 local_settings.py
 fabfile.py
