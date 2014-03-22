@@ -11,9 +11,6 @@ from django.template.defaultfilters import striptags
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
-# App specific
-from django_extensions.db.models import TimeStampedModel
-
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None):
