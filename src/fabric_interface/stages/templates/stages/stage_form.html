@@ -72,9 +72,11 @@
                     {% bootstrap_icon "pencil" %} {{ title }}
                 {% endif %}
             </button>
-            <a href="{% url 'project_stage_delete' slug=object.project.slug role_slug=object.slug %}" class="btn btn-danger">
-                {% bootstrap_icon "remove" %} {% trans "Delete" %}
-            </a>
+            {% if action != 'create' %}
+                <a href="{% url 'project_stage_delete' slug=object.project.slug role_slug=object.slug %}" class="btn btn-danger">
+                    {% bootstrap_icon "remove" %} {% trans "Delete" %}
+                </a>
+            {% endif %}
         {% endbuttons %}
     </form>
 {% endblock %}
