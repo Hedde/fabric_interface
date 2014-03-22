@@ -2,13 +2,15 @@
 
 {% load i18n bootstrap3 %}
 
+{% block title %}{{ title }}{% endblock %}
+
 {% block sidebar_left %}
     <!-- panel/projects -->
     <div class="well well-sm">
         <ul class="nav nav-list">
             <li class="nav-header">{% trans "Projects" %}</li>
             {% for project in project_list %}
-                <li class="{% if project.slug == object.slug %}active{% endif %}">
+                <li class="{% if project.slug == object.slug or project.slug == object.project.slug %}active{% endif %}">
                     <a href="{% url 'project_detail' slug=project.slug %}">{{ project.title }}</a>
                 </li>
             {% endfor %}
@@ -55,19 +57,25 @@
         <ul class="nav nav-list">
             <li class="nav-header">{% trans "Stages" %}</li>
             {% for stage in object.project.stage_set.all %}
-                <li><a href="{% url 'project_stage_detail' slug=object.project.slug role_slug=stage.slug %}">{{ stage.role }}</a></li>
+                <li class="{% if stage.slug == object.slug %}active{% endif %}">
+                    <a href="{% url 'project_stage_detail' slug=object.project.slug role_slug=stage.slug %}">{{ stage.role }}</a>
+                </li>
             {% empty %}
                 <li>No stages.</li>
             {% endfor %}
-            <li class="action"><a href="{% url 'project_stage_create' slug=object.project.slug %}"><i class="glyphicon glyphicon-plus"></i> {% trans "Add stage" %}</a></li>
+            <li class="action">
+                <a href="{% url 'project_stage_create' slug=object.project.slug %}">
+                    <i class="glyphicon glyphicon-plus"></i> {% trans "Add stage" %}
+                </a>
+            </li>
         </ul>
     </div>
     <!-- panel/danger_zone -->
     <div class="well well-sm">
         <ul class="nav nav-list">
             <li class="nav-header">{% trans "Danger Zone" %}</li>
-{#            <li><a href="{% url 'stage_update' slug=object.slug %}">EDIT</a></li>#}
-            <li><a href="{% url 'project_stage_delete' slug=object.project.slug role_slug=object.slug %}">DELETE</a></li>
+            <li><a href="{% url 'project_stage_update' slug=object.project.slug role_slug=object.slug %}">{% trans "Edit" %}</a></li>
+            <li><a href="{% url 'project_stage_delete' slug=object.project.slug role_slug=object.slug %}">{% trans "Delete" %}</a></li>
         </ul>
     </div>
 {% endblock %}

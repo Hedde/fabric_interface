@@ -1,6 +1,6 @@
 {% extends "fabric_interface/layouts/sidebar_double.html" %}
 
-{% load i18n %}
+{% load i18n bootstrap3 %}
 
 {% block title %}{{ title }}{% endblock %}
 
@@ -10,7 +10,7 @@
         <ul class="nav nav-list">
             <li class="nav-header">{% trans "Projects" %}</li>
             {% for project in project_list %}
-                <li class="{% if project.slug == object.slug %}active{% endif %}">
+                <li class="{% if project.slug == object.slug or project.slug == object.project.slug %}active{% endif %}">
                     <a href="{% url 'project_detail' slug=project.slug %}">{{ project.title }}</a>
                 </li>
             {% endfor %}
@@ -46,32 +46,20 @@
 {% endblock %}
 
 {% block content %}
-    <h4>{% trans "Project" %}</h4>
+    <h4>{% trans "Delete stage" %} '{{ object.role }}'</h4>
     <hr />
-    <div class="row">
-        <div class="col-md-12">{{ object }} SLUG={{ object.slug }} STAGES={{ object.stage_set.all }}</div>
-    </div>
-{% endblock %}
-
-{% block sidebar_right %}
-    <!-- panel/stages -->
-    <div class="well well-sm">
-        <ul class="nav nav-list">
-            <li class="nav-header">{% trans "Stages" %}</li>
-            {% for stage in object.stage_set.all %}
-                <li><a href="{% url 'project_stage_detail' slug=object.slug role_slug=stage.slug %}">{{ stage.role }}</a></li>
-            {% empty %}
-                <li>No stages.</li>
-            {% endfor %}
-            <li class="action"><a href="{% url 'project_stage_create' slug=object.slug %}"><i class="glyphicon glyphicon-plus"></i> {% trans "Add stage" %}</a></li>
-        </ul>
-    </div>
-    <!-- panel/danger_zone -->
-    <div class="well well-sm">
-        <ul class="nav nav-list">
-            <li class="nav-header">{% trans "Danger Zone" %}</li>
-            <li><a href="{% url 'project_update' slug=object.slug %}">EDIT</a></li>
-            <li><a href="{% url 'project_delete' slug=object.slug %}">DELETE</a></li>
-        </ul>
-    </div>
+    <h3>Are you sure? There's no going back!</h3>
+    <form method="post" role="form">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                {% bootstrap_field field %}
+            </div>
+        {% endfor %}
+        {% buttons %}
+            <button type="submit" class="btn btn-danger">
+                {% bootstrap_icon "remove" %} {{ title }}
+            </button>
+        {% endbuttons %}
+    </form>
 {% endblock %}

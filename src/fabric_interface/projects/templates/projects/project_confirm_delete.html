@@ -1,6 +1,8 @@
 {% extends "fabric_interface/layouts/sidebar_double.html" %}
 
-{% load i18n %}
+{% load i18n bootstrap3 %}
+
+{% block title %}{{ title }}{% endblock %}
 
 {% block sidebar_left %}
     <!-- panel/projects -->
@@ -44,17 +46,20 @@
 {% endblock %}
 
 {% block content %}
-    <h4>{% trans "Delete project" %}</h4>
+    <h4>{% trans "Delete project" %} '{{ project.title }}'</h4>
     <hr />
     <h3>Are you sure? There's no going back!</h3>
     <form method="post" role="form">
         {% csrf_token %}
         {% for field in form %}
             <div class="form-group">
-                <label for="{{ field.auto_id }}">{{ field.label }}</label>
-                <input type="text" class="form-control" id="{{ field.auto_id }}" name="{{ field.name }}" placeholder="Enter {{ field.name }}">
+                {% bootstrap_field field %}
             </div>
         {% endfor %}
-        <button type="submit" class="btn btn-danger">{% trans "Confirm" %}</button>
+        {% buttons %}
+            <button type="submit" class="btn btn-danger">
+                {% bootstrap_icon "remove" %} {{ title }}
+            </button>
+        {% endbuttons %}
     </form>
 {% endblock %}

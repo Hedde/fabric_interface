@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import (
-    DetailView, CreateView, DeleteView
+    DetailView, CreateView, UpdateView, DeleteView
 )
 
 # App specific
@@ -21,10 +21,26 @@ class StageDetailView(DetailView):
         self.parent = super(StageDetailView, self).get_object(queryset)
         return self.parent.stage_set(manager='objects').get(slug=self.kwargs.get('role_slug'))
 
+    def get_context_data(self, **kwargs):
+        context = super(StageDetailView, self).get_context_data(**kwargs)
+        context.update({
+            'title': _(u"View"),
+            'action': 'view'
+        })
+        return context
+
 
 class StageCreateView(CreateView):
     form_class = StageForm
     template_name = 'stages/stage_form.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(StageCreateView, self).get_context_data(**kwargs)
+        context.update({
+            'title': _(u"Create"),
+            'action': 'create'
+        })
+        return context
 
     def get_success_url(self):
         messages.add_message(
@@ -39,13 +55,50 @@ class StageCreateView(CreateView):
         })
 
 
-class StageDeleteView(DeleteView):
+class StageUpdateView(UpdateView):
     form_class = StageForm
     template_name = 'stages/stage_form.html'
 
     def get_object(self, queryset=None):
+        self.parent = super(StageUpdateView, self).get_object(queryset)
+        return self.parent.stage_set(manager='objects').get(slug=self.kwargs.get('role_slug'))
+
+    def get_context_data(self, **kwargs):
+        context = super(StageUpdateView, self).get_context_data(**kwargs)
+        context.update({
+            'title': _(u"Update"),
+            'action': 'update'
+        })
+        return context
+
+    def get_success_url(self):
+        messages.add_message(
+            self.request, messages.SUCCESS, _(u"Updated {model} '{slug}' succesfully.".format(
+                model=self.object._meta.verbose_name,
+                slug=self.object.role
+            ))
+        )
+        return reverse('project_stage_detail', kwargs={
+            'slug': self.object.project.slug,
+            'role_slug': self.object.slug
+        })
+
+
+class StageDeleteView(DeleteView):
+    form_class = StageForm
+    template_name = 'stages/stage_confirm_delete.html'
+
+    def get_object(self, queryset=None):
         self.parent = super(StageDeleteView, self).get_object(queryset)
         return self.parent.stage_set(manager='objects').get(slug=self.kwargs.get('role_slug'))
+
+    def get_context_data(self, **kwargs):
+        context = super(StageDeleteView, self).get_context_data(**kwargs)
+        context.update({
+            'title': _(u"Delete"),
+            'action': 'delete'
+        })
+        return context
 
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()

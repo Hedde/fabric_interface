@@ -6,13 +6,13 @@ from django.core.urlresolvers import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import (
-    CreateView, DeleteView, RedirectView, UpdateView
+    DetailView, CreateView, UpdateView, DeleteView, RedirectView
 )
 
 # App specific
 from fabric_interface.projects.models import Project
 from fabric_interface.stages.views import (
-    StageCreateView, StageDetailView, StageDeleteView
+    StageDetailView, StageCreateView, StageUpdateView, StageDeleteView
 )
 from viewsets import ModelViewSet, SLUG
 from viewsets.patterns import PLACEHOLDER_PATTERN
@@ -22,7 +22,25 @@ class ProjectListView(RedirectView):
     url = reverse_lazy('home')
 
 
+class ProjectDetailView(DetailView):
+    def get_context_data(self, **kwargs):
+        context = super(ProjectDetailView, self).get_context_data(**kwargs)
+        context.update({
+            'title': _(u"View"),
+            'action': 'view'
+        })
+        return context
+
+
 class ProjectCreateView(CreateView):
+    def get_context_data(self, **kwargs):
+        context = super(ProjectCreateView, self).get_context_data(**kwargs)
+        context.update({
+            'title': _(u"Create"),
+            'action': 'create'
+        })
+        return context
+
     def get_success_url(self):
         messages.add_message(
             self.request, messages.SUCCESS, _(u"Created {model} '{slug}' succesfully.".format(
@@ -34,6 +52,14 @@ class ProjectCreateView(CreateView):
 
 
 class ProjectUpdateView(UpdateView):
+    def get_context_data(self, **kwargs):
+        context = super(ProjectUpdateView, self).get_context_data(**kwargs)
+        context.update({
+            'title': _(u"Update"),
+            'action': 'update'
+        })
+        return context
+
     def get_success_url(self):
         messages.add_message(
             self.request, messages.SUCCESS, _(u"Updated {model} '{slug}' succesfully.".format(
@@ -45,6 +71,14 @@ class ProjectUpdateView(UpdateView):
 
 
 class ProjectDeleteView(DeleteView):
+    def get_context_data(self, **kwargs):
+        context = super(ProjectDeleteView, self).get_context_data(**kwargs)
+        context.update({
+            'title': _(u"Delete"),
+            'action': 'delete'
+        })
+        return context
+
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
         success_url = self.get_success_url()
@@ -66,15 +100,21 @@ class ProjectViewSet(ModelViewSet):
     def __init__(self, *args, **kwargs):
         # Project CRUD
         self.views[b'list_view']['view'] = ProjectListView
+        self.views[b'detail_view']['view'] = ProjectDetailView
         self.views[b'create_view']['view'] = ProjectCreateView
-        self.views[b'delete_view']['view'] = ProjectDeleteView
         self.views[b'update_view']['view'] = ProjectUpdateView
+        self.views[b'delete_view']['view'] = ProjectDeleteView
 
         # Stage CRUD
         self.views[b'stage_create_view'] = {
             b'view': StageCreateView,
             b'pattern': PLACEHOLDER_PATTERN + br'/stage/create/',
             b'name': b'stage_create',
+        }
+        self.views[b'stage_update_view'] = {
+            b'view': StageUpdateView,
+            b'pattern': PLACEHOLDER_PATTERN + br'/stage/' + br'(?P<role_slug>[\w-]+)' + br'/update/',
+            b'name': b'stage_update',
         }
         self.views[b'stage_delete_view'] = {
             b'view': StageDeleteView,
