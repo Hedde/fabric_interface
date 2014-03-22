@@ -1,4 +1,4 @@
-Django==1.7b1
+-e git://github.com/django/django.git@1.7b1#egg=django
 Fabric==1.8.2
 Jinja2==2.7.2
 MarkupSafe==0.19
