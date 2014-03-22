@@ -1,0 +1,29 @@
+{% extends "fabric_interface/base.html" %}
+
+{% load i18n %}
+
+{% block title %}{% endblock %}
+
+{% block base_content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                {% block sidebar_left %}{% endblock %}
+            </div>
+            <div class="col-sm-6">
+                {% block messages %}
+                    {% for message in messages %}
+                        <div{% if message.tags %} class="alert alert-{{ message.tags }} alert-dismissable"{% endif %}>
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endblock %}
+                {% block content %}{% endblock %}
+            </div>
+            <div class="col-sm-3">
+                {% block sidebar_right %}{% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
