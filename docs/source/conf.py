@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # Fabric Interface documentation build configuration file, created by
-# sphinx-quickstart on Sat Mar 22 15:07:27 2014.
+# sphinx-quickstart on Sat Mar 22 15:17:58 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -40,7 +40,7 @@ source_suffix = '.rst'
 #source_encoding = 'utf-8-sig'
 
 # The master toctree document.
-master_doc = 'README'
+master_doc = 'index'
 
 # General information about the project.
 project = u'Fabric Interface'
@@ -67,7 +67,7 @@ release = '0.0.1'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build']
+exclude_patterns = []
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -196,7 +196,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('README', 'FabricInterface.tex', u'Fabric Interface Documentation',
+  ('index', 'FabricInterface.tex', u'Fabric Interface Documentation',
    u'Hedde van der Heide', 'manual'),
 ]
 
@@ -226,7 +226,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('README', 'fabricinterface', u'Fabric Interface Documentation',
+    ('index', 'fabricinterface', u'Fabric Interface Documentation',
      [u'Hedde van der Heide'], 1)
 ]
 
@@ -240,7 +240,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('README', 'FabricInterface', u'Fabric Interface Documentation',
+  ('index', 'FabricInterface', u'Fabric Interface Documentation',
    u'Hedde van der Heide', 'FabricInterface', 'One line description of project.',
    'Miscellaneous'),
 ]
