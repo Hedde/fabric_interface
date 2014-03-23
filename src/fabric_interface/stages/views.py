@@ -10,6 +10,7 @@ from django.views.generic import (
 )
 
 # App specific
+from fabric_interface.projects.models import Project
 from fabric_interface.mixins import (
     DetailContext, CreateContext, UpdateContext, DeleteContext
 )
@@ -28,6 +29,19 @@ class StageDetailView(DetailContext, DetailView):
 class StageCreateView(CreateContext, CreateView):
     form_class = StageForm
     template_name = 'stages/stage_form.html'
+
+    def get_form_kwargs(self):
+        form_kwargs = super(StageCreateView, self).get_form_kwargs()
+        form_kwargs.update({
+            'project_slug': self.kwargs.get('slug')
+        })
+        return form_kwargs
+
+    def get_context_data(self, **kwargs):
+        # Add the parent object to the context so we can mark the active navigation item
+        context = super(StageCreateView, self).get_context_data(**kwargs)
+        context['object'] = Project.objects.get(slug=self.kwargs.get('slug'))
+        return context
 
     def get_success_url(self):
         messages.add_message(
@@ -49,6 +63,13 @@ class StageUpdateView(UpdateContext, UpdateView):
     def get_object(self, queryset=None):
         self.parent = super(StageUpdateView, self).get_object(queryset)
         return self.parent.stage_set(manager='objects').get(slug=self.kwargs.get('role_slug'))
+
+    def get_form_kwargs(self):
+        form_kwargs = super(StageUpdateView, self).get_form_kwargs()
+        form_kwargs.update({
+            'project_slug': self.kwargs.get('slug')
+        })
+        return form_kwargs
 
     def get_success_url(self):
         messages.add_message(
