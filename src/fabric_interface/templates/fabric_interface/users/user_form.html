@@ -1,0 +1,77 @@
+{% extends "fabric_interface/layouts/sidebar_double.html" %}
+
+{% load i18n bootstrap3 debug %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block sidebar_left %}
+    <!-- panel/projects -->
+    <div class="well well-sm">
+        <ul class="nav nav-list">
+            <li class="nav-header">{% trans "All projects" %}</li>
+            {% for project in project_list %}
+                <li class="{% if project.slug == object.slug %}active{% endif %}">
+                    <a href="{% url 'project_detail' slug=project.slug %}">
+                        {% if project in object.projects.all %}
+                            <i class="glyphicon glyphicon-check"></i>
+                        {% else %}
+                            <i class="glyphicon glyphicon-unchecked"></i>
+                        {% endif %} {{ project }}
+                    </a>
+                </li>
+            {% endfor %}
+            <li class="action">
+                <a href="{% url 'project_create' %}">
+                    <i class="glyphicon glyphicon-plus"></i> {% trans "Add project" %}
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- panel/hosts -->
+    <div class="well well-sm">
+        <ul class="nav nav-list">
+            <li class="nav-header">{% trans "Hosts" %}</li>
+            {% for host in host_list %}
+                <li><a href="{% url 'host_detail' slug=host.slug %}">{{ host }}</a></li>
+            {% endfor %}
+            <li class="action"><a href=""><i class="glyphicon glyphicon-plus"></i> {% trans "Add host" %}</a></li>
+        </ul>
+    </div>
+    <!-- panel/users -->
+    <div class="well well-sm">
+        <ul class="nav nav-list">
+            <li class="nav-header">{% trans "Users" %}</li>
+            {% for user in user_list %}
+                <li class="{% if user.slug == object.slug %}active{% endif %}"><a href="{% url 'user_detail' pk=user.pk %}">{{ user.name }}</a></li>
+            {% endfor %}
+            <li class="action"><a href=""><i class="glyphicon glyphicon-plus"></i> {% trans "Add user" %}</a></li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <h4>{% if object %}{% trans "Edit user" %}{% else %}{% trans "Add user" %}{% endif %}</h4>
+    <hr />
+    <form method="post" role="form">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                {% bootstrap_field field %}
+            </div>
+        {% endfor %}
+        {% buttons %}
+            <button type="submit" class="btn btn-default">
+                {% if action == 'create' %}
+                    {% bootstrap_icon "plus" %} {{ title }}
+                {% else %}
+                    {% bootstrap_icon "pencil" %} {{ title }}
+                {% endif %}
+            </button>
+            {% if action != 'create' %}
+                <a href="{% url 'host_delete' slug=object.slug %}" class="btn btn-danger">
+                    {% bootstrap_icon "remove" %} {% trans "Delete" %}
+                </a>
+            {% endif %}
+        {% endbuttons %}
+    </form>
+{% endblock %}

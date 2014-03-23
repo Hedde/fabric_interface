@@ -1,15 +1,22 @@
 __author__ = 'heddevanderheide'
 
 # Django specific
+from django.contrib.auth.decorators import user_passes_test
+from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext_lazy as _
 
 
-class DetailContext(object):
-    title = _(u"View")
+class StaffOnlyMixin(object):
+    @method_decorator(user_passes_test(lambda u: u.is_staff))
+    def dispatch(self, request, *args, **kwargs):
+        return super(StaffOnlyMixin, self).dispatch(request, *args, **kwargs)
+
+
+class BaseContext(object):
     action = 'view'
 
     def get_context_data(self, **kwargs):
-        context = super(DetailContext, self).get_context_data(**kwargs)
+        context = super(BaseContext, self).get_context_data(**kwargs)
         context.update({
             'title': self.title,
             'action': self.action
@@ -17,16 +24,21 @@ class DetailContext(object):
         return context
 
 
-class UpdateContext(DetailContext):
+class DetailContext(BaseContext):
+    title = _(u"View")
+    action = 'view'
+
+
+class UpdateContext(BaseContext):
     title = _(u"Update")
     action = 'update'
 
 
-class CreateContext(DetailContext):
+class CreateContext(BaseContext):
     title = _(u"Create")
     action = 'create'
 
 
-class DeleteContext(DetailContext):
+class DeleteContext(BaseContext):
     title = _(u"Delete")
     action = 'delete'

@@ -1,43 +1,90 @@
 __author__ = 'heddevanderheide'
 
-from functools import wraps
-
 # Django specific
 from django.contrib import messages
 from django.contrib.auth.views import login
+from django.core.urlresolvers import reverse_lazy, reverse
+from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView
-from django.utils.decorators import available_attrs
 from django.utils.translation import ugettext_lazy as _
+from django.views.generic import (
+    DetailView, CreateView, UpdateView, DeleteView
+)
 
-
-class HomeView(TemplateView):
-    template_name = 'fabric_interface/home.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(HomeView, self).get_context_data(**kwargs)
-        context.update({
-            'title': _(u"Home"),
-            'action': 'view'
-        })
-        return context
-
-
-def add_welcome_message(view_func):
-    """
-    Decorator that adds a welcome message to a response that
-    succesfully authenticated.
-    """
-    @wraps(view_func, assigned=available_attrs(view_func))
-    def _wrapped_view_func(request, *args, **kwargs):
-        response = view_func(request, *args, **kwargs)
-        if request.user.is_authenticated():
-            messages.add_message(
-                request, messages.SUCCESS, _(u"Welcome {user}!".format(
-                    user=request.user.first_name or request.user.email
-                ))
-            )
-        return response
-    return _wrapped_view_func
+# App specific
+from fabric_interface.decorators import add_welcome_message
+from fabric_interface.forms import UserForm
+from fabric_interface.mixins import (
+    StaffOnlyMixin, BaseContext, DetailContext, CreateContext, UpdateContext, DeleteContext
+)
+from fabric_interface.models import User
+from viewsets import ModelViewSet, PK
 
 
 login = add_welcome_message(login)
+
+
+class HomeView(BaseContext, TemplateView):
+    template_name = 'fabric_interface/home.html'
+    title = _(u"Home")
+
+
+class UserDetailView(StaffOnlyMixin, DetailContext, DetailView):
+    pass
+
+
+class UserCreateView(StaffOnlyMixin, CreateContext, CreateView):
+    form_class = UserForm
+    success_url = reverse_lazy('home')
+    template_name = 'fabric_interface/users/user_form.html'
+
+    def get_success_url(self):
+        messages.add_message(
+            self.request, messages.SUCCESS, _(u"Created {model} '{slug}' succesfully.".format(
+                model=self.model._meta.verbose_name,
+                slug=self.object.slug
+            ))
+        )
+        return reverse('user_detail', kwargs={'slug': self.object.slug})
+
+
+class UserUpdateView(StaffOnlyMixin, UpdateContext, UpdateView):
+    success_url = reverse_lazy('home')
+
+    def get_success_url(self):
+        messages.add_message(
+            self.request, messages.SUCCESS, _(u"Updated {model} '{slug}' succesfully.".format(
+                model=self.model._meta.verbose_name,
+                slug=self.object.slug
+            ))
+        )
+        return reverse('user_detail', kwargs={'slug': self.object.slug})
+
+
+class UserDeleteView(StaffOnlyMixin, DeleteContext, DeleteView):
+    success_url = reverse_lazy('home')
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        success_url = self.get_success_url()
+
+        messages.add_message(
+            self.request, messages.SUCCESS, _(u"Deleted {model} '{slug}' succesfully.".format(
+                model=self.model._meta.verbose_name,
+                slug=self.object.slug
+            ))
+        )
+        self.object.delete()
+        return HttpResponseRedirect(success_url)
+
+
+class UserViewSet(ModelViewSet):
+    model = User
+    id_pattern = PK
+
+    def __init__(self, *args, **kwargs):
+        self.views[b'detail_view']['view'] = UserDetailView
+        self.views[b'create_view']['view'] = UserCreateView
+        self.views[b'update_view']['view'] = UserUpdateView
+        self.views[b'delete_view']['view'] = UserDeleteView
+        super(UserViewSet, self).__init__(*args, **kwargs)

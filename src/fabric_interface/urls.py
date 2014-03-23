@@ -7,6 +7,7 @@ from django.conf.urls import patterns, url, include
 from fabric_interface.views import HomeView, login
 from fabric_interface.projects.views import ProjectViewSet
 from fabric_interface.hosts.views import HostViewSet
+from fabric_interface.views import UserViewSet
 
 
 urlpatterns = patterns('',
@@ -19,4 +20,5 @@ urlpatterns = patterns('',
     url('^$', HomeView.as_view(), name='home'),
     url('', include(ProjectViewSet().urls)),
     url('', include(HostViewSet().urls)),
+    url('', include(UserViewSet().urls)),
 )
