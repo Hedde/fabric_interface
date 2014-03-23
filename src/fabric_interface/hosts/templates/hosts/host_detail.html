@@ -34,7 +34,7 @@
             {% for host in host_list %}
                 <li class="{% if host.slug == object.slug %}active{% endif %}"><a href="{% url 'host_detail' slug=host.slug %}">{{ host }}</a></li>
             {% endfor %}
-            <li class="action"><a href=""><i class="glyphicon glyphicon-plus"></i> {% trans "Add host" %}</a></li>
+            <li class="action"><a href="{% url 'host_create' %}"><i class="glyphicon glyphicon-plus"></i> {% trans "Add host" %}</a></li>
         </ul>
     </div>
     <!-- panel/users -->
