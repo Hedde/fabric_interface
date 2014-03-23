@@ -10,29 +10,18 @@ from django.views.generic import (
 )
 # App specific
 from fabric_interface.hosts.models import Host
+from fabric_interface.mixins import (
+    DetailContext, CreateContext, UpdateContext, DeleteContext
+)
 from viewsets import ModelViewSet, SLUG
 
 
-class HostDetailView(DetailView):
-    def get_context_data(self, **kwargs):
-        context = super(HostDetailView, self).get_context_data(**kwargs)
-        context.update({
-            'title': _(u"View"),
-            'action': 'view'
-        })
-        return context
+class HostDetailView(DetailContext, DetailView):
+    pass
 
 
-class HostCreateView(CreateView):
+class HostCreateView(CreateContext, CreateView):
     success_url = reverse_lazy('host_index')
-
-    def get_context_data(self, **kwargs):
-        context = super(HostCreateView, self).get_context_data(**kwargs)
-        context.update({
-            'title': _(u"Create"),
-            'action': 'create'
-        })
-        return context
 
     def get_success_url(self):
         messages.add_message(
@@ -44,16 +33,8 @@ class HostCreateView(CreateView):
         return reverse('host_detail', kwargs={'slug': self.object.slug})
 
 
-class HostUpdateView(UpdateView):
+class HostUpdateView(UpdateContext, UpdateView):
     success_url = reverse_lazy('host_index')
-
-    def get_context_data(self, **kwargs):
-        context = super(HostUpdateView, self).get_context_data(**kwargs)
-        context.update({
-            'title': _(u"Update"),
-            'action': 'update'
-        })
-        return context
 
     def get_success_url(self):
         messages.add_message(
@@ -65,16 +46,8 @@ class HostUpdateView(UpdateView):
         return reverse('host_detail', kwargs={'slug': self.object.slug})
 
 
-class HostDeleteView(DeleteView):
+class HostDeleteView(DeleteContext, DeleteView):
     success_url = reverse_lazy('host_index')
-
-    def get_context_data(self, **kwargs):
-        context = super(HostDeleteView, self).get_context_data(**kwargs)
-        context.update({
-            'title': _(u"Delete"),
-            'action': 'delete'
-        })
-        return context
 
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()

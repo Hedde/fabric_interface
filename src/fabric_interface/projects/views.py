@@ -10,6 +10,9 @@ from django.views.generic import (
 )
 
 # App specific
+from fabric_interface.mixins import (
+    DetailContext, CreateContext, UpdateContext, DeleteContext
+)
 from fabric_interface.projects.models import Project
 from fabric_interface.stages.views import (
     StageDetailView, StageCreateView, StageUpdateView, StageDeleteView
@@ -22,25 +25,11 @@ class ProjectListView(RedirectView):
     url = reverse_lazy('home')
 
 
-class ProjectDetailView(DetailView):
-    def get_context_data(self, **kwargs):
-        context = super(ProjectDetailView, self).get_context_data(**kwargs)
-        context.update({
-            'title': _(u"View"),
-            'action': 'view'
-        })
-        return context
+class ProjectDetailView(DetailContext, DetailView):
+    pass
 
 
-class ProjectCreateView(CreateView):
-    def get_context_data(self, **kwargs):
-        context = super(ProjectCreateView, self).get_context_data(**kwargs)
-        context.update({
-            'title': _(u"Create"),
-            'action': 'create'
-        })
-        return context
-
+class ProjectCreateView(CreateContext, CreateView):
     def get_success_url(self):
         messages.add_message(
             self.request, messages.SUCCESS, _(u"Created {model} '{slug}' succesfully.".format(
@@ -51,15 +40,7 @@ class ProjectCreateView(CreateView):
         return reverse('project_detail', kwargs={'slug': self.object.slug})
 
 
-class ProjectUpdateView(UpdateView):
-    def get_context_data(self, **kwargs):
-        context = super(ProjectUpdateView, self).get_context_data(**kwargs)
-        context.update({
-            'title': _(u"Update"),
-            'action': 'update'
-        })
-        return context
-
+class ProjectUpdateView(UpdateContext, UpdateView):
     def get_success_url(self):
         messages.add_message(
             self.request, messages.SUCCESS, _(u"Updated {model} '{slug}' succesfully.".format(
@@ -70,15 +51,7 @@ class ProjectUpdateView(UpdateView):
         return reverse('project_detail', kwargs={'slug': self.object.slug})
 
 
-class ProjectDeleteView(DeleteView):
-    def get_context_data(self, **kwargs):
-        context = super(ProjectDeleteView, self).get_context_data(**kwargs)
-        context.update({
-            'title': _(u"Delete"),
-            'action': 'delete'
-        })
-        return context
-
+class ProjectDeleteView(DeleteContext, DeleteView):
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
         success_url = self.get_success_url()
