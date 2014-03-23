@@ -35,6 +35,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     # 3rd party
+    'guardian',
     'bootstrap3',
 
     # Application
@@ -82,6 +83,14 @@ CACHES = {
 
 # Sessions
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+
+# Guardian
+ANONYMOUS_USER_ID = -1
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'guardian.backends.ObjectPermissionBackend',
+)
 
 # Templates
 TEMPLATE_DIRS = (
