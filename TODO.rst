@@ -16,4 +16,3 @@ Todo's
 # Release candidate requires
 
 * user row permissions (django-guardian / django-rules ?)
-* non db sessions (e.g. Redis)
