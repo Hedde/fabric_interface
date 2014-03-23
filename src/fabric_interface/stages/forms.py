@@ -4,6 +4,7 @@ __author__ = 'heddevanderheide'
 from django import forms
 
 # App specific
+from fabric_interface.hosts.models import Host
 from fabric_interface.projects.models import Project
 from fabric_interface.stages.models import Stage
 
@@ -20,4 +21,7 @@ class StageForm(forms.ModelForm):
         self.fields['project'] = forms.ModelChoiceField(
             queryset=self.queryset,
             initial=self.queryset.get()
+        )
+        self.fields['hosts'] = forms.ModelMultipleChoiceField(
+            queryset=Host.objects.filter(projects=self.queryset.get())
         )
