@@ -6,6 +6,7 @@ Todo's
 * configuration views, models and templates
 * formulae/recipes views, models and templates
 * user models, views and templates
+* raise non field form errors in templates
 
 # Features
 

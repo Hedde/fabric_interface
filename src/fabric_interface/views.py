@@ -30,7 +30,7 @@ class HomeView(BaseContext, TemplateView):
 
 
 class UserDetailView(StaffOnlyMixin, DetailContext, DetailView):
-    pass
+    template_name = 'fabric_interface/users/user_detail.html'
 
 
 class UserCreateView(StaffOnlyMixin, CreateContext, CreateView):
@@ -45,11 +45,13 @@ class UserCreateView(StaffOnlyMixin, CreateContext, CreateView):
                 slug=self.object.slug
             ))
         )
-        return reverse('user_detail', kwargs={'slug': self.object.slug})
+        return reverse('user_detail',  kwargs={'pk': self.object.pk})
 
 
 class UserUpdateView(StaffOnlyMixin, UpdateContext, UpdateView):
+    form_class = UserForm
     success_url = reverse_lazy('home')
+    template_name = 'fabric_interface/users/user_form.html'
 
     def get_success_url(self):
         messages.add_message(
@@ -58,11 +60,12 @@ class UserUpdateView(StaffOnlyMixin, UpdateContext, UpdateView):
                 slug=self.object.slug
             ))
         )
-        return reverse('user_detail', kwargs={'slug': self.object.slug})
+        return reverse('user_detail', kwargs={'pk': self.object.pk})
 
 
 class UserDeleteView(StaffOnlyMixin, DeleteContext, DeleteView):
     success_url = reverse_lazy('home')
+    template_name = 'fabric_interface/users/user_delete_confirm.html'
 
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
