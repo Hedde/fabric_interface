@@ -19,11 +19,13 @@
             {% empty %}
                 <li>{% trans "No projects found." %}</li>
             {% endfor %}
-            <li class="action">
-                <a href="{% url 'project_create' %}">
-                    <i class="glyphicon glyphicon-plus"></i> {% trans "Add project" %}
-                </a>
-            </li>
+            {% if perms.projects.add_project %}
+                <li class="action">
+                    <a href="{% url 'project_create' %}">
+                        <i class="glyphicon glyphicon-plus"></i> {% trans "Add project" %}
+                    </a>
+                </li>
+            {% endif %}
         </ul>
     </div>
     <!-- panel/hosts -->
@@ -42,7 +44,7 @@
             </li>
         </ul>
     </div>
-    {% if user.is_staff %}
+    {% if request.user.is_superuser %}
         <!-- panel/users -->
         <div class="well well-sm">
             <ul class="nav nav-list">

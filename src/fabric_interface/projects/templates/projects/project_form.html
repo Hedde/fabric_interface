@@ -33,7 +33,7 @@
             <li class="action"><a href="{% url 'host_create' %}"><i class="glyphicon glyphicon-plus"></i> {% trans "Add host" %}</a></li>
         </ul>
     </div>
-    {% if user.is_staff %}
+    {% if request.user.is_superuser %}
         <!-- panel/users -->
         <div class="well well-sm">
             <ul class="nav nav-list">

@@ -8,7 +8,7 @@ from fabric_interface.models import User
 
 
 def users(request):
-    if request.user.is_authenticated() and request.user.is_staff:
+    if request.user.is_authenticated() and request.user.is_superuser:
         return {
             'user_list': User.objects.exclude(id=settings.ANONYMOUS_USER_ID).exclude(id=request.user.id)
         }

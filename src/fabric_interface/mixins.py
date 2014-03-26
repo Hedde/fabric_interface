@@ -7,7 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class StaffOnlyMixin(object):
-    @method_decorator(user_passes_test(lambda u: u.is_staff))
+    @method_decorator(user_passes_test(lambda u: u.is_superuser))
     def dispatch(self, request, *args, **kwargs):
         return super(StaffOnlyMixin, self).dispatch(request, *args, **kwargs)
 

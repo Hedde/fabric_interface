@@ -29,7 +29,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     )
 
     is_active = models.BooleanField(verbose_name=_(u"Active"), default=True)
-    is_admin = models.BooleanField(verbose_name=_(u"Admin"), default=False)
 
     first_name = models.CharField(verbose_name=_(u"First name"), max_length=125)
     family_name_prefix = models.CharField(verbose_name=_(u"Family name prefix"), max_length=125, blank=True, null=True)
@@ -62,23 +61,16 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.email
 
     def has_perm(self, perm, obj=None):
-        "Does the user have a specific permission?"
-        # Simplest possible answer: Yes, always
-        return True
+        # Does the user have a specific permission?
+        return super(User, self).has_perm(perm, obj)
 
     def has_module_perms(self, app_label):
-        "Does the user have permissions to view the app `app_label`?"
+        # Does the user have permissions to view the app `app_label`?
         # Simplest possible answer: Yes, always
-        return True
-
-    @property
-    def is_staff(self):
-        "Is the user a member of staff?"
-        # Simplest possible answer: All admins are staff
-        return self.is_admin
+        return super(User, self).has_module_perms(app_label)
 
     def as_leaf_class(self):
-        "Multi table inheritance helper"
+        # Multi table inheritance helper
         content_type = self.content_type
         model = content_type.model_class()
         if model == User:
