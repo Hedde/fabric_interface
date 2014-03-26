@@ -1,3 +1,6 @@
+from django.contrib.auth.models import Permission
+from django.db.models import Q
+
 __author__ = 'heddevanderheide'
 
 # Django specific
@@ -88,5 +91,10 @@ class UserPermissionsUpdateForm(forms.ModelForm):
         model = User
 
     def __init__(self, *args, **kwargs):
-        super(UserPermissionsUpdateForm, self).__init__(self, *args, **kwargs)
-        self.fields['user_permissions'].label = _(u"Global user permissions")  # todo fix label override
+        super(UserPermissionsUpdateForm, self).__init__(*args, **kwargs)
+        self.fields['user_permissions'].queryset = Permission.objects.filter(
+            Q(content_type__model='project') |
+            Q(content_type__model='stage') |
+            Q(content_type__model='host')
+        )
+        self.fields['user_permissions'].label = _(u"Global user permissions")
