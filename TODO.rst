@@ -17,4 +17,5 @@ Todo's
 # Release candidate requires
 
 * automated slugs
-* user row permissions (django-guardian / django-rules ?)
+* user row permissions
+* check orphan permissions, e.g. 'can view stage' => if 'can view project'
