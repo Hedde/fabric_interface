@@ -55,3 +55,26 @@ class UserForm(forms.ModelForm):
             family_name_prefix=self.cleaned_data['family_name_prefix'],
             family_name=self.cleaned_data['family_name'],
         )
+
+
+class UserUpdateForm(forms.ModelForm):
+    first_name = forms.CharField(label=_(u"First name"), required=False)
+    family_name_prefix = forms.CharField(label=_(u"Family name prefix"), required=False)
+    family_name = forms.CharField(label=_(u"Family name"), required=False)
+
+    class Meta:
+        fields = ('email', 'first_name', 'family_name_prefix', 'family_name')
+        model = User
+
+    def __init__(self, *args, **kwargs):
+        super(UserUpdateForm, self).__init__(*args, **kwargs)
+        instance = getattr(self, 'instance', None)
+        if instance and instance.pk:
+            self.fields['email'].widget.attrs['readonly'] = True
+
+    def clean_email(self):
+        instance = getattr(self, 'instance', None)
+        if instance and instance.pk:
+            return instance.email
+        else:
+            return self.cleaned_data['email']

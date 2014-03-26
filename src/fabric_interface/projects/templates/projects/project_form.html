@@ -66,7 +66,7 @@
                 {% endif %}
             </button>
             {% if action != 'create' %}
-                <a href="{% url 'project_delete' slug=object.slug %}" class="btn btn-danger">
+                <a href="{% url 'project_delete' slug=object.slug %}" class="btn btn-danger pull-right">
                     {% bootstrap_icon "remove" %} {% trans "Delete" %}
                 </a>
             {% endif %}

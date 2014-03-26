@@ -70,7 +70,7 @@
                 {% endif %}
             </button>
             {% if action != 'create' %}
-                <a href="{% url 'user_delete' pk=object.pk %}" class="btn btn-danger">
+                <a href="{% url 'user_delete' pk=object.pk %}" class="btn btn-danger pull-right">
                     {% bootstrap_icon "remove" %} {% trans "Delete" %}
                 </a>
             {% endif %}

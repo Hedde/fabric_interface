@@ -13,7 +13,9 @@ from django.views.generic import (
 
 # App specific
 from fabric_interface.decorators import add_welcome_message
-from fabric_interface.forms import UserForm
+from fabric_interface.forms import (
+    UserForm, UserUpdateForm
+)
 from fabric_interface.mixins import (
     StaffOnlyMixin, BaseContext, DetailContext, CreateContext, UpdateContext, DeleteContext
 )
@@ -40,24 +42,24 @@ class UserCreateView(StaffOnlyMixin, CreateContext, CreateView):
 
     def get_success_url(self):
         messages.add_message(
-            self.request, messages.SUCCESS, _(u"Created {model} '{slug}' succesfully.".format(
+            self.request, messages.SUCCESS, _(u"Created {model} '{pk}' succesfully.".format(
                 model=self.model._meta.verbose_name,
-                slug=self.object.slug
+                pk=self.object.pk
             ))
         )
         return reverse('user_detail',  kwargs={'pk': self.object.pk})
 
 
 class UserUpdateView(StaffOnlyMixin, UpdateContext, UpdateView):
-    form_class = UserForm
+    form_class = UserUpdateForm
     success_url = reverse_lazy('home')
     template_name = 'fabric_interface/users/user_form.html'
 
     def get_success_url(self):
         messages.add_message(
-            self.request, messages.SUCCESS, _(u"Updated {model} '{slug}' succesfully.".format(
+            self.request, messages.SUCCESS, _(u"Updated {model} '{pk}' succesfully.".format(
                 model=self.model._meta.verbose_name,
-                slug=self.object.slug
+                pk=self.object.pk
             ))
         )
         return reverse('user_detail', kwargs={'pk': self.object.pk})
@@ -65,16 +67,16 @@ class UserUpdateView(StaffOnlyMixin, UpdateContext, UpdateView):
 
 class UserDeleteView(StaffOnlyMixin, DeleteContext, DeleteView):
     success_url = reverse_lazy('home')
-    template_name = 'fabric_interface/users/user_delete_confirm.html'
+    template_name = 'fabric_interface/users/user_confirm_delete.html'
 
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
         success_url = self.get_success_url()
 
         messages.add_message(
-            self.request, messages.SUCCESS, _(u"Deleted {model} '{slug}' succesfully.".format(
+            self.request, messages.SUCCESS, _(u"Deleted {model} '{pk}' succesfully.".format(
                 model=self.model._meta.verbose_name,
-                slug=self.object.slug
+                pk=self.object.pk
             ))
         )
         self.object.delete()

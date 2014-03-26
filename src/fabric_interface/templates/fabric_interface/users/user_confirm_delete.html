@@ -1,6 +1,6 @@
 {% extends "fabric_interface/layouts/sidebar_double.html" %}
 
-{% load i18n bootstrap3 debug %}
+{% load i18n bootstrap3 %}
 
 {% block title %}{{ title }}{% endblock %}
 
@@ -32,9 +32,9 @@
         <ul class="nav nav-list">
             <li class="nav-header">{% trans "Hosts" %}</li>
             {% for host in host_list %}
-                <li class="{% if host.slug == object.slug %}active{% endif %}"><a href="{% url 'host_detail' slug=host.slug %}">{{ host }}</a></li>
+                <li><a href="{% url 'host_detail' slug=host.slug %}">{{ host }}</a></li>
             {% endfor %}
-            <li class="action"><a href=""><i class="glyphicon glyphicon-plus"></i> {% trans "Add host" %}</a></li>
+            <li class="action"><a href="{% url 'host_create' %}"><i class="glyphicon glyphicon-plus"></i> {% trans "Add host" %}</a></li>
         </ul>
     </div>
     {% if user.is_staff %}
@@ -43,7 +43,7 @@
             <ul class="nav nav-list">
                 <li class="nav-header">{% trans "Users" %}</li>
                 {% for user in user_list %}
-                    <li><a href="{% url 'user_detail' pk=user.pk %}">{{ user }}</a></li>
+                    <li class="{% if user.pk == object.pk %}active{% endif %}"><a href="{% url 'user_detail' pk=user.pk %}">{{ user }}</a></li>
                 {% endfor %}
                 <li class="action"><a href="{% url 'user_create' %}"><i class="glyphicon glyphicon-plus"></i> {% trans "Add user" %}</a></li>
             </ul>
@@ -52,8 +52,9 @@
 {% endblock %}
 
 {% block content %}
-    <h4>{% if object %}{% trans "Edit host" %}{% else %}{% trans "Add host" %}{% endif %}</h4>
+    <h4>{% trans "Delete user" %} '{{ user }}'</h4>
     <hr />
+    <h3>Are you sure? There's no going back!</h3>
     <form method="post" role="form">
         {% csrf_token %}
         {% for field in form %}
@@ -62,18 +63,9 @@
             </div>
         {% endfor %}
         {% buttons %}
-            <button type="submit" class="btn btn-default">
-                {% if action == 'create' %}
-                    {% bootstrap_icon "plus" %} {{ title }}
-                {% else %}
-                    {% bootstrap_icon "pencil" %} {{ title }}
-                {% endif %}
+            <button type="submit" class="btn btn-danger">
+                {% bootstrap_icon "remove" %} {{ title }}
             </button>
-            {% if action != 'create' %}
-                <a href="{% url 'host_delete' slug=object.slug %}" class="btn btn-danger pull-right">
-                    {% bootstrap_icon "remove" %} {% trans "Delete" %}
-                </a>
-            {% endif %}
         {% endbuttons %}
     </form>
 {% endblock %}
