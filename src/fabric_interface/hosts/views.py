@@ -40,7 +40,7 @@ class HostCreateView(PermissionRequiredMixin, CreateContext, CreateView):
 
 
 class HostUpdateView(PermissionRequiredMixin, UpdateContext, UpdateView):
-    permission_required = 'hosts.edit_host'
+    permission_required = 'hosts.change_host'
     accept_global_perms = True
 
     success_url = reverse_lazy('host_index')

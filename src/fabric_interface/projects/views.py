@@ -46,7 +46,7 @@ class ProjectCreateView(PermissionRequiredMixin, CreateContext, CreateView):
 
 
 class ProjectUpdateView(PermissionRequiredMixin, UpdateContext, UpdateView):
-    permission_required = 'projects.edit_project'
+    permission_required = 'projects.change_project'
     accept_global_perms = True
 
     def get_success_url(self):
