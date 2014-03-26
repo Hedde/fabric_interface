@@ -39,7 +39,7 @@
             {% for host in host_list %}
                 <li><a href="{% url 'host_detail' slug=host.slug %}">{{ host }}</a></li>
             {% endfor %}
-            <li class="action"><a href="{% url 'host_create' %}"><i class="glyphicon glyphicon-plus"></i> {% trans "Add host" %}</a></li>
+            <li class="action"><a href=""><i class="glyphicon glyphicon-plus"></i> {% trans "Add host" %}</a></li>
         </ul>
     </div>
     {% if request.user.is_superuser %}
@@ -57,19 +57,28 @@
 {% endblock %}
 
 {% block content %}
-    <h4>{% trans "User" %} '{{ object }}'</h4>
+    <h4>{% trans "Edit user permissions" %}</h4>
     <hr />
-    {{ object }}
-{% endblock %}
-
-{% block sidebar_right %}
-    <!-- panel/danger_zone -->
-    <div class="well well-sm">
-        <ul class="nav nav-list">
-            <li class="nav-header">{% trans "Danger Zone" %}</li>
-            <li><a href="{% url 'user_update' pk=object.pk %}">{% trans "Edit" %}</a></li>
-            <li><a href="{% url 'user_update_permissions' pk=object.pk %}">{% trans "Permissions" %}</a></li>
-            <li><a href="{% url 'user_delete' pk=object.pk %}">{% trans "Delete" %}</a></li>
-        </ul>
-    </div>
+    <form method="post" role="form">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                {% bootstrap_field field %}
+            </div>
+        {% endfor %}
+        {% buttons %}
+            <button type="submit" class="btn btn-default">
+                {% if action == 'create' %}
+                    {% bootstrap_icon "plus" %} {{ title }}
+                {% else %}
+                    {% bootstrap_icon "pencil" %} {{ title }}
+                {% endif %}
+            </button>
+            {% if action != 'create' %}
+                <a href="{% url 'user_delete' pk=object.pk %}" class="btn btn-danger pull-right">
+                    {% bootstrap_icon "remove" %} {% trans "Delete" %}
+                </a>
+            {% endif %}
+        {% endbuttons %}
+    </form>
 {% endblock %}

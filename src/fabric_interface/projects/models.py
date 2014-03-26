@@ -14,7 +14,7 @@ class Project(TimeStampedModel):
 
     class Meta:
         permissions = (
-            ('view_project', _(u"View project")),
+            ('view_project', _(u"Can view project")),
         )
 
     def __unicode__(self):

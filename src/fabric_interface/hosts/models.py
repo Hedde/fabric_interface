@@ -16,7 +16,7 @@ class Host(TimeStampedModel):
 
     class Meta:
         permissions = (
-            ('view_host', _(u"View host")),
+            ('view_host', _(u"Can view host")),
         )
 
     def __unicode__(self):

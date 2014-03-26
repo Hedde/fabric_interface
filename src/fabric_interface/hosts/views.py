@@ -13,6 +13,7 @@ from fabric_interface.hosts.models import Host
 from fabric_interface.mixins import (
     DetailContext, CreateContext, UpdateContext, DeleteContext
 )
+from fabric_interface.views import RedirectHomeView
 from viewsets import ModelViewSet, SLUG
 
 
@@ -68,6 +69,7 @@ class HostViewSet(ModelViewSet):
     id_pattern = SLUG
 
     def __init__(self, *args, **kwargs):
+        self.views[b'list_view']['view'] = RedirectHomeView
         self.views[b'detail_view']['view'] = HostDetailView
         self.views[b'create_view']['view'] = HostCreateView
         self.views[b'update_view']['view'] = HostUpdateView

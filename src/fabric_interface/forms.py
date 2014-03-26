@@ -78,3 +78,15 @@ class UserUpdateForm(forms.ModelForm):
             return instance.email
         else:
             return self.cleaned_data['email']
+
+
+class UserPermissionsUpdateForm(forms.ModelForm):
+    # todo add object_level permission edit functionality
+
+    class Meta:
+        fields = ('user_permissions',)
+        model = User
+
+    def __init__(self, *args, **kwargs):
+        super(UserPermissionsUpdateForm, self).__init__(self, *args, **kwargs)
+        self.fields['user_permissions'].label = _(u"Global user permissions")  # todo fix label override

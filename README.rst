@@ -1,6 +1,9 @@
 Welcome to Fabric Interface
 ===========================
 
+This project is work in progress, there's no production-ready release available currently.
+
+
 .. image:: https://travis-ci.org/Hedde/fabric_interface.svg?branch=develop
     :alt: status
     :scale: 100%

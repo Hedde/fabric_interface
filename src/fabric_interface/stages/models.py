@@ -16,7 +16,7 @@ class Stage(TimeStampedModel):
 
     class Meta:
         permissions = (
-            ('view_stage', _(u"View stage")),
+            ('view_stage', _(u"Can view stage")),
         )
         unique_together = (
             ('project', 'slug'),

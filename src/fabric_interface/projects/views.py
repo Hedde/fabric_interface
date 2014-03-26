@@ -2,11 +2,11 @@ __author__ = 'heddevanderheide'
 
 # Django specific
 from django.contrib import messages
-from django.core.urlresolvers import reverse_lazy, reverse
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import (
-    DetailView, CreateView, UpdateView, DeleteView, RedirectView
+    DetailView, CreateView, UpdateView, DeleteView
 )
 
 # App specific
@@ -17,13 +17,10 @@ from fabric_interface.projects.models import Project
 from fabric_interface.stages.views import (
     StageDetailView, StageCreateView, StageUpdateView, StageDeleteView
 )
+from fabric_interface.views import RedirectHomeView
 from guardian.mixins import PermissionRequiredMixin
 from viewsets import ModelViewSet, SLUG
 from viewsets.patterns import PLACEHOLDER_PATTERN
-
-
-class ProjectListView(RedirectView):
-    url = reverse_lazy('home')
 
 
 class ProjectDetailView(PermissionRequiredMixin, DetailContext, DetailView):
@@ -76,7 +73,7 @@ class ProjectViewSet(ModelViewSet):
 
     def __init__(self, *args, **kwargs):
         # Project CRUD
-        self.views[b'list_view']['view'] = ProjectListView
+        self.views[b'list_view']['view'] = RedirectHomeView
         self.views[b'detail_view']['view'] = ProjectDetailView
         self.views[b'create_view']['view'] = ProjectCreateView
         self.views[b'update_view']['view'] = ProjectUpdateView

@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.views import login
 from django.core.urlresolvers import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, RedirectView
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import (
     DetailView, CreateView, UpdateView, DeleteView
@@ -14,7 +14,7 @@ from django.views.generic import (
 # App specific
 from fabric_interface.decorators import add_welcome_message
 from fabric_interface.forms import (
-    UserForm, UserUpdateForm
+    UserForm, UserUpdateForm, UserPermissionsUpdateForm
 )
 from fabric_interface.mixins import (
     SuperuserOnlyMixin, BaseContext, DetailContext, CreateContext, UpdateContext, DeleteContext
@@ -29,6 +29,10 @@ login = add_welcome_message(login)
 class HomeView(BaseContext, TemplateView):
     template_name = 'fabric_interface/home.html'
     title = _(u"Home")
+
+
+class RedirectHomeView(RedirectView):
+    url = reverse_lazy('home')
 
 
 class UserDetailView(SuperuserOnlyMixin, DetailContext, DetailView):
@@ -52,8 +56,21 @@ class UserCreateView(SuperuserOnlyMixin, CreateContext, CreateView):
 
 class UserUpdateView(SuperuserOnlyMixin, UpdateContext, UpdateView):
     form_class = UserUpdateForm
-    success_url = reverse_lazy('home')
     template_name = 'fabric_interface/users/user_form.html'
+
+    def get_success_url(self):
+        messages.add_message(
+            self.request, messages.SUCCESS, _(u"Updated {model} '{pk}' succesfully.".format(
+                model=self.model._meta.verbose_name,
+                pk=self.object.pk
+            ))
+        )
+        return reverse('user_detail', kwargs={'pk': self.object.pk})
+
+
+class UserPermissionsUpdateView(SuperuserOnlyMixin, UpdateContext, UpdateView):
+    form_class = UserPermissionsUpdateForm
+    template_name = 'fabric_interface/users/user_permissions_form.html'
 
     def get_success_url(self):
         messages.add_message(
@@ -84,12 +101,37 @@ class UserDeleteView(SuperuserOnlyMixin, DeleteContext, DeleteView):
 
 
 class UserViewSet(ModelViewSet):
+    main_view = b'list_view'
     model = User
-    id_pattern = PK
-
-    def __init__(self, *args, **kwargs):
-        self.views[b'detail_view']['view'] = UserDetailView
-        self.views[b'create_view']['view'] = UserCreateView
-        self.views[b'update_view']['view'] = UserUpdateView
-        self.views[b'delete_view']['view'] = UserDeleteView
-        super(UserViewSet, self).__init__(*args, **kwargs)
+    views = {
+        b'list_view': {
+            b'view': RedirectHomeView,
+            b'pattern': br'',
+            b'name': b'index',
+        },
+        b'detail_view': {
+            b'view': UserDetailView,
+            b'pattern': PK,
+            b'name': b'detail',
+        },
+        b'create_view': {
+            b'view': UserCreateView,
+            b'pattern': br'create/',
+            b'name': b'create',
+        },
+        b'update_view': {
+            b'view': UserUpdateView,
+            b'pattern': PK + br'/update',
+            b'name': b'update',
+        },
+        b'update_permissions_view': {
+            b'view': UserPermissionsUpdateView,
+            b'pattern': PK + br'/permissions',
+            b'name': b'update_permissions',
+        },
+        b'delete_view': {
+            b'view': UserDeleteView,
+            b'pattern': PK + br'/delete',
+            b'name': b'delete',
+        },
+    }
