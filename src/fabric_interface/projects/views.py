@@ -17,6 +17,7 @@ from fabric_interface.projects.models import Project
 from fabric_interface.stages.views import (
     StageDetailView, StageCreateView, StageUpdateView, StageDeleteView
 )
+from guardian.mixins import PermissionRequiredMixin
 from viewsets import ModelViewSet, SLUG
 from viewsets.patterns import PLACEHOLDER_PATTERN
 
@@ -25,8 +26,11 @@ class ProjectListView(RedirectView):
     url = reverse_lazy('home')
 
 
-class ProjectDetailView(DetailContext, DetailView):
-    pass
+class ProjectDetailView(PermissionRequiredMixin, DetailContext, DetailView):
+    permission_required = 'projects.view_project'
+
+    def dispatch(self, request, *args, **kwargs):
+        return super(ProjectDetailView, self).dispatch(request, *args, **kwargs)
 
 
 class ProjectCreateView(CreateContext, CreateView):

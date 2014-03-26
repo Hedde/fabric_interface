@@ -1,6 +1,6 @@
 {% extends "fabric_interface/layouts/sidebar_left.html" %}
 
-{% load i18n guardian_tags %}
+{% load i18n guardian_tags bootstrap3 %}
 
 {% block title %}{{ title }}{% endblock %}
 
@@ -11,7 +11,7 @@
             <li class="nav-header">{% trans "All projects" %}</li>
             {% for project in project_list %}
                 {% get_obj_perms request.user for project as "project_perms" %}
-                {% if "delete_project" in project_perms %}
+                {% if "view_project" in project_perms or perms.projects.view_project %}
                     <li class="{% if project.slug == object.slug %}active{% endif %}">
                         <a href="{% url 'project_detail' slug=project.slug %}">{{ project }}</a>
                     </li>

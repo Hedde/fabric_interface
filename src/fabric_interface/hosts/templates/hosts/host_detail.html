@@ -1,6 +1,6 @@
 {% extends "fabric_interface/layouts/sidebar_double.html" %}
 
-{% load i18n debug %}
+{% load i18n guardian_tags bootstrap3 %}
 
 {% block title %}{{ title }}{% endblock %}
 
@@ -10,15 +10,18 @@
         <ul class="nav nav-list">
             <li class="nav-header">{% trans "All projects" %}</li>
             {% for project in project_list %}
-                <li class="{% if project.slug == object.slug %}active{% endif %}">
-                    <a href="{% url 'project_detail' slug=project.slug %}">
-                        {% if project in object.projects.all %}
-                            <i class="glyphicon glyphicon-check"></i>
-                        {% else %}
-                            <i class="glyphicon glyphicon-unchecked"></i>
-                        {% endif %} {{ project }}
-                    </a>
-                </li>
+                {% get_obj_perms request.user for project as "project_perms" %}
+                {% if "view_project" in project_perms or perms.projects.view_project %}
+                    <li class="{% if project.slug == object.slug %}active{% endif %}">
+                        <a href="{% url 'project_detail' slug=project.slug %}">
+                            {% if project in object.projects.all %}
+                                <i class="glyphicon glyphicon-check"></i>
+                            {% else %}
+                                <i class="glyphicon glyphicon-unchecked"></i>
+                            {% endif %} {{ project }}
+                        </a>
+                    </li>
+                {% endif %}
             {% endfor %}
             {% if perms.projects.add_project %}
                 <li class="action">
