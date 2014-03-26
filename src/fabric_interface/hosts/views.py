@@ -14,14 +14,19 @@ from fabric_interface.mixins import (
     DetailContext, CreateContext, UpdateContext, DeleteContext
 )
 from fabric_interface.views import RedirectHomeView
+from guardian.mixins import PermissionRequiredMixin
 from viewsets import ModelViewSet, SLUG
 
 
-class HostDetailView(DetailContext, DetailView):
-    pass
+class HostDetailView(PermissionRequiredMixin, DetailContext, DetailView):
+    permission_required = 'hosts.view_host'
+    accept_global_perms = True
 
 
-class HostCreateView(CreateContext, CreateView):
+class HostCreateView(PermissionRequiredMixin, CreateContext, CreateView):
+    permission_required = 'hosts.add_host'
+    accept_global_perms = True
+
     success_url = reverse_lazy('host_index')
 
     def get_success_url(self):
@@ -34,7 +39,10 @@ class HostCreateView(CreateContext, CreateView):
         return reverse('host_detail', kwargs={'slug': self.object.slug})
 
 
-class HostUpdateView(UpdateContext, UpdateView):
+class HostUpdateView(PermissionRequiredMixin, UpdateContext, UpdateView):
+    permission_required = 'hosts.edit_host'
+    accept_global_perms = True
+
     success_url = reverse_lazy('host_index')
 
     def get_success_url(self):
@@ -47,7 +55,10 @@ class HostUpdateView(UpdateContext, UpdateView):
         return reverse('host_detail', kwargs={'slug': self.object.slug})
 
 
-class HostDeleteView(DeleteContext, DeleteView):
+class HostDeleteView(PermissionRequiredMixin, DeleteContext, DeleteView):
+    permission_required = 'hosts.delete_host'
+    accept_global_perms = True
+
     success_url = reverse_lazy('host_index')
 
     def delete(self, request, *args, **kwargs):

@@ -25,12 +25,16 @@ from viewsets.patterns import PLACEHOLDER_PATTERN
 
 class ProjectDetailView(PermissionRequiredMixin, DetailContext, DetailView):
     permission_required = 'projects.view_project'
+    accept_global_perms = True
 
     def dispatch(self, request, *args, **kwargs):
         return super(ProjectDetailView, self).dispatch(request, *args, **kwargs)
 
 
-class ProjectCreateView(CreateContext, CreateView):
+class ProjectCreateView(PermissionRequiredMixin, CreateContext, CreateView):
+    permission_required = 'projects.add_project'
+    accept_global_perms = True
+
     def get_success_url(self):
         messages.add_message(
             self.request, messages.SUCCESS, _(u"Created {model} '{slug}' succesfully.".format(
@@ -41,7 +45,10 @@ class ProjectCreateView(CreateContext, CreateView):
         return reverse('project_detail', kwargs={'slug': self.object.slug})
 
 
-class ProjectUpdateView(UpdateContext, UpdateView):
+class ProjectUpdateView(PermissionRequiredMixin, UpdateContext, UpdateView):
+    permission_required = 'projects.edit_project'
+    accept_global_perms = True
+
     def get_success_url(self):
         messages.add_message(
             self.request, messages.SUCCESS, _(u"Updated {model} '{slug}' succesfully.".format(
@@ -52,7 +59,10 @@ class ProjectUpdateView(UpdateContext, UpdateView):
         return reverse('project_detail', kwargs={'slug': self.object.slug})
 
 
-class ProjectDeleteView(DeleteContext, DeleteView):
+class ProjectDeleteView(PermissionRequiredMixin, DeleteContext, DeleteView):
+    permission_required = 'projects.delete_project'
+    accept_global_perms = True
+
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
         success_url = self.get_success_url()

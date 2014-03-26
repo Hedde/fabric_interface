@@ -37,8 +37,12 @@
         <ul class="nav nav-list">
             <li class="nav-header">{% trans "All hosts" %}</li>
             {% for host in host_list %}
-                <li class="{% if host.slug == object.slug %}active{% endif %}"><a href="{% url 'host_detail' slug=host.slug %}">{{ host }}</a></li>
-            {% endfor %}
+                {% get_obj_perms request.user for host as "host_perms" %}
+                {% if "view_host" in project_perms or perms.hosts.view_host %}
+                    <li class="{% if host.slug == object.slug %}active{% endif %}">
+                        <a href="{% url 'host_detail' slug=host.slug %}">{{ host }}</a>
+                    </li>
+                {% endif %}            {% endfor %}
             <li class="action"><a href=""><i class="glyphicon glyphicon-plus"></i> {% trans "Add host" %}</a></li>
         </ul>
     </div>
