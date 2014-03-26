@@ -33,7 +33,7 @@
     <!-- panel/hosts -->
     <div class="well well-sm">
         <ul class="nav nav-list">
-            <li class="nav-header">{% trans "Hosts" %}</li>
+            <li class="nav-header">{% trans "All hosts" %}</li>
             {% for host in host_list %}
                 <li class="{% if host.slug == object.slug %}active{% endif %}"><a href="{% url 'host_detail' slug=host.slug %}">{{ host }}</a></li>
             {% endfor %}

@@ -14,6 +14,11 @@ class Host(TimeStampedModel):
     slug = models.SlugField(unique=True)
     projects = models.ManyToManyField('projects.Project', blank=True, null=True, verbose_name=_(u"Projects"))
 
+    class Meta:
+        permissions = (
+            ('view_host', _(u"View host")),
+        )
+
     def __unicode__(self):
         if self.alias and self.ip:
             return "{alias} ({ip})".format(**{

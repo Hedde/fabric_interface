@@ -15,6 +15,9 @@ class Stage(TimeStampedModel):
     slug = models.SlugField(unique=True)
 
     class Meta:
+        permissions = (
+            ('view_stage', _(u"View stage")),
+        )
         unique_together = (
             ('project', 'slug'),
         )
