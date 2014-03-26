@@ -3,7 +3,9 @@ __author__ = 'heddevanderheide'
 # Django specific
 from django.core.mail import EmailMultiAlternatives
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import (
+    AbstractBaseUser, PermissionsMixin
+)
 from django.contrib.contenttypes.models import ContentType
 from django.template.defaultfilters import striptags
 from django.utils import timezone
@@ -13,7 +15,7 @@ from django.utils.translation import ugettext_lazy as _
 from fabric_interface.managers import UserManager
 
 
-class User(AbstractBaseUser):
+class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(
         verbose_name=_('email address'),
         max_length=255,
