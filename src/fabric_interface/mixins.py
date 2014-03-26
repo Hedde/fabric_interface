@@ -6,10 +6,10 @@ from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext_lazy as _
 
 
-class StaffOnlyMixin(object):
+class SuperuserOnlyMixin(object):
     @method_decorator(user_passes_test(lambda u: u.is_superuser))
     def dispatch(self, request, *args, **kwargs):
-        return super(StaffOnlyMixin, self).dispatch(request, *args, **kwargs)
+        return super(SuperuserOnlyMixin, self).dispatch(request, *args, **kwargs)
 
 
 class BaseContext(object):

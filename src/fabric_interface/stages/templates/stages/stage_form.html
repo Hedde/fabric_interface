@@ -14,11 +14,13 @@
                     <a href="{% url 'project_detail' slug=project.slug %}">{{ project }}</a>
                 </li>
             {% endfor %}
-            <li class="action">
-                <a href="{% url 'project_create' %}">
-                    <i class="glyphicon glyphicon-plus"></i> {% trans "Add project" %}
-                </a>
-            </li>
+            {% if perms.projects.add_project %}
+                <li class="action">
+                    <a href="{% url 'project_create' %}">
+                        <i class="glyphicon glyphicon-plus"></i> {% trans "Add project" %}
+                    </a>
+                </li>
+            {% endif %}
         </ul>
     </div>
     <!-- panel/hosts -->

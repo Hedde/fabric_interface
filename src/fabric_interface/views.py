@@ -17,7 +17,7 @@ from fabric_interface.forms import (
     UserForm, UserUpdateForm
 )
 from fabric_interface.mixins import (
-    StaffOnlyMixin, BaseContext, DetailContext, CreateContext, UpdateContext, DeleteContext
+    SuperuserOnlyMixin, BaseContext, DetailContext, CreateContext, UpdateContext, DeleteContext
 )
 from fabric_interface.models import User
 from viewsets import ModelViewSet, PK
@@ -31,11 +31,11 @@ class HomeView(BaseContext, TemplateView):
     title = _(u"Home")
 
 
-class UserDetailView(StaffOnlyMixin, DetailContext, DetailView):
+class UserDetailView(SuperuserOnlyMixin, DetailContext, DetailView):
     template_name = 'fabric_interface/users/user_detail.html'
 
 
-class UserCreateView(StaffOnlyMixin, CreateContext, CreateView):
+class UserCreateView(SuperuserOnlyMixin, CreateContext, CreateView):
     form_class = UserForm
     success_url = reverse_lazy('home')
     template_name = 'fabric_interface/users/user_form.html'
@@ -50,7 +50,7 @@ class UserCreateView(StaffOnlyMixin, CreateContext, CreateView):
         return reverse('user_detail',  kwargs={'pk': self.object.pk})
 
 
-class UserUpdateView(StaffOnlyMixin, UpdateContext, UpdateView):
+class UserUpdateView(SuperuserOnlyMixin, UpdateContext, UpdateView):
     form_class = UserUpdateForm
     success_url = reverse_lazy('home')
     template_name = 'fabric_interface/users/user_form.html'
@@ -65,7 +65,7 @@ class UserUpdateView(StaffOnlyMixin, UpdateContext, UpdateView):
         return reverse('user_detail', kwargs={'pk': self.object.pk})
 
 
-class UserDeleteView(StaffOnlyMixin, DeleteContext, DeleteView):
+class UserDeleteView(SuperuserOnlyMixin, DeleteContext, DeleteView):
     success_url = reverse_lazy('home')
     template_name = 'fabric_interface/users/user_confirm_delete.html'
 
