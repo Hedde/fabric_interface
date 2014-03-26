@@ -16,4 +16,5 @@ Todo's
 
 # Release candidate requires
 
+* automated slugs
 * user row permissions (django-guardian / django-rules ?)
