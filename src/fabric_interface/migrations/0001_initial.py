@@ -21,7 +21,6 @@ class Migration(migrations.Migration):
                 ('is_superuser', models.BooleanField(default=False, help_text=u'Designates that this user has all permissions without explicitly assigning them.', verbose_name=u'superuser status')),
                 ('email', models.EmailField(unique=True, max_length=255, verbose_name=u'email address', db_index=True)),
                 ('is_active', models.BooleanField(default=True, verbose_name=u'Active')),
-                ('is_admin', models.BooleanField(default=False, verbose_name=u'Admin')),
                 ('first_name', models.CharField(max_length=125, verbose_name=u'First name')),
                 ('family_name_prefix', models.CharField(max_length=125, null=True, verbose_name=u'Family name prefix', blank=True)),
                 ('family_name', models.CharField(max_length=125, verbose_name=u'Family name')),
