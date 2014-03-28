@@ -9,7 +9,7 @@ This project is work in progress, there's no production-ready release available 
     :scale: 100%
     :target: https://travis-ci.org/Hedde/fabric_interface
 
-.. image:: http://img.shields.io/paypal/donate.png?color=yellow
+.. image:: http://img.shields.io/paypal/donate.png?color=blue
     :alt: paypal donate
     :scale: 100%
     :target: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AU4TBGECBV7PN
