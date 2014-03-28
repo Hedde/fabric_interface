@@ -25,5 +25,5 @@ Example
     :scale: 100%
     
 .. image:: http://s23.postimg.org/gaaszcl17/example_1.jpg
-    :alt: project screen
+    :alt: user permissions screen
     :scale: 100%
