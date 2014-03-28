@@ -21,4 +21,13 @@
         <h1>{% trans "Fabric Interface" %}</h1>
         <p>{% trans "DTAP deployments made easy." %}</p>
     </div>
+    <form action="/i18n/setlang/" method="post">{% csrf_token %}
+        <input name="next" type="hidden" value="/" />
+        <select name="language">
+        {% for lang in LANGUAGES %}
+          <option value="{{ lang.0 }}">{{ lang.1 }}</option>
+        {% endfor %}
+        </select>
+        <input type="submit" value="Go" />
+    </form>
 {% endblock %}

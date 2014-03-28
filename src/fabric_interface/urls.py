@@ -12,6 +12,7 @@ from fabric_interface.views import UserViewSet
 
 urlpatterns = patterns('',
     url('^$', HomeView.as_view(), name='home'),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^login/$', login, {
         'template_name': 'fabric_interface/login.html'
     }, name='login'),
