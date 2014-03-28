@@ -1,0 +1,25 @@
+{% load i18n guardian_tags %}
+
+<!-- panel/projects -->
+<div class="well well-sm">
+    <ul class="nav nav-list">
+        <li class="nav-header">{{ panel_label }}</li>
+        {% for project in project_list %}
+            {% get_obj_perms request.user for project as "project_perms" %}
+            {% if "view_project" in project_perms or perms.projects.view_project %}
+                <li class="{% if project.slug == object.slug or project.slug == object.project.slug %}active{% endif %}">
+                    <a href="{% url 'project_detail' slug=project.slug %}">{{ project }}</a>
+                </li>
+            {% endif %}
+        {% empty %}
+            <li>{% trans "No projects found." %}</li>
+        {% endfor %}
+        {% if perms.projects.add_project %}
+            <li class="action">
+                <a href="{% url 'project_create' %}">
+                    <i class="glyphicon glyphicon-plus"></i> {% trans "Add project" %}
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+</div>

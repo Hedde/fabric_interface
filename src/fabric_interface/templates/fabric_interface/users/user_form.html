@@ -5,55 +5,15 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block sidebar_left %}
-    <!-- panel/projects -->
-    <div class="well well-sm">
-        <ul class="nav nav-list">
-            <li class="nav-header">{% trans "All projects" %}</li>
-            {% for project in project_list %}
-                {% get_obj_perms request.user for project as "project_perms" %}
-                {% if "view_project" in project_perms or perms.projects.view_project %}
-                    <li class="{% if project.slug == object.slug %}active{% endif %}">
-                        <a href="{% url 'project_detail' slug=project.slug %}">
-                            {% if project in object.projects.all %}
-                                <i class="glyphicon glyphicon-check"></i>
-                            {% else %}
-                                <i class="glyphicon glyphicon-unchecked"></i>
-                            {% endif %} {{ project }}
-                        </a>
-                    </li>
-                {% endif %}
-            {% endfor %}
-            {% if perms.projects.add_project %}
-                <li class="action">
-                    <a href="{% url 'project_create' %}">
-                        <i class="glyphicon glyphicon-plus"></i> {% trans "Add project" %}
-                    </a>
-                </li>
-            {% endif %}
-        </ul>
-    </div>
-    <!-- panel/hosts -->
-    <div class="well well-sm">
-        <ul class="nav nav-list">
-            <li class="nav-header">{% trans "Hosts" %}</li>
-            {% for host in host_list %}
-                <li><a href="{% url 'host_detail' slug=host.slug %}">{{ host }}</a></li>
-            {% endfor %}
-            <li class="action"><a href=""><i class="glyphicon glyphicon-plus"></i> {% trans "Add host" %}</a></li>
-        </ul>
-    </div>
-    {% if request.user.is_superuser %}
-        <!-- panel/users -->
-        <div class="well well-sm">
-            <ul class="nav nav-list">
-                <li class="nav-header">{% trans "Users" %}</li>
-                {% for user in user_list %}
-                    <li class="{% if user.pk == object.pk %}active{% endif %}"><a href="{% url 'user_detail' pk=user.pk %}">{{ user }}</a></li>
-                {% endfor %}
-                <li class="action"><a href="{% url 'user_create' %}"><i class="glyphicon glyphicon-plus"></i> {% trans "Add user" %}</a></li>
-            </ul>
-        </div>
-    {% endif %}
+    {% block panel_projects %}
+        {% include "fabric_interface/panels/panel_projects.html" with panel_label=_("All projects") %}
+    {% endblock %}
+    {% block panel_hosts %}
+        {% include "fabric_interface/panels/panel_hosts.html" with panel_label=_("All hosts") %}
+    {% endblock %}
+    {% block panel_users %}
+        {% include "fabric_interface/panels/panel_users.html" with panel_label=_("All users") %}
+    {% endblock %}
 {% endblock %}
 
 {% block content %}

@@ -1,0 +1,24 @@
+{% load i18n guardian_tags %}
+
+<!-- panel/hosts -->
+<div class="well well-sm">
+    <ul class="nav nav-list">
+        <li class="nav-header">{{ panel_label }}</li>
+        {% for host in host_list %}
+            {% get_obj_perms request.user for host as "host_perms" %}
+            {% if "view_host" in host_perms or perms.hosts.view_host %}
+                <li class="{% if host.slug == object.slug %}active{% endif %}">
+                    <a href="{% url 'host_detail' slug=host.slug %}">{{ host }}</a>
+                </li>
+            {% endif %}            {% empty %}
+            <li>{% trans "No hosts found." %}</li>
+        {% endfor %}
+        {% if perms.hosts.add_host %}
+            <li class="action">
+                <a href="{% url 'host_create' %}">
+                    <i class="glyphicon glyphicon-plus"></i> {% trans "Add host" %}
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+</div>

@@ -1,4 +1,5 @@
 .idea
+*.mo
 *.pyc
 docs/build
 venv

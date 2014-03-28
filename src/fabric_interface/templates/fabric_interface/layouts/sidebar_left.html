@@ -10,7 +10,17 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-3">
-                {% block sidebar_left %}{% endblock %}
+                {% block sidebar_left %}
+                    {% block panel_projects %}
+                        {% include "fabric_interface/panels/panel_projects.html" with panel_label=_("All projects") %}
+                    {% endblock %}
+                    {% block panel_hosts %}
+                        {% include "fabric_interface/panels/panel_hosts.html" with panel_label=_("All hosts") %}
+                    {% endblock %}
+                    {% block panel_users %}
+                        {% include "fabric_interface/panels/panel_users.html" with panel_label=_("All users") %}
+                    {% endblock %}
+                {% endblock %}
             </div>
             <div class="col-sm-9">
                 {% block messages %}

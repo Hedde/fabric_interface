@@ -10,6 +10,9 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
+from django.utils.translation import ugettext_lazy as _
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
@@ -47,6 +50,7 @@ INSTALLED_APPS = (
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -92,9 +96,14 @@ AUTHENTICATION_BACKENDS = (
     'guardian.backends.ObjectPermissionBackend',
 )
 
+# Locale
+LOCALE_PATHS = (
+    (BASE_DIR + '/locale',)
+)
+
 # Templates
 TEMPLATE_DIRS = (
-    '/'.join(['main/templates']),
+    (BASE_DIR + '/main/templates',)
 )
 
 TEMPLATE_LOADERS = (
@@ -121,6 +130,11 @@ AUTH_USER_MODEL = 'fabric_interface.User'
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+
+LANGUAGES = (
+    ('en-us', _(u"English")),
+    ('nl', _(u"Dutch")),
+)
 
 TIME_ZONE = 'UTC'
 
