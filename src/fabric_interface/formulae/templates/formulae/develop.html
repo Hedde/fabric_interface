@@ -1,0 +1,26 @@
+{% extends "fabric_interface/layouts/full_width.html" %}
+
+{% load mptt_tags %}
+
+{% block content %}
+    <ul class="root">
+        {% for tree in trees %}
+            {% with tree.get_descendants as nodes %}
+                <li> {{ tree }}
+                    <ul>
+                        {% recursetree nodes %}
+                            <li>
+                                {{ node.formula.name }}
+                                {% if not node.is_leaf_node %}
+                                    <ul class="children">
+                                        {{ children }}
+                                    </ul>
+                                {% endif %}
+                            </li>
+                        {% endrecursetree %}
+                    </ul>
+                </li>
+            {% endwith %}
+        {% endfor %}
+    </ul>
+{% endblock %}

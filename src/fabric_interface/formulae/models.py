@@ -17,6 +17,8 @@ class Formula(TimeStampedModel):
 
 
 class FormulaPosition(MPTTModel, TimeStampedModel):
+    family = models.CharField(max_length=128)
+
     formula = models.ForeignKey('formulae.Formula')
     parent = TreeForeignKey('self', null=True, blank=True, related_name='children')
 
