@@ -9,6 +9,11 @@ This project is work in progress, there's no production-ready release available 
     :scale: 100%
     :target: https://travis-ci.org/Hedde/fabric_interface
 
+.. image:: http://img.shields.io/paypal/donate.png?color=yellow
+    :alt: paypal donate
+    :scale: 100%
+    :target: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AM8PTNZGU6DZW
+
 Documentation for this repository can be found at readthedocs.org_
 
 .. _readthedocs.org: http://fabric-interface.readthedocs.org/en/latest/
