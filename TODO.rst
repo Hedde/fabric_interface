@@ -16,7 +16,5 @@ Todo's
 
 # Release candidate requires
 
-* proper change language design
 * automated slugs
-* user row permissions
 * check orphan permissions, e.g. 'can view stage' => if 'can view project'
