@@ -18,19 +18,26 @@
                         {% trans "Documentation" %}
                     </a>
                 </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        {{ LANGUAGE }} <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu change-language" data-csrf="{{ csrf_token }}">
+                        {% for CODE, NAME in LANGUAGES %}
+                            {% ifnotequal CODE LANGUAGE_CODE %}
+                                <li><a data-code="{{ CODE }}">{{ NAME }}</a></li>
+                            {% endifnotequal %}
+                        {% endfor %}
+                    </ul>
                 {% if user.is_authenticated %}
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            {{ user }} <b class="caret"></b>
+                            {{ user.get_full_name }} <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="{% url 'logout' %}">{% trans "Logout" %}</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
+                            <li><a href="#">{% trans "Edit profile" %}</a></li>
                             <li class="divider"></li>
-                            <li class="dropdown-header">Nav header</li>
-                            <li><a href="#">Separated link</a></li>
-                            <li><a href="#">One more separated link</a></li>
+                            <li><a href="{% url 'logout' %}">{% trans "Logout" %}</a></li>
                         </ul>
                     </li>
                 {% else %}

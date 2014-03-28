@@ -7,6 +7,15 @@ from django.conf import settings
 from fabric_interface.models import User
 
 
+def language(request):
+    from django.utils import translation
+
+    context_extras = {}
+    context_extras['LANGUAGE'] = dict(settings.LANGUAGES).get(translation.get_language())
+
+    return context_extras
+
+
 def users(request):
     if request.user.is_authenticated() and request.user.is_superuser:
         return {
