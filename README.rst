@@ -17,3 +17,13 @@ This project is work in progress, there's no production-ready release available 
 Documentation for this repository can be found at readthedocs.org_
 
 .. _readthedocs.org: http://fabric-interface.readthedocs.org/en/latest/
+
+Example
+
+.. image:: http://s9.postimg.org/8bworvcov/example_2.jpg
+    :alt: project screen
+    :scale: 100%
+    
+.. image:: http://s23.postimg.org/gaaszcl17/example_1.jpg
+    :alt: project screen
+    :scale: 100%
