@@ -33,9 +33,15 @@
         {% endif %}
         {% if perms.stages.add_stage %}
             <li class="action">
-                <a href="{% url 'project_stage_create' slug=object.slug %}">
-                    <i class="glyphicon glyphicon-plus"></i> {% trans "Add stage" %}
-                </a>
+                {% if object.stage_set %}
+                    <a href="{% url 'project_stage_create' slug=object.slug %}">
+                        <i class="glyphicon glyphicon-plus"></i> {% trans "Add stage" %}
+                    </a>
+                {% else %}
+                    <a href="{% url 'project_stage_create' slug=object.project.slug %}">
+                        <i class="glyphicon glyphicon-plus"></i> {% trans "Add stage" %}
+                    </a>
+                {% endif %}
             </li>
         {% endif %}
     </ul>
