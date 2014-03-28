@@ -24,3 +24,14 @@ Todo's
 # Stable candidate requires
 
 * documentation
+
+Known bugs
+----------
+
+# Migrations
+
+* MPTT doesn't work with django's migrations yet. (NewBase issue)
+
+# Translations
+
+* Messages framework language awareness
