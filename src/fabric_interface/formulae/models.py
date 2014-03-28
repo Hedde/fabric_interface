@@ -9,9 +9,16 @@ from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 
 
-class Formula(MPTTModel, TimeStampedModel):
+class Formula(TimeStampedModel):
     name = models.CharField(max_length=128)
-    parent = TreeForeignKey('self', null=True, blank=True, related_name='children')
 
     def __unicode__(self):
         return self.name
+
+
+class FormulaPosition(MPTTModel, TimeStampedModel):
+    formula = models.ForeignKey('formulae.Formula')
+    parent = TreeForeignKey('self', null=True, blank=True, related_name='children')
+
+    def __unicode__(self):
+        return self.formula.name
