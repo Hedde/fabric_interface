@@ -6,3 +6,4 @@ venv
 dev.db
 local_settings.py
 fabfile.py
+dump.rdb

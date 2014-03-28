@@ -40,12 +40,14 @@ INSTALLED_APPS = (
     # 3rd party
     'guardian',
     'bootstrap3',
+    'reversion',
 
     # Application
     'fabric_interface',
     'fabric_interface.projects',
     'fabric_interface.stages',
     'fabric_interface.hosts',
+    'fabric_interface.formulae',
 )
 
 MIDDLEWARE_CLASSES = (
