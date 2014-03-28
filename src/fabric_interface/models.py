@@ -58,6 +58,8 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.email
 
     def __unicode__(self):
+        if self.get_full_name().strip():
+            return self.get_full_name()
         return self.email
 
     def has_perm(self, perm, obj=None):

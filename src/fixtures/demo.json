@@ -1,0 +1,623 @@
+[
+    {
+        "fields": {
+            "model": "permission",
+            "name": "permission",
+            "app_label": "auth"
+        },
+        "model": "contenttypes.contenttype",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "model": "group",
+            "name": "group",
+            "app_label": "auth"
+        },
+        "model": "contenttypes.contenttype",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "model": "user",
+            "name": "user",
+            "app_label": "fabric_interface"
+        },
+        "model": "contenttypes.contenttype",
+        "pk": 3
+    },
+    {
+        "fields": {
+            "model": "contenttype",
+            "name": "content type",
+            "app_label": "contenttypes"
+        },
+        "model": "contenttypes.contenttype",
+        "pk": 4
+    },
+    {
+        "fields": {
+            "model": "session",
+            "name": "session",
+            "app_label": "sessions"
+        },
+        "model": "contenttypes.contenttype",
+        "pk": 5
+    },
+    {
+        "fields": {
+            "model": "userobjectpermission",
+            "name": "user object permission",
+            "app_label": "guardian"
+        },
+        "model": "contenttypes.contenttype",
+        "pk": 6
+    },
+    {
+        "fields": {
+            "model": "groupobjectpermission",
+            "name": "group object permission",
+            "app_label": "guardian"
+        },
+        "model": "contenttypes.contenttype",
+        "pk": 7
+    },
+    {
+        "fields": {
+            "model": "project",
+            "name": "project",
+            "app_label": "projects"
+        },
+        "model": "contenttypes.contenttype",
+        "pk": 8
+    },
+    {
+        "fields": {
+            "model": "stage",
+            "name": "stage",
+            "app_label": "stages"
+        },
+        "model": "contenttypes.contenttype",
+        "pk": 9
+    },
+    {
+        "fields": {
+            "model": "host",
+            "name": "host",
+            "app_label": "hosts"
+        },
+        "model": "contenttypes.contenttype",
+        "pk": 10
+    },
+    {
+        "fields": {
+            "slug": "example",
+            "title": "example.com",
+            "modified": "2014-03-28T13:45:26.416Z",
+            "created": "2014-03-28T13:45:26.409Z"
+        },
+        "model": "projects.project",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "created": "2014-03-28T13:46:59.565Z",
+            "modified": "2014-03-28T13:46:59.601Z",
+            "project": 1,
+            "hosts": [
+                2
+            ],
+            "role": "Test",
+            "slug": "example-com-test"
+        },
+        "model": "stages.stage",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "created": "2014-03-28T13:47:18.394Z",
+            "modified": "2014-03-28T13:47:18.428Z",
+            "project": 1,
+            "hosts": [
+                1
+            ],
+            "role": "Production",
+            "slug": "example-com-production"
+        },
+        "model": "stages.stage",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "created": "2014-03-28T13:45:09.675Z",
+            "ip": "127.0.0.2",
+            "modified": "2014-03-28T13:47:47.157Z",
+            "alias": "example.com",
+            "slug": "example-com",
+            "projects": [
+                1
+            ]
+        },
+        "model": "hosts.host",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "created": "2014-03-28T13:46:17.929Z",
+            "ip": "127.0.0.1",
+            "modified": "2014-03-28T13:46:17.945Z",
+            "alias": "beta.example.com",
+            "slug": "beta-example-com",
+            "projects": [
+                1
+            ]
+        },
+        "model": "hosts.host",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "codename": "add_permission",
+            "name": "Can add permission",
+            "content_type": [
+                "auth",
+                "permission"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "codename": "change_permission",
+            "name": "Can change permission",
+            "content_type": [
+                "auth",
+                "permission"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "codename": "delete_permission",
+            "name": "Can delete permission",
+            "content_type": [
+                "auth",
+                "permission"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 3
+    },
+    {
+        "fields": {
+            "codename": "add_group",
+            "name": "Can add group",
+            "content_type": [
+                "auth",
+                "group"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 4
+    },
+    {
+        "fields": {
+            "codename": "change_group",
+            "name": "Can change group",
+            "content_type": [
+                "auth",
+                "group"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 5
+    },
+    {
+        "fields": {
+            "codename": "delete_group",
+            "name": "Can delete group",
+            "content_type": [
+                "auth",
+                "group"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 6
+    },
+    {
+        "fields": {
+            "codename": "add_contenttype",
+            "name": "Can add content type",
+            "content_type": [
+                "contenttypes",
+                "contenttype"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 7
+    },
+    {
+        "fields": {
+            "codename": "change_contenttype",
+            "name": "Can change content type",
+            "content_type": [
+                "contenttypes",
+                "contenttype"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 8
+    },
+    {
+        "fields": {
+            "codename": "delete_contenttype",
+            "name": "Can delete content type",
+            "content_type": [
+                "contenttypes",
+                "contenttype"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 9
+    },
+    {
+        "fields": {
+            "codename": "add_session",
+            "name": "Can add session",
+            "content_type": [
+                "sessions",
+                "session"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 10
+    },
+    {
+        "fields": {
+            "codename": "change_session",
+            "name": "Can change session",
+            "content_type": [
+                "sessions",
+                "session"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 11
+    },
+    {
+        "fields": {
+            "codename": "delete_session",
+            "name": "Can delete session",
+            "content_type": [
+                "sessions",
+                "session"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 12
+    },
+    {
+        "fields": {
+            "codename": "add_userobjectpermission",
+            "name": "Can add user object permission",
+            "content_type": [
+                "guardian",
+                "userobjectpermission"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 13
+    },
+    {
+        "fields": {
+            "codename": "change_userobjectpermission",
+            "name": "Can change user object permission",
+            "content_type": [
+                "guardian",
+                "userobjectpermission"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 14
+    },
+    {
+        "fields": {
+            "codename": "delete_userobjectpermission",
+            "name": "Can delete user object permission",
+            "content_type": [
+                "guardian",
+                "userobjectpermission"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 15
+    },
+    {
+        "fields": {
+            "codename": "add_groupobjectpermission",
+            "name": "Can add group object permission",
+            "content_type": [
+                "guardian",
+                "groupobjectpermission"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 16
+    },
+    {
+        "fields": {
+            "codename": "change_groupobjectpermission",
+            "name": "Can change group object permission",
+            "content_type": [
+                "guardian",
+                "groupobjectpermission"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 17
+    },
+    {
+        "fields": {
+            "codename": "delete_groupobjectpermission",
+            "name": "Can delete group object permission",
+            "content_type": [
+                "guardian",
+                "groupobjectpermission"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 18
+    },
+    {
+        "fields": {
+            "codename": "add_user",
+            "name": "Can add user",
+            "content_type": [
+                "fabric_interface",
+                "user"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 19
+    },
+    {
+        "fields": {
+            "codename": "change_user",
+            "name": "Can change user",
+            "content_type": [
+                "fabric_interface",
+                "user"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 20
+    },
+    {
+        "fields": {
+            "codename": "delete_user",
+            "name": "Can delete user",
+            "content_type": [
+                "fabric_interface",
+                "user"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 21
+    },
+    {
+        "fields": {
+            "codename": "add_project",
+            "name": "Can add project",
+            "content_type": [
+                "projects",
+                "project"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 22
+    },
+    {
+        "fields": {
+            "codename": "change_project",
+            "name": "Can change project",
+            "content_type": [
+                "projects",
+                "project"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 23
+    },
+    {
+        "fields": {
+            "codename": "delete_project",
+            "name": "Can delete project",
+            "content_type": [
+                "projects",
+                "project"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 24
+    },
+    {
+        "fields": {
+            "codename": "view_project",
+            "name": "Can view project",
+            "content_type": [
+                "projects",
+                "project"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 25
+    },
+    {
+        "fields": {
+            "codename": "add_stage",
+            "name": "Can add stage",
+            "content_type": [
+                "stages",
+                "stage"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 26
+    },
+    {
+        "fields": {
+            "codename": "change_stage",
+            "name": "Can change stage",
+            "content_type": [
+                "stages",
+                "stage"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 27
+    },
+    {
+        "fields": {
+            "codename": "delete_stage",
+            "name": "Can delete stage",
+            "content_type": [
+                "stages",
+                "stage"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 28
+    },
+    {
+        "fields": {
+            "codename": "view_stage",
+            "name": "Can view stage",
+            "content_type": [
+                "stages",
+                "stage"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 29
+    },
+    {
+        "fields": {
+            "codename": "add_host",
+            "name": "Can add host",
+            "content_type": [
+                "hosts",
+                "host"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 30
+    },
+    {
+        "fields": {
+            "codename": "change_host",
+            "name": "Can change host",
+            "content_type": [
+                "hosts",
+                "host"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 31
+    },
+    {
+        "fields": {
+            "codename": "delete_host",
+            "name": "Can delete host",
+            "content_type": [
+                "hosts",
+                "host"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 32
+    },
+    {
+        "fields": {
+            "codename": "view_host",
+            "name": "Can view host",
+            "content_type": [
+                "hosts",
+                "host"
+            ]
+        },
+        "model": "auth.permission",
+        "pk": 33
+    },
+    {
+        "fields": {
+            "family_name": "",
+            "first_name": "",
+            "groups": [],
+            "is_active": true,
+            "family_name_prefix": null,
+            "is_superuser": false,
+            "last_login": "2014-03-28T13:42:51.631Z",
+            "content_type": [
+                "fabric_interface",
+                "user"
+            ],
+            "user_permissions": [],
+            "password": "",
+            "email": "AnonymousUser",
+            "date_joined": "2014-03-28T13:42:51.631Z"
+        },
+        "model": "fabric_interface.user",
+        "pk": -1
+    },
+    {
+        "fields": {
+            "family_name": "",
+            "first_name": "Admin",
+            "groups": [],
+            "is_active": true,
+            "family_name_prefix": null,
+            "is_superuser": true,
+            "last_login": "2014-03-28T13:42:51.515Z",
+            "content_type": [
+                "fabric_interface",
+                "user"
+            ],
+            "user_permissions": [],
+            "password": "pbkdf2_sha256$12000$UtxIsdMwQORu$lsn2c9qcSCxRKsiPDu4baJfl6JTf6JFjeVMzAg5pYgs=",
+            "email": "admin@example.com",
+            "date_joined": "2014-03-28T13:42:51.515Z"
+        },
+        "model": "fabric_interface.user",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "family_name": "Doe",
+            "first_name": "John",
+            "groups": [],
+            "is_active": true,
+            "family_name_prefix": "",
+            "is_superuser": false,
+            "last_login": "2014-03-28T13:48:35.669Z",
+            "content_type": [
+                "fabric_interface",
+                "user"
+            ],
+            "user_permissions": [
+                [
+                    "view_host",
+                    "hosts",
+                    "host"
+                ]
+            ],
+            "password": "pbkdf2_sha256$12000$MXQ43bJsBaMa$Cacv2zTeY/aBMwHO0tgWZwfsPh31HmqfZAcnUo7F0Tg=",
+            "email": "johndoe@example.com",
+            "date_joined": "2014-03-28T13:44:00.306Z"
+        },
+        "model": "fabric_interface.user",
+        "pk": 2
+    }
+]

@@ -98,12 +98,12 @@ AUTHENTICATION_BACKENDS = (
 
 # Locale
 LOCALE_PATHS = (
-    (BASE_DIR + '/locale',)
+    os.path.join(BASE_DIR, "locale"),
 )
 
 # Templates
 TEMPLATE_DIRS = (
-    (BASE_DIR + '/main/templates',)
+    os.path.join(BASE_DIR, "main/templates"),
 )
 
 TEMPLATE_LOADERS = (
@@ -164,6 +164,18 @@ BOOTSTRAP3 = {
     'base_url': STATIC_URL,
     'theme_url': STATIC_URL + 'ccs/bootstrap-theme.min.css',
 }
+
+# Fixtures
+#
+# admin: admin@example.com
+# pass: admin
+#
+# user: johndoe@example.com
+# pass: test
+#
+FIXTURE_DIRS = (
+    os.path.join(BASE_DIR, "fixtures"),
+)
 
 try:
     from local_settings import *
