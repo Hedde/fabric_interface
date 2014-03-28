@@ -6,7 +6,7 @@
         <li class="nav-header">{% trans "Danger Zone" %}</li>
         {% get_obj_perms request.user for object as "object_perms" %}
         {% with permission="change"|append_class_name:object %}
-            {% if change_permission in object_perms or perms|contains:permission %}
+            {% if permission in object_perms or perms|contains:permission %}
                 {% with action="update"|prepend_class_name:object %}
                     <li>
                         <a href="{% url action slug=object.slug %}">{% trans "Edit" %}</a>
