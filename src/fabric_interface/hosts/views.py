@@ -11,23 +11,26 @@ from django.views.generic import (
 # App specific
 from fabric_interface.hosts.models import Host
 from fabric_interface.mixins import (
-    DetailContext, CreateContext, UpdateContext, DeleteContext
+    DetailContextMixin, CreateContextMixin, UpdateContextMixin, DeleteContextMixin
 )
+from fabric_interface.mixins import PermissionRequiredMixin
 from fabric_interface.views import RedirectHomeView
-from guardian.mixins import PermissionRequiredMixin
 from viewsets import ModelViewSet, SLUG
 
 
-class HostDetailView(PermissionRequiredMixin, DetailContext, DetailView):
+class HostDetailView(PermissionRequiredMixin, DetailContextMixin, DetailView):
     permission_required = 'hosts.view_host'
     accept_global_perms = True
 
 
-class HostCreateView(PermissionRequiredMixin, CreateContext, CreateView):
+class HostCreateView(PermissionRequiredMixin, CreateContextMixin, CreateView):
     permission_required = 'hosts.add_host'
     accept_global_perms = True
 
     success_url = reverse_lazy('host_index')
+
+    # def get_object(self, queryset=None):
+    #     return None
 
     def get_success_url(self):
         messages.add_message(
@@ -39,7 +42,7 @@ class HostCreateView(PermissionRequiredMixin, CreateContext, CreateView):
         return reverse('host_detail', kwargs={'slug': self.object.slug})
 
 
-class HostUpdateView(PermissionRequiredMixin, UpdateContext, UpdateView):
+class HostUpdateView(PermissionRequiredMixin, UpdateContextMixin, UpdateView):
     permission_required = 'hosts.change_host'
     accept_global_perms = True
 
@@ -55,7 +58,7 @@ class HostUpdateView(PermissionRequiredMixin, UpdateContext, UpdateView):
         return reverse('host_detail', kwargs={'slug': self.object.slug})
 
 
-class HostDeleteView(PermissionRequiredMixin, DeleteContext, DeleteView):
+class HostDeleteView(PermissionRequiredMixin, DeleteContextMixin, DeleteView):
     permission_required = 'hosts.delete_host'
     accept_global_perms = True
 

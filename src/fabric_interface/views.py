@@ -17,7 +17,7 @@ from fabric_interface.forms import (
     UserForm, UserUpdateForm, UserPermissionsUpdateForm
 )
 from fabric_interface.mixins import (
-    SuperuserOnlyMixin, BaseContext, DetailContext, CreateContext, UpdateContext, DeleteContext
+    SuperuserOnlyMixin, BaseContextMixin, DetailContextMixin, CreateContextMixin, UpdateContextMixin, DeleteContextMixin
 )
 from fabric_interface.models import User
 from viewsets import ModelViewSet, PK
@@ -26,7 +26,7 @@ from viewsets import ModelViewSet, PK
 login = add_welcome_message(login)
 
 
-class HomeView(BaseContext, TemplateView):
+class HomeView(BaseContextMixin, TemplateView):
     template_name = 'fabric_interface/home.html'
     title = _(u"Home")
 
@@ -35,11 +35,11 @@ class RedirectHomeView(RedirectView):
     url = reverse_lazy('home')
 
 
-class UserDetailView(SuperuserOnlyMixin, DetailContext, DetailView):
+class UserDetailView(SuperuserOnlyMixin, DetailContextMixin, DetailView):
     template_name = 'fabric_interface/users/user_detail.html'
 
 
-class UserCreateView(SuperuserOnlyMixin, CreateContext, CreateView):
+class UserCreateView(SuperuserOnlyMixin, CreateContextMixin, CreateView):
     form_class = UserForm
     success_url = reverse_lazy('home')
     template_name = 'fabric_interface/users/user_form.html'
@@ -54,7 +54,7 @@ class UserCreateView(SuperuserOnlyMixin, CreateContext, CreateView):
         return reverse('user_detail',  kwargs={'pk': self.object.pk})
 
 
-class UserUpdateView(SuperuserOnlyMixin, UpdateContext, UpdateView):
+class UserUpdateView(SuperuserOnlyMixin, UpdateContextMixin, UpdateView):
     form_class = UserUpdateForm
     template_name = 'fabric_interface/users/user_form.html'
 
@@ -68,7 +68,7 @@ class UserUpdateView(SuperuserOnlyMixin, UpdateContext, UpdateView):
         return reverse('user_detail', kwargs={'pk': self.object.pk})
 
 
-class UserPermissionsUpdateView(SuperuserOnlyMixin, UpdateContext, UpdateView):
+class UserPermissionsUpdateView(SuperuserOnlyMixin, UpdateContextMixin, UpdateView):
     form_class = UserPermissionsUpdateForm
     template_name = 'fabric_interface/users/user_permissions_form.html'
 
@@ -82,7 +82,7 @@ class UserPermissionsUpdateView(SuperuserOnlyMixin, UpdateContext, UpdateView):
         return reverse('user_detail', kwargs={'pk': self.object.pk})
 
 
-class UserDeleteView(SuperuserOnlyMixin, DeleteContext, DeleteView):
+class UserDeleteView(SuperuserOnlyMixin, DeleteContextMixin, DeleteView):
     success_url = reverse_lazy('home')
     template_name = 'fabric_interface/users/user_confirm_delete.html'
 

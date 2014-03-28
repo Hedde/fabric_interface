@@ -12,12 +12,12 @@ from django.views.generic import (
 # App specific
 from fabric_interface.projects.models import Project
 from fabric_interface.mixins import (
-    DetailContext, CreateContext, UpdateContext, DeleteContext
+    DetailContextMixin, CreateContextMixin, UpdateContextMixin, DeleteContextMixin
 )
 from fabric_interface.stages.forms import StageForm
 
 
-class StageDetailView(DetailContext, DetailView):
+class StageDetailView(DetailContextMixin, DetailView):
     parent = None
     template_name = 'stages/stage_detail.html'
 
@@ -26,7 +26,7 @@ class StageDetailView(DetailContext, DetailView):
         return self.parent.stage_set(manager='objects').get(slug=self.kwargs.get('role_slug'))
 
 
-class StageCreateView(CreateContext, CreateView):
+class StageCreateView(CreateContextMixin, CreateView):
     form_class = StageForm
     template_name = 'stages/stage_form.html'
 
@@ -56,7 +56,7 @@ class StageCreateView(CreateContext, CreateView):
         })
 
 
-class StageUpdateView(UpdateContext, UpdateView):
+class StageUpdateView(UpdateContextMixin, UpdateView):
     form_class = StageForm
     template_name = 'stages/stage_form.html'
 
@@ -84,7 +84,7 @@ class StageUpdateView(UpdateContext, UpdateView):
         })
 
 
-class StageDeleteView(DeleteContext, DeleteView):
+class StageDeleteView(DeleteContextMixin, DeleteView):
     form_class = StageForm
     template_name = 'stages/stage_confirm_delete.html'
 

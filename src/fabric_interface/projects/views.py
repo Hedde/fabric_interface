@@ -11,19 +11,19 @@ from django.views.generic import (
 
 # App specific
 from fabric_interface.mixins import (
-    DetailContext, CreateContext, UpdateContext, DeleteContext
+    DetailContextMixin, CreateContextMixin, UpdateContextMixin, DeleteContextMixin
 )
 from fabric_interface.projects.models import Project
 from fabric_interface.stages.views import (
     StageDetailView, StageCreateView, StageUpdateView, StageDeleteView
 )
+from fabric_interface.mixins import PermissionRequiredMixin
 from fabric_interface.views import RedirectHomeView
-from guardian.mixins import PermissionRequiredMixin
 from viewsets import ModelViewSet, SLUG
 from viewsets.patterns import PLACEHOLDER_PATTERN
 
 
-class ProjectDetailView(PermissionRequiredMixin, DetailContext, DetailView):
+class ProjectDetailView(PermissionRequiredMixin, DetailContextMixin, DetailView):
     permission_required = 'projects.view_project'
     accept_global_perms = True
 
@@ -31,7 +31,7 @@ class ProjectDetailView(PermissionRequiredMixin, DetailContext, DetailView):
         return super(ProjectDetailView, self).dispatch(request, *args, **kwargs)
 
 
-class ProjectCreateView(PermissionRequiredMixin, CreateContext, CreateView):
+class ProjectCreateView(PermissionRequiredMixin, CreateContextMixin, CreateView):
     permission_required = 'projects.add_project'
     accept_global_perms = True
 
@@ -45,7 +45,7 @@ class ProjectCreateView(PermissionRequiredMixin, CreateContext, CreateView):
         return reverse('project_detail', kwargs={'slug': self.object.slug})
 
 
-class ProjectUpdateView(PermissionRequiredMixin, UpdateContext, UpdateView):
+class ProjectUpdateView(PermissionRequiredMixin, UpdateContextMixin, UpdateView):
     permission_required = 'projects.change_project'
     accept_global_perms = True
 
@@ -59,7 +59,7 @@ class ProjectUpdateView(PermissionRequiredMixin, UpdateContext, UpdateView):
         return reverse('project_detail', kwargs={'slug': self.object.slug})
 
 
-class ProjectDeleteView(PermissionRequiredMixin, DeleteContext, DeleteView):
+class ProjectDeleteView(PermissionRequiredMixin, DeleteContextMixin, DeleteView):
     permission_required = 'projects.delete_project'
     accept_global_perms = True
 
