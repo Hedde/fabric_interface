@@ -12,6 +12,13 @@
             <a class="navbar-brand" href="{% url 'home' %}">Fabric Interface</a>
         </div>
         <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="{% url 'test' %}">
+                        {% trans "Playground" %}
+                    </a>
+                </li>
+            </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <a href="http://fabric-interface.readthedocs.org/en/latest/" target="_blank">

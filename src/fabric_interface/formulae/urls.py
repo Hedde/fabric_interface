@@ -8,5 +8,5 @@ from fabric_interface.formulae.views import FormulaeView
 
 
 urlpatterns = patterns('',
-   url('^$', FormulaeView.as_view()),
+   url('^$', FormulaeView.as_view(), name='test'),
 )

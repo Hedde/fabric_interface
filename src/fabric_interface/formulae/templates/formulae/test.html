@@ -1,12 +1,13 @@
-{% extends "fabric_interface/layouts/full_width.html" %}
+{% extends "fabric_interface/layouts/split_vertical.html" %}
 
-{% load mptt_tags %}
+{% load i18n bootstrap3 mptt_tags %}
 
 {% block content %}
     <ul class="root">
         {% for tree in trees %}
             {% with tree.get_descendants as nodes %}
-                <li> {{ tree }}
+                <li><strong>{{ tree.family }}</strong></li>
+                <li>{{ tree }}
                     <ul>
                         {% recursetree nodes %}
                             <li>
@@ -23,4 +24,22 @@
             {% endwith %}
         {% endfor %}
     </ul>
+{% endblock %}
+
+{% block sidebar_right %}
+    <h4>{% trans "Testing..." %}</h4>
+    <hr />
+    <form method="post" role="form">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                {% bootstrap_field field %}
+            </div>
+        {% endfor %}
+        {% buttons %}
+            <button type="submit" class="btn btn-default">
+                Submit
+            </button>
+        {% endbuttons %}
+    </form>
 {% endblock %}
