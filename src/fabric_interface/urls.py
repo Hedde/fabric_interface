@@ -11,13 +11,13 @@ from fabric_interface.views import UserViewSet
 
 
 urlpatterns = patterns('',
+    url('^$', HomeView.as_view(), name='home'),
     url(r'^login/$', login, {
         'template_name': 'fabric_interface/login.html'
     }, name='login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout', {
         'next_page': 'login'
     }, name='logout'),
-    url('^$', HomeView.as_view(), name='home'),
     url('', include(ProjectViewSet().urls)),
     url('', include(HostViewSet().urls)),
     url('', include(UserViewSet().urls)),

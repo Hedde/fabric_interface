@@ -1,0 +1,42 @@
+{% load i18n guardian_tags %}
+
+<!-- panel/stages -->
+<div class="well well-sm">
+    <ul class="nav nav-list">
+        <li class="nav-header">{% trans "Stages" %}</li>
+        {% if object.stage_set %}
+            {% for stage in object.stage_set.all %}
+                {% get_obj_perms request.user for stage as "stage_perms" %}
+                {% if "view_project_stage" in stage_perms or perms.stages.view_stage %}
+                    <li>
+                        <a href="{% url 'project_stage_detail' slug=object.slug role_slug=stage.slug %}">
+                            {{ stage }}
+                        </a>
+                    </li>
+                {% endif %}
+            {% empty %}
+                <li>No stages.</li>
+            {% endfor %}
+        {% else %}
+            {% for stage in object.project.stage_set.all %}
+                {% get_obj_perms request.user for stage as "stage_perms" %}
+                {% if "view_project_stage" in stage_perms or perms.stages.view_stage %}
+                    <li class="{% if object.slug == stage.slug %}active{% endif %}">
+                        <a href="{% url 'project_stage_detail' slug=object.project.slug role_slug=stage.slug %}">
+                            {{ stage }}
+                        </a>
+                    </li>
+                {% endif %}
+            {% empty %}
+                <li>No stages.</li>
+            {% endfor %}
+        {% endif %}
+        {% if perms.stages.add_stage %}
+            <li class="action">
+                <a href="{% url 'project_stage_create' slug=object.slug %}">
+                    <i class="glyphicon glyphicon-plus"></i> {% trans "Add stage" %}
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+</div>

@@ -12,12 +12,15 @@ from django.views.generic import (
 # App specific
 from fabric_interface.projects.models import Project
 from fabric_interface.mixins import (
-    DetailContextMixin, CreateContextMixin, UpdateContextMixin, DeleteContextMixin
+    DetailContextMixin, CreateContextMixin, UpdateContextMixin, DeleteContextMixin, PermissionRequiredMixin
 )
 from fabric_interface.stages.forms import StageForm
 
 
-class StageDetailView(DetailContextMixin, DetailView):
+class StageDetailView(PermissionRequiredMixin, DetailContextMixin, DetailView):
+    permission_required = 'stages.view_stage'
+    accept_global_perms = True
+
     parent = None
     template_name = 'stages/stage_detail.html'
 
@@ -26,7 +29,10 @@ class StageDetailView(DetailContextMixin, DetailView):
         return self.parent.stage_set(manager='objects').get(slug=self.kwargs.get('role_slug'))
 
 
-class StageCreateView(CreateContextMixin, CreateView):
+class StageCreateView(PermissionRequiredMixin, CreateContextMixin, CreateView):
+    permission_required = 'stages.add_stage'
+    accept_global_perms = True
+
     form_class = StageForm
     template_name = 'stages/stage_form.html'
 
@@ -56,7 +62,10 @@ class StageCreateView(CreateContextMixin, CreateView):
         })
 
 
-class StageUpdateView(UpdateContextMixin, UpdateView):
+class StageUpdateView(PermissionRequiredMixin, UpdateContextMixin, UpdateView):
+    permission_required = 'stages.change_stage'
+    accept_global_perms = True
+
     form_class = StageForm
     template_name = 'stages/stage_form.html'
 
@@ -84,7 +93,10 @@ class StageUpdateView(UpdateContextMixin, UpdateView):
         })
 
 
-class StageDeleteView(DeleteContextMixin, DeleteView):
+class StageDeleteView(PermissionRequiredMixin, DeleteContextMixin, DeleteView):
+    permission_required = 'stages.delete_stage'
+    accept_global_perms = True
+
     form_class = StageForm
     template_name = 'stages/stage_confirm_delete.html'
 

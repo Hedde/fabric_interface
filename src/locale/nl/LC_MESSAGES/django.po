@@ -148,7 +148,7 @@ msgstr "Bewerk"
 
 #: fabric_interface/mixins.py:72
 msgid "Create"
-msgstr "Nieuwe"
+msgstr "Voeg toe"
 
 #: fabric_interface/models.py:20
 msgid "email address"

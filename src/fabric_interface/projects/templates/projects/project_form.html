@@ -35,9 +35,12 @@
                 {% endif %}
             </button>
             {% if action != 'create' %}
-                <a href="{% url 'project_delete' slug=object.slug %}" class="btn btn-danger pull-right">
-                    {% bootstrap_icon "remove" %} {% trans "Delete" %}
-                </a>
+                {% get_obj_perms request.user for project as "project_perms" %}
+                {% if "project_delete" in stage_perms or perms.projects.delete_project %}
+                    <a href="{% url 'project_delete' slug=object.slug %}" class="btn btn-danger pull-right">
+                        {% bootstrap_icon "remove" %} {% trans "Delete" %}
+                    </a>
+                {% endif %}
             {% endif %}
         {% endbuttons %}
     </form>
