@@ -12,7 +12,7 @@ This project is work in progress, there's no production-ready release available 
 .. image:: http://img.shields.io/paypal/donate.png?color=yellow
     :alt: paypal donate
     :scale: 100%
-    :target: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AM8PTNZGU6DZW
+    :target: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AU4TBGECBV7PN
 
 Documentation for this repository can be found at readthedocs.org_
 
