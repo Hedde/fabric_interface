@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-28 10:09+0000\n"
+"POT-Creation-Date: 2014-03-28 12:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,8 +53,7 @@ msgstr "Achternaam"
 msgid ""
 "This email address is already in use. Please supply a different email "
 "address."
-msgstr ""
-"Dit email adres bestaat al. Gebruik s.v.p. een ander email adres."
+msgstr "Dit email adres bestaat al. Gebruik s.v.p. een ander email adres."
 
 #: fabric_interface/forms.py:50
 msgid "The two password fields didn't match."
@@ -72,68 +71,96 @@ msgstr "Projecten"
 msgid "Can view host"
 msgstr "Mag host bekijken"
 
-#: fabric_interface/hosts/templates/hosts/host_confirm_delete.html:8
+#: fabric_interface/hosts/templates/hosts/host_confirm_delete.html:9
+#: fabric_interface/hosts/templates/hosts/host_detail.html:9
+#: fabric_interface/hosts/templates/hosts/host_form.html:9
+#: fabric_interface/projects/templates/projects/project_confirm_delete.html:9
+#: fabric_interface/projects/templates/projects/project_detail.html:9
+#: fabric_interface/projects/templates/projects/project_form.html:9
+#: fabric_interface/stages/templates/stages/stage_confirm_delete.html:9
+#: fabric_interface/stages/templates/stages/stage_detail.html:9
+#: fabric_interface/stages/templates/stages/stage_form.html:9
+#: fabric_interface/templates/fabric_interface/home.html:9
+#: fabric_interface/templates/fabric_interface/layouts/sidebar_left.html:15
+#: fabric_interface/templates/fabric_interface/users/user_confirm_delete.html:9
+#: fabric_interface/templates/fabric_interface/users/user_detail.html:9
+#: fabric_interface/templates/fabric_interface/users/user_form.html:9
+#: fabric_interface/templates/fabric_interface/users/user_permissions_form.html:9
+msgid "All projects"
+msgstr "Alle projecten"
+
+#: fabric_interface/hosts/templates/hosts/host_confirm_delete.html:12
+#: fabric_interface/hosts/templates/hosts/host_detail.html:12
+#: fabric_interface/hosts/templates/hosts/host_form.html:12
+#: fabric_interface/templates/fabric_interface/home.html:12
+#: fabric_interface/templates/fabric_interface/layouts/sidebar_left.html:18
+#: fabric_interface/templates/fabric_interface/users/user_confirm_delete.html:12
+#: fabric_interface/templates/fabric_interface/users/user_detail.html:12
+#: fabric_interface/templates/fabric_interface/users/user_form.html:12
+#: fabric_interface/templates/fabric_interface/users/user_permissions_form.html:12
+msgid "All hosts"
+msgstr "Alle hosts"
+
+#: fabric_interface/hosts/templates/hosts/host_confirm_delete.html:15
+#: fabric_interface/hosts/templates/hosts/host_detail.html:15
+#: fabric_interface/hosts/templates/hosts/host_form.html:15
+#: fabric_interface/templates/fabric_interface/home.html:15
+#: fabric_interface/templates/fabric_interface/layouts/sidebar_left.html:21
+#: fabric_interface/templates/fabric_interface/users/user_confirm_delete.html:15
+#: fabric_interface/templates/fabric_interface/users/user_detail.html:15
+#: fabric_interface/templates/fabric_interface/users/user_form.html:15
+#: fabric_interface/templates/fabric_interface/users/user_permissions_form.html:15
+msgid "All users"
+msgstr "Alle gebruikers"
+
+#: fabric_interface/hosts/templates/hosts/host_confirm_delete.html:20
 msgid "Delete host"
 msgstr "Mag host verwijderen"
 
-#: fabric_interface/hosts/templates/hosts/host_detail.html:8
+#: fabric_interface/hosts/templates/hosts/host_detail.html:20
 msgid "Host"
 msgstr "Host"
 
-#: fabric_interface/hosts/templates/hosts/host_detail.html:17
-#: fabric_interface/projects/templates/projects/project_detail.html:31
-#: fabric_interface/stages/templates/stages/stage_detail.html:35
-#: fabric_interface/templates/fabric_interface/users/user_detail.html:69
-msgid "Danger Zone"
+#: fabric_interface/hosts/templates/hosts/host_detail.html:27
+#: fabric_interface/projects/templates/projects/project_detail.html:32
+#: fabric_interface/stages/templates/stages/stage_detail.html:30
+msgid "Danger zone"
 msgstr "Danger Zone"
 
-#: fabric_interface/hosts/templates/hosts/host_detail.html:18
-#: fabric_interface/projects/templates/projects/project_detail.html:32
-#: fabric_interface/stages/templates/stages/stage_detail.html:36
-#: fabric_interface/templates/fabric_interface/users/user_detail.html:70
-msgid "Edit"
-msgstr "Bewerk"
-
-#: fabric_interface/hosts/templates/hosts/host_detail.html:19
-#: fabric_interface/hosts/templates/hosts/host_form.html:27
-#: fabric_interface/mixins.py:77
-#: fabric_interface/projects/templates/projects/project_detail.html:33
-#: fabric_interface/projects/templates/projects/project_form.html:27
-#: fabric_interface/stages/templates/stages/stage_detail.html:37
-#: fabric_interface/stages/templates/stages/stage_form.html:27
-#: fabric_interface/templates/fabric_interface/users/user_detail.html:72
-#: fabric_interface/templates/fabric_interface/users/user_form.html:79
-#: fabric_interface/templates/fabric_interface/users/user_permissions_form.html:79
-msgid "Delete"
-msgstr "Verwijder"
-
-#: fabric_interface/hosts/templates/hosts/host_form.html:8
+#: fabric_interface/hosts/templates/hosts/host_form.html:20
 msgid "Edit host"
 msgstr "Bewerk host"
 
-#: fabric_interface/hosts/templates/hosts/host_form.html:8
+#: fabric_interface/hosts/templates/hosts/host_form.html:20
 #: fabric_interface/templates/fabric_interface/panels/panel_hosts.html:19
-#: fabric_interface/templates/fabric_interface/users/user_confirm_delete.html:42
-#: fabric_interface/templates/fabric_interface/users/user_detail.html:42
-#: fabric_interface/templates/fabric_interface/users/user_form.html:42
-#: fabric_interface/templates/fabric_interface/users/user_permissions_form.html:42
 msgid "Add host"
 msgstr "Voeg host toe"
 
+#: fabric_interface/hosts/templates/hosts/host_form.html:39
+#: fabric_interface/mixins.py:77
+#: fabric_interface/projects/templates/projects/project_form.html:41
+#: fabric_interface/stages/templates/stages/stage_form.html:41
+#: fabric_interface/templates/fabric_interface/panels/panel_actions.html:21
+#: fabric_interface/templates/fabric_interface/users/user_detail.html:32
+#: fabric_interface/templates/fabric_interface/users/user_form.html:39
+#: fabric_interface/templates/fabric_interface/users/user_permissions_form.html:39
+msgid "Delete"
+msgstr "Verwijder"
+
 #: fabric_interface/hosts/views.py:37 fabric_interface/projects/views.py:40
-#: fabric_interface/stages/views.py:48
+#: fabric_interface/stages/views.py:54
 #, python-brace-format
 msgid "Created {model} '{slug}' succesfully."
 msgstr "{model} '{slug}' succesvol aangemaakt."
 
 #: fabric_interface/hosts/views.py:53 fabric_interface/projects/views.py:54
-#: fabric_interface/stages/views.py:76
+#: fabric_interface/stages/views.py:85
 #, python-brace-format
 msgid "Updated {model} '{slug}' succesfully."
 msgstr "{model} '{slug}' succesvol bewerkt."
 
 #: fabric_interface/hosts/views.py:72 fabric_interface/projects/views.py:71
-#: fabric_interface/stages/views.py:100
+#: fabric_interface/stages/views.py:112
 #, python-brace-format
 msgid "Deleted {model} '{slug}' succesfully."
 msgstr "{model} '{slug}' succesvol verwijderd."
@@ -166,43 +193,48 @@ msgstr "Actief"
 msgid "Can view project"
 msgstr "Mag project bekijken"
 
-#: fabric_interface/projects/templates/projects/project_confirm_delete.html:8
+#: fabric_interface/projects/templates/projects/project_confirm_delete.html:12
+#: fabric_interface/projects/templates/projects/project_detail.html:12
+#: fabric_interface/projects/templates/projects/project_form.html:12
+#: fabric_interface/stages/templates/stages/stage_confirm_delete.html:12
+#: fabric_interface/stages/templates/stages/stage_detail.html:12
+#: fabric_interface/stages/templates/stages/stage_form.html:12
+msgid "Available hosts"
+msgstr "Beschikbare hosts"
+
+#: fabric_interface/projects/templates/projects/project_confirm_delete.html:15
+#: fabric_interface/projects/templates/projects/project_detail.html:15
+#: fabric_interface/projects/templates/projects/project_form.html:15
+#: fabric_interface/stages/templates/stages/stage_confirm_delete.html:15
+#: fabric_interface/stages/templates/stages/stage_detail.html:15
+#: fabric_interface/stages/templates/stages/stage_form.html:15
+msgid "Privileged users"
+msgstr ""
+
+#: fabric_interface/projects/templates/projects/project_confirm_delete.html:20
 msgid "Delete project"
 msgstr "Verwijder project"
 
-#: fabric_interface/projects/templates/projects/project_detail.html:8
+#: fabric_interface/projects/templates/projects/project_detail.html:20
 msgid "Project"
 msgstr "Project"
 
-#: fabric_interface/projects/templates/projects/project_detail.html:19
-#: fabric_interface/stages/templates/stages/stage_detail.html:17
-msgid "Stages"
-msgstr "Stages"
-
-#: fabric_interface/projects/templates/projects/project_detail.html:25
+#: fabric_interface/projects/templates/projects/project_detail.html:29
 #: fabric_interface/stages/templates/stages/stage_detail.html:27
-#: fabric_interface/stages/templates/stages/stage_form.html:8
-msgid "Add stage"
-msgstr "Voeg stage toe"
+#: fabric_interface/stages/templates/stages/stage_form.html:51
+msgid "All stages"
+msgstr "Alle stages"
 
-#: fabric_interface/projects/templates/projects/project_form.html:8
+#: fabric_interface/projects/templates/projects/project_form.html:20
 msgid "Edit project"
 msgstr "Bewerk project"
 
-#: fabric_interface/projects/templates/projects/project_form.html:8
+#: fabric_interface/projects/templates/projects/project_form.html:20
 #: fabric_interface/templates/fabric_interface/panels/panel_projects.html:20
-#: fabric_interface/templates/fabric_interface/users/user_confirm_delete.html:29
-#: fabric_interface/templates/fabric_interface/users/user_detail.html:29
-#: fabric_interface/templates/fabric_interface/users/user_form.html:29
-#: fabric_interface/templates/fabric_interface/users/user_permissions_form.html:29
 msgid "Add project"
 msgstr "Voeg project toe"
 
 #: fabric_interface/stages/models.py:13
-#: fabric_interface/templates/fabric_interface/users/user_confirm_delete.html:38
-#: fabric_interface/templates/fabric_interface/users/user_detail.html:38
-#: fabric_interface/templates/fabric_interface/users/user_form.html:38
-#: fabric_interface/templates/fabric_interface/users/user_permissions_form.html:38
 msgid "Hosts"
 msgstr "Hosts"
 
@@ -210,44 +242,31 @@ msgstr "Hosts"
 msgid "Can view stage"
 msgstr "Mag stage bekijken"
 
-#: fabric_interface/stages/templates/stages/stage_confirm_delete.html:8
+#: fabric_interface/stages/templates/stages/stage_confirm_delete.html:20
 msgid "Delete stage"
 msgstr "Verwijder stage"
 
-#: fabric_interface/stages/templates/stages/stage_detail.html:8
+#: fabric_interface/stages/templates/stages/stage_detail.html:20
 msgid "Stage"
 msgstr "Stage"
 
-#: fabric_interface/stages/templates/stages/stage_form.html:8
+#: fabric_interface/stages/templates/stages/stage_form.html:20
 msgid "Edit stage"
 msgstr "Bewerk stage"
 
-#: fabric_interface/templates/fabric_interface/home.html:9
+#: fabric_interface/stages/templates/stages/stage_form.html:20
+#: fabric_interface/templates/fabric_interface/panels/panel_stages.html:38
+#: fabric_interface/templates/fabric_interface/panels/panel_stages.html:42
+msgid "Add stage"
+msgstr "Voeg stage toe"
+
+#: fabric_interface/templates/fabric_interface/home.html:21
 msgid "Fabric Interface"
 msgstr "Fabric Interface"
 
-#: fabric_interface/templates/fabric_interface/home.html:10
+#: fabric_interface/templates/fabric_interface/home.html:22
 msgid "DTAP deployments made easy."
 msgstr "DTAP deployments made easy"
-
-#: fabric_interface/templates/fabric_interface/layouts/sidebar_double.html:15
-#: fabric_interface/templates/fabric_interface/layouts/sidebar_left.html:15
-#: fabric_interface/templates/fabric_interface/users/user_confirm_delete.html:11
-#: fabric_interface/templates/fabric_interface/users/user_detail.html:11
-#: fabric_interface/templates/fabric_interface/users/user_form.html:11
-#: fabric_interface/templates/fabric_interface/users/user_permissions_form.html:11
-msgid "All projects"
-msgstr "Alle projecten"
-
-#: fabric_interface/templates/fabric_interface/layouts/sidebar_double.html:18
-#: fabric_interface/templates/fabric_interface/layouts/sidebar_left.html:18
-msgid "All hosts"
-msgstr "Alle hosts"
-
-#: fabric_interface/templates/fabric_interface/layouts/sidebar_double.html:21
-#: fabric_interface/templates/fabric_interface/layouts/sidebar_left.html:21
-msgid "All users"
-msgstr "Alle gebruikers"
 
 #: fabric_interface/templates/fabric_interface/login.html:5
 #: fabric_interface/templates/fabric_interface/login.html:19
@@ -266,6 +285,18 @@ msgstr "Uitloggen"
 msgid "Apply for account"
 msgstr "Vraag toegang aan"
 
+#: fabric_interface/templates/fabric_interface/panels/panel_actions.html:6
+#: fabric_interface/templates/fabric_interface/panels/panel_stage_actions.html:6
+#: fabric_interface/templates/fabric_interface/users/user_detail.html:29
+msgid "Danger Zone"
+msgstr "Danger Zone"
+
+#: fabric_interface/templates/fabric_interface/panels/panel_actions.html:12
+#: fabric_interface/templates/fabric_interface/panels/panel_stage_actions.html:11
+#: fabric_interface/templates/fabric_interface/users/user_detail.html:30
+msgid "Edit"
+msgstr "Bewerk"
+
 #: fabric_interface/templates/fabric_interface/panels/panel_hosts.html:14
 msgid "No hosts found."
 msgstr "Geen hosts gevonden."
@@ -274,39 +305,36 @@ msgstr "Geen hosts gevonden."
 msgid "No projects found."
 msgstr "Geen projecten gevonden."
 
+#: fabric_interface/templates/fabric_interface/panels/panel_stage_actions.html:18
+msgid "Remove"
+msgstr ""
+
+#: fabric_interface/templates/fabric_interface/panels/panel_stages.html:6
+msgid "Stages"
+msgstr "Stages"
+
 #: fabric_interface/templates/fabric_interface/panels/panel_users.html:13
-#: fabric_interface/templates/fabric_interface/users/user_confirm_delete.html:53
-#: fabric_interface/templates/fabric_interface/users/user_detail.html:53
-#: fabric_interface/templates/fabric_interface/users/user_form.html:53
-#: fabric_interface/templates/fabric_interface/users/user_form.html:60
-#: fabric_interface/templates/fabric_interface/users/user_permissions_form.html:53
+#: fabric_interface/templates/fabric_interface/users/user_form.html:20
 msgid "Add user"
 msgstr "Voeg gebruiker toe"
 
-#: fabric_interface/templates/fabric_interface/users/user_confirm_delete.html:49
-#: fabric_interface/templates/fabric_interface/users/user_detail.html:49
-#: fabric_interface/templates/fabric_interface/users/user_form.html:49
-#: fabric_interface/templates/fabric_interface/users/user_permissions_form.html:49
-msgid "Users"
-msgstr "Gebruikers"
-
-#: fabric_interface/templates/fabric_interface/users/user_confirm_delete.html:60
+#: fabric_interface/templates/fabric_interface/users/user_confirm_delete.html:20
 msgid "Delete user"
 msgstr "Verwijder gebruiker"
 
-#: fabric_interface/templates/fabric_interface/users/user_detail.html:60
+#: fabric_interface/templates/fabric_interface/users/user_detail.html:20
 msgid "User"
 msgstr "Gebruiker"
 
-#: fabric_interface/templates/fabric_interface/users/user_detail.html:71
+#: fabric_interface/templates/fabric_interface/users/user_detail.html:31
 msgid "Permissions"
 msgstr "Rechten"
 
-#: fabric_interface/templates/fabric_interface/users/user_form.html:60
+#: fabric_interface/templates/fabric_interface/users/user_form.html:20
 msgid "Edit user"
 msgstr "Bewerk gebruiker"
 
-#: fabric_interface/templates/fabric_interface/users/user_permissions_form.html:60
+#: fabric_interface/templates/fabric_interface/users/user_permissions_form.html:20
 msgid "Edit user permissions"
 msgstr "Bewerk gebruikersrechten"
 
@@ -336,3 +364,6 @@ msgstr "Engels"
 #: main/settings.py:136
 msgid "Dutch"
 msgstr "Nederlands"
+
+#~ msgid "Users"
+#~ msgstr "Gebruikers"
