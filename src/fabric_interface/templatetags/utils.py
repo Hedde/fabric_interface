@@ -23,4 +23,7 @@ def append(prefix, obj, separator="_"):
 
 @register.filter('contains')
 def contains_permission(perms, permission):
-    return bool(perms.user.user_permissions.filter(codename=permission))
+    return any([
+        perms.user.is_superuser,
+        perms.user.user_permissions.filter(codename=permission)
+    ])
