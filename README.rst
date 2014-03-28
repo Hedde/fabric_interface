@@ -1,7 +1,7 @@
 Welcome to Fabric Interface
 ===========================
 
-This project is work in progress, there's no production-ready release available currently.
+This project is work in progress, there's no production-ready release available yet. Want to speed things up? This is an open-source project with a spare time budget. Donations are very welcome and will be used solely to improve Fabric Interface :-)
 
 
 .. image:: https://travis-ci.org/Hedde/fabric_interface.svg?branch=develop
