@@ -12,7 +12,7 @@ from fabric_interface.formulae.models import (
 
 class FormulaForm(forms.ModelForm):
     code = forms.CharField(
-        widget=CodeMirrorTextarea(mode="python", theme="cobalt", config={'fixedGutter': True}),
+        widget=CodeMirrorTextarea(mode="python", theme="cobalt", config={'fixedGutter': True, 'indentUnit': 4}),
         required=False
     )
 
