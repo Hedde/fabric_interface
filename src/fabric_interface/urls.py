@@ -31,5 +31,5 @@ urlpatterns = patterns('',
     url('', include(UserViewSet().urls)),
 
     # develop
-    url('^test/$', include('fabric_interface.formulae.urls'))
+    url('^test/', include('fabric_interface.formulae.urls'))
 )

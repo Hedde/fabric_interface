@@ -28,7 +28,7 @@
 
 {% block sidebar_right %}
     <h4>{% trans "Testing..." %}</h4>
-    <hr />
+    <hr />{{ form.media }}
     <form method="post" role="form">
         {% csrf_token %}
         {% for field in form %}

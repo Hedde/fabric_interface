@@ -11,6 +11,7 @@ from mptt.models import MPTTModel
 
 class Formula(TimeStampedModel):
     name = models.CharField(max_length=128)
+    code = models.TextField()
 
     def __unicode__(self):
         return self.name
