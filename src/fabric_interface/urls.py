@@ -29,8 +29,8 @@ urlpatterns = patterns('',
     url(r'^profile/(?P<pk>\d+)/$', UserProfileUpdateView.as_view(), name='user_profile'),
 
     # application
+    url('', include(UserViewSet().urls)),
+    url('', include(FormulaViewSet().urls)),
     url('', include(ProjectViewSet().urls)),
     url('', include(HostViewSet().urls)),
-    url('', include(FormulaViewSet().urls)),
-    url('', include(UserViewSet().urls)),
 )

@@ -24,9 +24,11 @@ from fabric_interface.models import User
 from viewsets import ModelViewSet, PK
 
 
+# Auth views
 login = add_welcome_message(login)
 
 
+# Basic views
 class HomeView(BaseContextMixin, TemplateView):
     template_name = 'fabric_interface/home.html'
     title = _(u"Home")
@@ -36,6 +38,7 @@ class RedirectHomeView(RedirectView):
     url = reverse_lazy('home')
 
 
+# Profile views
 class UserProfileUpdateView(OwnerOnlyMixin, UpdateContextMixin, UpdateView):
     form_class = UserUpdateForm
     model = User
@@ -50,6 +53,7 @@ class UserProfileUpdateView(OwnerOnlyMixin, UpdateContextMixin, UpdateView):
         return reverse('user_profile', kwargs={'pk': self.object.pk})
 
 
+# User viewset
 class UserDetailView(SuperuserOnlyMixin, DetailContextMixin, DetailView):
     template_name = 'fabric_interface/users/user_detail.html'
 
