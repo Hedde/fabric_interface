@@ -3,12 +3,20 @@ __author__ = 'heddevanderheide'
 # Django specific
 from django.contrib.auth.decorators import user_passes_test
 from django.core.exceptions import PermissionDenied
+from django.http import Http404
 from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext_lazy as _
 
 # App specific
 from guardian.mixins import PermissionRequiredMixin
 from guardian.utils import get_403_or_None
+
+
+class OwnerOnlyMixin(object):
+    def dispatch(self, request, *args, **kwargs):
+        if not str(request.user.pk) == kwargs.get('pk'):
+            raise Http404
+        return super(OwnerOnlyMixin, self).dispatch(request, *args, **kwargs)
 
 
 class SuperuserOnlyMixin(object):

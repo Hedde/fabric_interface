@@ -8,7 +8,7 @@ from fabric_interface.formulae.views import FormulaViewSet
 from fabric_interface.hosts.views import HostViewSet
 from fabric_interface.projects.views import ProjectViewSet
 from fabric_interface.views import (
-    HomeView, UserViewSet, login
+    HomeView, UserProfileUpdateView, UserViewSet, login
 )
 
 
@@ -26,6 +26,7 @@ urlpatterns = patterns('',
     url(r'^logout/$', 'django.contrib.auth.views.logout', {
         'next_page': 'login'
     }, name='logout'),
+    url(r'^profile/(?P<pk>\d+)/$', UserProfileUpdateView.as_view(), name='user_profile'),
 
     # application
     url('', include(ProjectViewSet().urls)),

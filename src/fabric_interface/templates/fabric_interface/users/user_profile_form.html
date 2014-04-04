@@ -1,0 +1,35 @@
+{% extends "fabric_interface/layouts/sidebar_double.html" %}
+
+{% load i18n guardian_tags bootstrap3 %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block sidebar_left %}
+    {% block panel_projects %}
+        {% include "fabric_interface/panels/panel_projects.html" with panel_label=_("All projects") %}
+    {% endblock %}
+    {% block panel_hosts %}
+        {% include "fabric_interface/panels/panel_hosts.html" with panel_label=_("All hosts") %}
+    {% endblock %}
+    {% block panel_users %}
+        {% include "fabric_interface/panels/panel_users.html" with panel_label=_("All users") %}
+    {% endblock %}
+{% endblock %}
+
+{% block content %}
+    <h4>{% trans "Edit profile" %}</h4>
+    <hr />
+    <form method="post" role="form">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                {% bootstrap_field field %}
+            </div>
+        {% endfor %}
+        {% buttons %}
+            <button type="submit" class="btn btn-default">
+                {% bootstrap_icon "pencil" %} {{ title }}
+            </button>
+        {% endbuttons %}
+    </form>
+{% endblock %}

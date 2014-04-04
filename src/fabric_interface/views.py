@@ -17,7 +17,8 @@ from fabric_interface.forms import (
     UserForm, UserUpdateForm, UserPermissionsUpdateForm
 )
 from fabric_interface.mixins import (
-    SuperuserOnlyMixin, BaseContextMixin, DetailContextMixin, CreateContextMixin, UpdateContextMixin, DeleteContextMixin
+    OwnerOnlyMixin, SuperuserOnlyMixin, BaseContextMixin, DetailContextMixin, CreateContextMixin, UpdateContextMixin,
+    DeleteContextMixin
 )
 from fabric_interface.models import User
 from viewsets import ModelViewSet, PK
@@ -33,6 +34,20 @@ class HomeView(BaseContextMixin, TemplateView):
 
 class RedirectHomeView(RedirectView):
     url = reverse_lazy('home')
+
+
+class UserProfileUpdateView(OwnerOnlyMixin, UpdateContextMixin, UpdateView):
+    form_class = UserUpdateForm
+    model = User
+    template_name = 'fabric_interface/users/user_profile_form.html'
+
+    def get_success_url(self):
+        messages.add_message(
+            self.request, messages.SUCCESS, _(u"Updated profile succesfully.".format(
+                model=self.model._meta.verbose_name
+            ))
+        )
+        return reverse('user_profile', kwargs={'pk': self.object.pk})
 
 
 class UserDetailView(SuperuserOnlyMixin, DetailContextMixin, DetailView):
