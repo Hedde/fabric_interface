@@ -34,13 +34,11 @@
                     <span class="nav-header">{% trans "Configurations" %}</span>
                 </div>
                 <div class="panel-body">
-                    {% with object.get_configurations as configurations %}
-                        {% if configurations %}
-                            {% render_table configurations "fabric_interface/tables/bootstrap.html" %}
-                        {% else %}
-                            No configurations found.
-                        {% endif %}
-                    {% endwith %}
+                    {% if configurations %}
+                        {% render_table configurations "fabric_interface/tables/bootstrap.html" %}
+                    {% else %}
+                        No configurations found.
+                    {% endif %}
                 </div>
             </div>
         </div>

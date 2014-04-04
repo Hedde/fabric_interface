@@ -11,6 +11,7 @@ from django.views.generic import (
 
 # App specific
 from fabric_interface.projects.models import Project
+from fabric_interface.projects.tables import ConfigurationTable
 from fabric_interface.mixins import (
     DetailContextMixin, CreateContextMixin, UpdateContextMixin, DeleteContextMixin, PermissionRequiredMixin
 )
@@ -23,6 +24,14 @@ class StageDetailView(PermissionRequiredMixin, DetailContextMixin, DetailView):
 
     parent = None
     template_name = 'stages/stage_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(StageDetailView, self).get_context_data(**kwargs)
+
+        configurations = self.object.get_configurations()
+        context['configurations'] = ConfigurationTable(configurations) if configurations else None
+
+        return context
 
     def get_object(self, queryset=None):
         self.parent = super(StageDetailView, self).get_object(queryset)

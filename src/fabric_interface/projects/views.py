@@ -14,6 +14,8 @@ from fabric_interface.mixins import (
     DetailContextMixin, CreateContextMixin, UpdateContextMixin, DeleteContextMixin
 )
 from fabric_interface.projects.models import Project
+from fabric_interface.projects.tables import ConfigurationTable
+from fabric_interface.stages.tables import StageTable
 from fabric_interface.stages.views import (
     StageDetailView, StageCreateView, StageUpdateView, StageDeleteView
 )
@@ -29,7 +31,13 @@ class ProjectDetailView(PermissionRequiredMixin, DetailContextMixin, DetailView)
 
     def get_context_data(self, **kwargs):
         context = super(ProjectDetailView, self).get_context_data(**kwargs)
-        context['configurations'] = self.object.get_configurations()
+
+        stages = self.object.stage_set.all()
+        context['stages'] = StageTable(stages) if stages else None
+
+        configurations = self.object.get_configurations()
+        context['configurations'] = ConfigurationTable(configurations) if configurations else None
+
         return context
 
     def dispatch(self, request, *args, **kwargs):
