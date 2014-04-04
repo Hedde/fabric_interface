@@ -27,6 +27,11 @@ class ProjectDetailView(PermissionRequiredMixin, DetailContextMixin, DetailView)
     permission_required = 'projects.view_project'
     accept_global_perms = True
 
+    def get_context_data(self, **kwargs):
+        context = super(ProjectDetailView, self).get_context_data(**kwargs)
+        context['configurations'] = self.object.get_configurations()
+        return context
+
     def dispatch(self, request, *args, **kwargs):
         return super(ProjectDetailView, self).dispatch(request, *args, **kwargs)
 

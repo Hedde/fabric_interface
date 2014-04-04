@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'guardian',
     'bootstrap3',
     'reversion',
+    'django_tables2',
 
     # Application
     'fabric_interface',

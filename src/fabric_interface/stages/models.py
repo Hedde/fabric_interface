@@ -6,6 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 
 # App specific
 from django_extensions.db.models import TimeStampedModel
+from fabric_interface.projects.models import Configuration
 
 
 class Stage(TimeStampedModel):
@@ -24,3 +25,10 @@ class Stage(TimeStampedModel):
 
     def __unicode__(self):
         return self.role
+
+    def get_configurations(self):
+        # todo overloading
+        try:
+            return Configuration.objects.filter(stage__id=self.pk)
+        except Configuration.DoesNotExist:
+            return Configuration.objects.none()

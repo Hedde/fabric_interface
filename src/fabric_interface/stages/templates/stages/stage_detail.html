@@ -20,6 +20,15 @@
     <h4>{% trans "Stage" %} '{{ stage }}'</h4>
     <hr />
     {{ object }} HOSTS={{ object.hosts.all }}
+    <div class="row">
+        <div class="col-md-12">
+            {% if configurations %}
+                {{ configurations }}
+            {% else %}
+                No configurations found.
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}
 
 {% block sidebar_right %}
