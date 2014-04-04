@@ -21,7 +21,9 @@
     <h4>{% trans "Project" %} '{{ project }}'</h4>
     <hr />
     <div class="row">
-        <div class="col-md-12">{{ object }} SLUG={{ object.slug }}</div>
+        <div class="col-md-12">
+            <div class="well well-sm">{{ object }} SLUG={{ object.slug }}</div>
+        </div>
     </div>
     <div class="row">
         <div class="col-md-12">
@@ -48,7 +50,11 @@
                     <span class="nav-header">{% trans "Configurations" %}</span>
                 </div>
                 <div class="panel-body">
-                    {% render_table configurations "fabric_interface/tables/bootstrap.html" %}
+                    {% if configurations %}
+                        {% render_table configurations "fabric_interface/tables/bootstrap.html" %}
+                    {% else %}
+                        No stages found.
+                    {% endif %}
                 </div>
             </div>
         </div>

@@ -1,6 +1,7 @@
 {% extends "fabric_interface/layouts/sidebar_double.html" %}
 
 {% load i18n guardian_tags bootstrap3 %}
+{% load render_table from django_tables2 %}
 
 {% block title %}{{ title }}{% endblock %}
 
@@ -19,14 +20,29 @@
 {% block content %}
     <h4>{% trans "Stage" %} '{{ stage }}'</h4>
     <hr />
-    {{ object }} HOSTS={{ object.hosts.all }}
     <div class="row">
         <div class="col-md-12">
-            {% if configurations %}
-                {{ configurations }}
-            {% else %}
-                No configurations found.
-            {% endif %}
+            <div class="well well-sm">
+                {{ object }} HOSTS={{ object.hosts.all }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="nav-header">{% trans "Configurations" %}</span>
+                </div>
+                <div class="panel-body">
+                    {% with object.get_configurations as configurations %}
+                        {% if configurations %}
+                            {% render_table configurations "fabric_interface/tables/bootstrap.html" %}
+                        {% else %}
+                            No configurations found.
+                        {% endif %}
+                    {% endwith %}
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
