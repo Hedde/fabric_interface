@@ -9,7 +9,7 @@
 {% block base_content %}
     <div class="container">
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-12">
                 {% block messages %}
                     {% for message in messages %}
                         <div{% if message.tags %} class="alert alert-{{ message.tags }} alert-dismissable"{% endif %}>
@@ -18,6 +18,10 @@
                         </div>
                     {% endfor %}
                 {% endblock %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
                 {% block content %}{% endblock %}
             </div>
             <div class="col-sm-6">

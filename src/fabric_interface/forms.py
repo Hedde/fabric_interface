@@ -94,6 +94,7 @@ class UserPermissionsUpdateForm(forms.ModelForm):
         self.fields['user_permissions'].queryset = Permission.objects.filter(
             Q(content_type__model='project') |
             Q(content_type__model='stage') |
-            Q(content_type__model='host')
+            Q(content_type__model='host') |
+            Q(content_type__model='formula')
         )
         self.fields['user_permissions'].label = _(u"Global user permissions")

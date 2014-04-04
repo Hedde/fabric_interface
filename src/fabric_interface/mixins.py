@@ -25,7 +25,7 @@ class PermissionRequiredMixin(PermissionRequiredMixin):
 
         :param request: Original request.
         """
-        if self.action == 'create':
+        if hasattr(self, 'action') and self.action == 'create':
             obj = None
         else:
             obj = (hasattr(self, 'get_object') and self.get_object()

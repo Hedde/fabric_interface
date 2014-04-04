@@ -8,6 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.views.generic import (
     DetailView, CreateView, UpdateView, DeleteView
 )
+
 # App specific
 from fabric_interface.hosts.models import Host
 from fabric_interface.mixins import (

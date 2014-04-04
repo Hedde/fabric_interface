@@ -4,10 +4,12 @@ __author__ = 'heddevanderheide'
 from django.conf.urls import patterns, url, include
 
 # App specific
-from fabric_interface.views import HomeView, login
-from fabric_interface.projects.views import ProjectViewSet
+from fabric_interface.formulae.views import FormulaViewSet
 from fabric_interface.hosts.views import HostViewSet
-from fabric_interface.views import UserViewSet
+from fabric_interface.projects.views import ProjectViewSet
+from fabric_interface.views import (
+    HomeView, UserViewSet, login
+)
 
 
 urlpatterns = patterns('',
@@ -28,8 +30,6 @@ urlpatterns = patterns('',
     # application
     url('', include(ProjectViewSet().urls)),
     url('', include(HostViewSet().urls)),
+    url('', include(FormulaViewSet().urls)),
     url('', include(UserViewSet().urls)),
-
-    # develop
-    url('^test/', include('fabric_interface.formulae.urls'))
 )
