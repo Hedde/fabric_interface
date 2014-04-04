@@ -3,15 +3,14 @@ Todo's
 
 # Base
 
-* configuration views, models and templates
+* configuration views, models and templates, reverse urls configs
 * formulae/recipes views, models and templates
-* user models, views and templates
 * raise non field form errors in templates
 
 # Features
 
 * fabfile rendering using configuration inheritance and formulae ordering logic
-* fab execution (sub process)
+* fab execution (sub process) / logging / short polling
 * supressing stdout / verbosity levels
 
 # Release candidate requires
