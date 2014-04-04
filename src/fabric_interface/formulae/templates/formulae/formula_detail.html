@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block sidebar_right %}
-    <h4>{% trans "Update" %} {% trans "formulae" %}</h4>
+    <h4>{% trans "Update" %} {% trans "formula" %}</h4>
     <hr />{{ form.media }}
     <form action="{% url 'formula_update' slug=object.slug %}" method="post" role="form">
         {% csrf_token %}
