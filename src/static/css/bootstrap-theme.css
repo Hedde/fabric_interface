@@ -550,6 +550,12 @@
 {
     border-radius: 0;
 }
+.alert-demo
+{
+    margin: -15px -15px 20px;
+
+    border: 0;
+}
 pre
 {
     margin: 0;
@@ -559,10 +565,6 @@ pre
 .glassy
 {
     opacity: .7;
-}
-.table-superb
-{
-    margin: 0 -15px;
 }
 .table-superb .table th
 {
