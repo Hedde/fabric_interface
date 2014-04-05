@@ -1,0 +1,4 @@
+__author__ = 'heddevanderheide'
+
+# I know what I'm doing
+FABRIC_INTERFACE_DEMO = False

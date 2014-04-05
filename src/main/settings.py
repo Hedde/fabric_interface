@@ -122,6 +122,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.i18n",
     "django.contrib.messages.context_processors.messages",
 
+    "fabric_interface.context_processors.demo",
     "fabric_interface.context_processors.language",
     "fabric_interface.context_processors.footer",
     "fabric_interface.context_processors.users",

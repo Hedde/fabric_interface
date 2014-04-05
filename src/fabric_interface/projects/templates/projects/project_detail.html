@@ -34,6 +34,7 @@
                     <span class="nav-header">{% trans "Configurations" %}</span>
                 </div>
                 <div class="panel-body">
+                    {% if DEMO %}
                     <p class="small">
                         {% blocktrans %}
                             Configurations below will be available within formulae using the env prefix and can be
@@ -41,6 +42,7 @@
                         {% endblocktrans %}
                         <pre class="small">{% verbatim %}DEBUG = {{ env.DEBUG }}{% endverbatim %}</pre>
                     </p>
+                    {% endif %}
                     {% if configurations %}
                         {% render_table configurations %}
                     {% else %}

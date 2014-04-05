@@ -24,6 +24,12 @@ def users(request):
     return {}
 
 
+def demo(request):
+    return {
+        'DEMO': getattr(settings, 'FABRIC_INTERFACE_DEMO', True)
+    }
+
+
 def footer(request):
     """
     Adds configurable footer to the base template.
