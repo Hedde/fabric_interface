@@ -1,9 +1,8 @@
-from django.core.exceptions import ObjectDoesNotExist
-
 __author__ = 'heddevanderheide'
 
 # Django specific
 from django import forms
+from django.core.exceptions import ObjectDoesNotExist
 
 # App specific
 from fabric_interface.projects.models import Project, Configuration
