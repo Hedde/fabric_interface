@@ -1,0 +1,779 @@
+[
+{
+    "fields": {
+        "model": "permission",
+        "name": "permission",
+        "app_label": "auth"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 1
+},
+{
+    "fields": {
+        "model": "group",
+        "name": "group",
+        "app_label": "auth"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 2
+},
+{
+    "fields": {
+        "model": "user",
+        "name": "user",
+        "app_label": "fabric_interface"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 3
+},
+{
+    "fields": {
+        "model": "contenttype",
+        "name": "content type",
+        "app_label": "contenttypes"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 4
+},
+{
+    "fields": {
+        "model": "session",
+        "name": "session",
+        "app_label": "sessions"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 5
+},
+{
+    "fields": {
+        "model": "userobjectpermission",
+        "name": "user object permission",
+        "app_label": "guardian"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 6
+},
+{
+    "fields": {
+        "model": "groupobjectpermission",
+        "name": "group object permission",
+        "app_label": "guardian"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 7
+},
+{
+    "fields": {
+        "model": "revision",
+        "name": "revision",
+        "app_label": "reversion"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 8
+},
+{
+    "fields": {
+        "model": "version",
+        "name": "version",
+        "app_label": "reversion"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 9
+},
+{
+    "fields": {
+        "model": "project",
+        "name": "project",
+        "app_label": "projects"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 10
+},
+{
+    "fields": {
+        "model": "stage",
+        "name": "stage",
+        "app_label": "stages"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 11
+},
+{
+    "fields": {
+        "model": "host",
+        "name": "host",
+        "app_label": "hosts"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 12
+},
+{
+    "fields": {
+        "model": "configuration",
+        "name": "configuration",
+        "app_label": "configurations"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 13
+},
+{
+    "fields": {
+        "model": "formula",
+        "name": "formula",
+        "app_label": "formulae"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 14
+},
+{
+    "fields": {
+        "model": "formulaposition",
+        "name": "formula position",
+        "app_label": "formulae"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 15
+},
+{
+    "fields": {
+        "codename": "add_permission",
+        "name": "Can add permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 1
+},
+{
+    "fields": {
+        "codename": "change_permission",
+        "name": "Can change permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 2
+},
+{
+    "fields": {
+        "codename": "delete_permission",
+        "name": "Can delete permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 3
+},
+{
+    "fields": {
+        "codename": "add_group",
+        "name": "Can add group",
+        "content_type": [
+            "auth",
+            "group"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 4
+},
+{
+    "fields": {
+        "codename": "change_group",
+        "name": "Can change group",
+        "content_type": [
+            "auth",
+            "group"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 5
+},
+{
+    "fields": {
+        "codename": "delete_group",
+        "name": "Can delete group",
+        "content_type": [
+            "auth",
+            "group"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 6
+},
+{
+    "fields": {
+        "codename": "add_contenttype",
+        "name": "Can add content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 7
+},
+{
+    "fields": {
+        "codename": "change_contenttype",
+        "name": "Can change content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 8
+},
+{
+    "fields": {
+        "codename": "delete_contenttype",
+        "name": "Can delete content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 9
+},
+{
+    "fields": {
+        "codename": "add_session",
+        "name": "Can add session",
+        "content_type": [
+            "sessions",
+            "session"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 10
+},
+{
+    "fields": {
+        "codename": "change_session",
+        "name": "Can change session",
+        "content_type": [
+            "sessions",
+            "session"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 11
+},
+{
+    "fields": {
+        "codename": "delete_session",
+        "name": "Can delete session",
+        "content_type": [
+            "sessions",
+            "session"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 12
+},
+{
+    "fields": {
+        "codename": "add_userobjectpermission",
+        "name": "Can add user object permission",
+        "content_type": [
+            "guardian",
+            "userobjectpermission"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 13
+},
+{
+    "fields": {
+        "codename": "change_userobjectpermission",
+        "name": "Can change user object permission",
+        "content_type": [
+            "guardian",
+            "userobjectpermission"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 14
+},
+{
+    "fields": {
+        "codename": "delete_userobjectpermission",
+        "name": "Can delete user object permission",
+        "content_type": [
+            "guardian",
+            "userobjectpermission"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 15
+},
+{
+    "fields": {
+        "codename": "add_groupobjectpermission",
+        "name": "Can add group object permission",
+        "content_type": [
+            "guardian",
+            "groupobjectpermission"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 16
+},
+{
+    "fields": {
+        "codename": "change_groupobjectpermission",
+        "name": "Can change group object permission",
+        "content_type": [
+            "guardian",
+            "groupobjectpermission"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 17
+},
+{
+    "fields": {
+        "codename": "delete_groupobjectpermission",
+        "name": "Can delete group object permission",
+        "content_type": [
+            "guardian",
+            "groupobjectpermission"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 18
+},
+{
+    "fields": {
+        "codename": "add_revision",
+        "name": "Can add revision",
+        "content_type": [
+            "reversion",
+            "revision"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 19
+},
+{
+    "fields": {
+        "codename": "change_revision",
+        "name": "Can change revision",
+        "content_type": [
+            "reversion",
+            "revision"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 20
+},
+{
+    "fields": {
+        "codename": "delete_revision",
+        "name": "Can delete revision",
+        "content_type": [
+            "reversion",
+            "revision"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 21
+},
+{
+    "fields": {
+        "codename": "add_version",
+        "name": "Can add version",
+        "content_type": [
+            "reversion",
+            "version"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 22
+},
+{
+    "fields": {
+        "codename": "change_version",
+        "name": "Can change version",
+        "content_type": [
+            "reversion",
+            "version"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 23
+},
+{
+    "fields": {
+        "codename": "delete_version",
+        "name": "Can delete version",
+        "content_type": [
+            "reversion",
+            "version"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 24
+},
+{
+    "fields": {
+        "codename": "add_user",
+        "name": "Can add user",
+        "content_type": [
+            "fabric_interface",
+            "user"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 25
+},
+{
+    "fields": {
+        "codename": "change_user",
+        "name": "Can change user",
+        "content_type": [
+            "fabric_interface",
+            "user"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 26
+},
+{
+    "fields": {
+        "codename": "delete_user",
+        "name": "Can delete user",
+        "content_type": [
+            "fabric_interface",
+            "user"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 27
+},
+{
+    "fields": {
+        "codename": "add_project",
+        "name": "Can add project",
+        "content_type": [
+            "projects",
+            "project"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 28
+},
+{
+    "fields": {
+        "codename": "change_project",
+        "name": "Can change project",
+        "content_type": [
+            "projects",
+            "project"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 29
+},
+{
+    "fields": {
+        "codename": "delete_project",
+        "name": "Can delete project",
+        "content_type": [
+            "projects",
+            "project"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 30
+},
+{
+    "fields": {
+        "codename": "view_project",
+        "name": "Can view project",
+        "content_type": [
+            "projects",
+            "project"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 31
+},
+{
+    "fields": {
+        "codename": "add_stage",
+        "name": "Can add stage",
+        "content_type": [
+            "stages",
+            "stage"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 32
+},
+{
+    "fields": {
+        "codename": "change_stage",
+        "name": "Can change stage",
+        "content_type": [
+            "stages",
+            "stage"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 33
+},
+{
+    "fields": {
+        "codename": "delete_stage",
+        "name": "Can delete stage",
+        "content_type": [
+            "stages",
+            "stage"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 34
+},
+{
+    "fields": {
+        "codename": "view_stage",
+        "name": "Can view stage",
+        "content_type": [
+            "stages",
+            "stage"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 35
+},
+{
+    "fields": {
+        "codename": "add_host",
+        "name": "Can add host",
+        "content_type": [
+            "hosts",
+            "host"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 36
+},
+{
+    "fields": {
+        "codename": "change_host",
+        "name": "Can change host",
+        "content_type": [
+            "hosts",
+            "host"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 37
+},
+{
+    "fields": {
+        "codename": "delete_host",
+        "name": "Can delete host",
+        "content_type": [
+            "hosts",
+            "host"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 38
+},
+{
+    "fields": {
+        "codename": "view_host",
+        "name": "Can view host",
+        "content_type": [
+            "hosts",
+            "host"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 39
+},
+{
+    "fields": {
+        "codename": "add_configuration",
+        "name": "Can add configuration",
+        "content_type": [
+            "configurations",
+            "configuration"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 40
+},
+{
+    "fields": {
+        "codename": "change_configuration",
+        "name": "Can change configuration",
+        "content_type": [
+            "configurations",
+            "configuration"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 41
+},
+{
+    "fields": {
+        "codename": "delete_configuration",
+        "name": "Can delete configuration",
+        "content_type": [
+            "configurations",
+            "configuration"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 42
+},
+{
+    "fields": {
+        "codename": "view_configuration",
+        "name": "Can view configuration",
+        "content_type": [
+            "configurations",
+            "configuration"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 43
+},
+{
+    "fields": {
+        "codename": "add_formula",
+        "name": "Can add formula",
+        "content_type": [
+            "formulae",
+            "formula"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 44
+},
+{
+    "fields": {
+        "codename": "change_formula",
+        "name": "Can change formula",
+        "content_type": [
+            "formulae",
+            "formula"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 45
+},
+{
+    "fields": {
+        "codename": "delete_formula",
+        "name": "Can delete formula",
+        "content_type": [
+            "formulae",
+            "formula"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 46
+},
+{
+    "fields": {
+        "codename": "view_formula",
+        "name": "Can view formula",
+        "content_type": [
+            "formulae",
+            "formula"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 47
+},
+{
+    "fields": {
+        "codename": "add_formulaposition",
+        "name": "Can add formula position",
+        "content_type": [
+            "formulae",
+            "formulaposition"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 48
+},
+{
+    "fields": {
+        "codename": "change_formulaposition",
+        "name": "Can change formula position",
+        "content_type": [
+            "formulae",
+            "formulaposition"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 49
+},
+{
+    "fields": {
+        "codename": "delete_formulaposition",
+        "name": "Can delete formula position",
+        "content_type": [
+            "formulae",
+            "formulaposition"
+        ]
+    },
+    "model": "auth.permission",
+    "pk": 50
+},
+{
+    "fields": {
+        "family_name": "",
+        "first_name": "",
+        "groups": [],
+        "is_active": true,
+        "family_name_prefix": null,
+        "is_superuser": false,
+        "last_login": "2014-04-05T12:23:06.343Z",
+        "content_type": [
+            "fabric_interface",
+            "user"
+        ],
+        "user_permissions": [],
+        "password": "",
+        "email": "AnonymousUser",
+        "date_joined": "2014-04-05T12:23:06.343Z"
+    },
+    "model": "fabric_interface.user",
+    "pk": -1
+},
+{
+    "fields": {
+        "family_name": "",
+        "first_name": "",
+        "groups": [],
+        "is_active": true,
+        "family_name_prefix": null,
+        "is_superuser": true,
+        "last_login": "2014-04-05T12:23:06.222Z",
+        "content_type": [
+            "fabric_interface",
+            "user"
+        ],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$12000$IjwIAEo1dyBp$GA3RjMUUkCCqYoRUulw7rBbO1nGB9A/hTjfIaHRN4AM=",
+        "email": "admin@example.com",
+        "date_joined": "2014-04-05T12:23:06.222Z"
+    },
+    "model": "fabric_interface.user",
+    "pk": 1
+}
+]
