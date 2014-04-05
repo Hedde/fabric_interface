@@ -556,6 +556,10 @@ pre
 
     border-radius: 0;
 }
+.glassy
+{
+    opacity: .7;
+}
 .table-superb
 {
     margin: 0 -15px;
