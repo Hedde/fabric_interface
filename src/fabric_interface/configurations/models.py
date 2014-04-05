@@ -31,7 +31,7 @@ class Configuration(TimeStampedModel):
         )
 
     def __unicode__(self):
-        return '{}: {}'.format(self.key, self.value)
+        return '{}: {}'.format(self.key, self.get_value())
 
     def get_value(self):
         if self.data_type == constants.TYPE_BOOLEAN:

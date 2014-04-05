@@ -33,11 +33,7 @@
                                 <td {{ column.attrs.td.as_html }} title="{{ column.header|lower|capfirst }}">
                                     {# make sure sensitive values are not visible in detail pages #}
                                     {% if column.name == 'value' %}
-                                        {% if row.record.get_display_value %}
-                                            {{ row.record.get_display_value }}
-                                        {% else %}
-                                            {{ cell }}
-                                        {% endif %}
+                                        {{ row.record.get_display_value }}
                                     {% else %}
                                         {{ cell }}
                                     {% endif %}
