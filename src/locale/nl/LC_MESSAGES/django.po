@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-28 12:38+0000\n"
+"POT-Creation-Date: 2014-04-05 14:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,51 +17,224 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: fabric_interface/configurations/models.py:25
+msgid "Prompt me before deploying"
+msgstr ""
+
+#: fabric_interface/configurations/models.py:26
+msgid "Sensitive value that should not be logged"
+msgstr ""
+
+#: fabric_interface/configurations/models.py:30
+msgid "Can view configuration"
+msgstr "Mag configuratie bekijken"
+
+#: fabric_interface/configurations/tables.py:66
+msgid "ACTIONS"
+msgstr "ACTIES"
+
+#: fabric_interface/configurations/templates/configurations/configuration_confirm_delete.html:9
+#: fabric_interface/configurations/templates/configurations/configuration_detail.html:10
+#: fabric_interface/configurations/templates/configurations/configuration_form.html:9
+#: fabric_interface/hosts/templates/hosts/host_confirm_delete.html:9
+#: fabric_interface/hosts/templates/hosts/host_detail.html:9
+#: fabric_interface/hosts/templates/hosts/host_form.html:9
+#: fabric_interface/projects/templates/projects/project_confirm_delete.html:9
+#: fabric_interface/projects/templates/projects/project_detail.html:10
+#: fabric_interface/projects/templates/projects/project_form.html:9
+#: fabric_interface/stages/templates/stages/stage_confirm_delete.html:9
+#: fabric_interface/stages/templates/stages/stage_detail.html:10
+#: fabric_interface/stages/templates/stages/stage_form.html:9
+#: fabric_interface/templates/fabric_interface/home.html:9
+#: fabric_interface/templates/fabric_interface/layouts/sidebar_left.html:15
+#: fabric_interface/templates/fabric_interface/users/user_confirm_delete.html:9
+#: fabric_interface/templates/fabric_interface/users/user_detail.html:9
+#: fabric_interface/templates/fabric_interface/users/user_form.html:9
+#: fabric_interface/templates/fabric_interface/users/user_permissions_form.html:9
+#: fabric_interface/templates/fabric_interface/users/user_profile_form.html:9
+msgid "All projects"
+msgstr "Alle projecten"
+
+#: fabric_interface/configurations/templates/configurations/configuration_confirm_delete.html:12
+#: fabric_interface/configurations/templates/configurations/configuration_detail.html:13
+#: fabric_interface/configurations/templates/configurations/configuration_form.html:12
+#: fabric_interface/projects/templates/projects/project_confirm_delete.html:12
+#: fabric_interface/projects/templates/projects/project_detail.html:13
+#: fabric_interface/projects/templates/projects/project_form.html:12
+#: fabric_interface/stages/templates/stages/stage_confirm_delete.html:12
+#: fabric_interface/stages/templates/stages/stage_detail.html:13
+#: fabric_interface/stages/templates/stages/stage_form.html:12
+msgid "Available hosts"
+msgstr "Beschikbare hosts"
+
+#: fabric_interface/configurations/templates/configurations/configuration_confirm_delete.html:15
+#: fabric_interface/configurations/templates/configurations/configuration_detail.html:16
+#: fabric_interface/configurations/templates/configurations/configuration_form.html:15
+#: fabric_interface/projects/templates/projects/project_confirm_delete.html:15
+#: fabric_interface/projects/templates/projects/project_detail.html:16
+#: fabric_interface/projects/templates/projects/project_form.html:15
+#: fabric_interface/stages/templates/stages/stage_confirm_delete.html:15
+#: fabric_interface/stages/templates/stages/stage_detail.html:16
+#: fabric_interface/stages/templates/stages/stage_form.html:15
+msgid "Privileged users"
+msgstr ""
+
+#: fabric_interface/configurations/templates/configurations/configuration_confirm_delete.html:20
+msgid "Delete configuration"
+msgstr "Verwijder configuratie"
+
+#: fabric_interface/configurations/templates/configurations/configuration_detail.html:21
+msgid "Configuration"
+msgstr "Configuratie"
+
+#: fabric_interface/configurations/templates/configurations/configuration_detail.html:34
+#: fabric_interface/projects/templates/projects/project_detail.html:64
+#: fabric_interface/stages/templates/stages/stage_detail.html:53
+#: fabric_interface/stages/templates/stages/stage_form.html:51
+msgid "All stages"
+msgstr "Alle stages"
+
+#: fabric_interface/configurations/templates/configurations/configuration_detail.html:37
+#: fabric_interface/hosts/templates/hosts/host_detail.html:27
+#: fabric_interface/projects/templates/projects/project_detail.html:67
+#: fabric_interface/stages/templates/stages/stage_detail.html:56
+msgid "Danger zone"
+msgstr "Danger Zone"
+
+#: fabric_interface/configurations/templates/configurations/configuration_form.html:20
+msgid "Edit configuration"
+msgstr ""
+
+#: fabric_interface/configurations/templates/configurations/configuration_form.html:20
+msgid "Add configuration"
+msgstr ""
+
+#: fabric_interface/configurations/templates/configurations/configuration_form.html:41
+#: fabric_interface/hosts/templates/hosts/host_form.html:39
+#: fabric_interface/mixins.py:85
+#: fabric_interface/projects/templates/projects/project_form.html:41
+#: fabric_interface/stages/templates/stages/stage_form.html:41
+#: fabric_interface/templates/fabric_interface/panels/panel_actions.html:21
+#: fabric_interface/templates/fabric_interface/users/user_detail.html:32
+#: fabric_interface/templates/fabric_interface/users/user_form.html:39
+#: fabric_interface/templates/fabric_interface/users/user_permissions_form.html:39
+msgid "Delete"
+msgstr "Verwijder"
+
+#: fabric_interface/configurations/views.py:58
+#, python-brace-format
+msgid "Created {model} '{key}' successfully."
+msgstr "{model} '{key}' succesvol aangemaakt."
+
+#: fabric_interface/configurations/views.py:91
+#, python-brace-format
+msgid "Updated {model} '{key}' successfully."
+msgstr "{model} '{key}' succesvol bewerkt."
+
+#: fabric_interface/configurations/views.py:120
+#, python-brace-format
+msgid "Deleted {model} '{key}' successfully."
+msgstr "{model} '{key}' succesvol verwijderd."
+
 #: fabric_interface/decorators.py:21
 #, python-brace-format
 msgid "Welcome {user}!"
 msgstr "Welkom {user}!"
 
-#: fabric_interface/forms.py:16
+#: fabric_interface/forms.py:15
 msgid "E-mail"
 msgstr "E-mail"
 
-#: fabric_interface/forms.py:17
+#: fabric_interface/forms.py:16
 msgid "Password"
 msgstr "Wachtwoord"
 
-#: fabric_interface/forms.py:18
+#: fabric_interface/forms.py:17
 msgid "Password (again)"
 msgstr "Wachtwoord (controle)"
 
-#: fabric_interface/forms.py:20 fabric_interface/forms.py:64
+#: fabric_interface/forms.py:19 fabric_interface/forms.py:63
 #: fabric_interface/models.py:33
 msgid "First name"
 msgstr "Voornaam"
 
-#: fabric_interface/forms.py:21 fabric_interface/forms.py:65
+#: fabric_interface/forms.py:20 fabric_interface/forms.py:64
 #: fabric_interface/models.py:34
 msgid "Family name prefix"
 msgstr "Tussenvoegsel"
 
-#: fabric_interface/forms.py:22 fabric_interface/forms.py:66
+#: fabric_interface/forms.py:21 fabric_interface/forms.py:65
 #: fabric_interface/models.py:35
 msgid "Family name"
 msgstr "Achternaam"
 
-#: fabric_interface/forms.py:37
+#: fabric_interface/forms.py:36
 msgid ""
 "This email address is already in use. Please supply a different email "
 "address."
 msgstr "Dit email adres bestaat al. Gebruik s.v.p. een ander email adres."
 
-#: fabric_interface/forms.py:50
+#: fabric_interface/forms.py:49
 msgid "The two password fields didn't match."
 msgstr "De wachtwoorden komen niet overeen."
 
-#: fabric_interface/forms.py:100
+#: fabric_interface/forms.py:101
 msgid "Global user permissions"
 msgstr "Algemene gebruikersrechten"
+
+#: fabric_interface/formulae/models.py:20
+msgid "Can view formula"
+msgstr "Mag formule bekijken"
+
+#: fabric_interface/formulae/models.py:22
+#: fabric_interface/formulae/templates/formulae/formula_detail.html:8
+#: fabric_interface/formulae/templates/formulae/formula_detail.html:14
+#: fabric_interface/formulae/templates/formulae/formula_list.html:8
+#: fabric_interface/formulae/templates/formulae/formula_list.html:18
+msgid "formula"
+msgstr "formule"
+
+#: fabric_interface/formulae/models.py:23
+msgid "formulae"
+msgstr "formules"
+
+#: fabric_interface/formulae/templates/formulae/formula_detail.html:8
+#: fabric_interface/formulae/templates/formulae/formula_list.html:8
+#: fabric_interface/mixins.py:70
+msgid "View"
+msgstr "Bekijk"
+
+#: fabric_interface/formulae/templates/formulae/formula_detail.html:14
+#: fabric_interface/mixins.py:75
+msgid "Update"
+msgstr "Bewerk"
+
+#: fabric_interface/formulae/templates/formulae/formula_list.html:18
+#: fabric_interface/mixins.py:80
+msgid "Create"
+msgstr "Voeg toe"
+
+#: fabric_interface/formulae/templates/formulae/test.html:30
+msgid "Testing..."
+msgstr ""
+
+#: fabric_interface/formulae/views.py:54 fabric_interface/hosts/views.py:38
+#: fabric_interface/projects/views.py:52 fabric_interface/stages/views.py:63
+#, python-brace-format
+msgid "Created {model} '{slug}' successfully."
+msgstr "{model} '{slug}' succesvol aangemaakt."
+
+#: fabric_interface/formulae/views.py:75 fabric_interface/hosts/views.py:54
+#: fabric_interface/projects/views.py:66 fabric_interface/stages/views.py:94
+#, python-brace-format
+msgid "Updated {model} '{slug}' successfully."
+msgstr "{model} '{slug}' succesvol bewerkt."
+
+#: fabric_interface/formulae/views.py:94 fabric_interface/hosts/views.py:73
+#: fabric_interface/projects/views.py:83 fabric_interface/stages/views.py:121
+#, python-brace-format
+msgid "Deleted {model} '{slug}' successfully."
+msgstr "{model} '{slug}' succesvol verwijderd."
 
 #: fabric_interface/hosts/models.py:15
 msgid "Projects"
@@ -70,24 +243,6 @@ msgstr "Projecten"
 #: fabric_interface/hosts/models.py:19
 msgid "Can view host"
 msgstr "Mag host bekijken"
-
-#: fabric_interface/hosts/templates/hosts/host_confirm_delete.html:9
-#: fabric_interface/hosts/templates/hosts/host_detail.html:9
-#: fabric_interface/hosts/templates/hosts/host_form.html:9
-#: fabric_interface/projects/templates/projects/project_confirm_delete.html:9
-#: fabric_interface/projects/templates/projects/project_detail.html:9
-#: fabric_interface/projects/templates/projects/project_form.html:9
-#: fabric_interface/stages/templates/stages/stage_confirm_delete.html:9
-#: fabric_interface/stages/templates/stages/stage_detail.html:9
-#: fabric_interface/stages/templates/stages/stage_form.html:9
-#: fabric_interface/templates/fabric_interface/home.html:9
-#: fabric_interface/templates/fabric_interface/layouts/sidebar_left.html:15
-#: fabric_interface/templates/fabric_interface/users/user_confirm_delete.html:9
-#: fabric_interface/templates/fabric_interface/users/user_detail.html:9
-#: fabric_interface/templates/fabric_interface/users/user_form.html:9
-#: fabric_interface/templates/fabric_interface/users/user_permissions_form.html:9
-msgid "All projects"
-msgstr "Alle projecten"
 
 #: fabric_interface/hosts/templates/hosts/host_confirm_delete.html:12
 #: fabric_interface/hosts/templates/hosts/host_detail.html:12
@@ -98,6 +253,7 @@ msgstr "Alle projecten"
 #: fabric_interface/templates/fabric_interface/users/user_detail.html:12
 #: fabric_interface/templates/fabric_interface/users/user_form.html:12
 #: fabric_interface/templates/fabric_interface/users/user_permissions_form.html:12
+#: fabric_interface/templates/fabric_interface/users/user_profile_form.html:12
 msgid "All hosts"
 msgstr "Alle hosts"
 
@@ -110,6 +266,7 @@ msgstr "Alle hosts"
 #: fabric_interface/templates/fabric_interface/users/user_detail.html:15
 #: fabric_interface/templates/fabric_interface/users/user_form.html:15
 #: fabric_interface/templates/fabric_interface/users/user_permissions_form.html:15
+#: fabric_interface/templates/fabric_interface/users/user_profile_form.html:15
 msgid "All users"
 msgstr "Alle gebruikers"
 
@@ -121,12 +278,6 @@ msgstr "Mag host verwijderen"
 msgid "Host"
 msgstr "Host"
 
-#: fabric_interface/hosts/templates/hosts/host_detail.html:27
-#: fabric_interface/projects/templates/projects/project_detail.html:32
-#: fabric_interface/stages/templates/stages/stage_detail.html:30
-msgid "Danger zone"
-msgstr "Danger Zone"
-
 #: fabric_interface/hosts/templates/hosts/host_form.html:20
 msgid "Edit host"
 msgstr "Bewerk host"
@@ -135,47 +286,6 @@ msgstr "Bewerk host"
 #: fabric_interface/templates/fabric_interface/panels/panel_hosts.html:19
 msgid "Add host"
 msgstr "Voeg host toe"
-
-#: fabric_interface/hosts/templates/hosts/host_form.html:39
-#: fabric_interface/mixins.py:77
-#: fabric_interface/projects/templates/projects/project_form.html:41
-#: fabric_interface/stages/templates/stages/stage_form.html:41
-#: fabric_interface/templates/fabric_interface/panels/panel_actions.html:21
-#: fabric_interface/templates/fabric_interface/users/user_detail.html:32
-#: fabric_interface/templates/fabric_interface/users/user_form.html:39
-#: fabric_interface/templates/fabric_interface/users/user_permissions_form.html:39
-msgid "Delete"
-msgstr "Verwijder"
-
-#: fabric_interface/hosts/views.py:37 fabric_interface/projects/views.py:40
-#: fabric_interface/stages/views.py:54
-#, python-brace-format
-msgid "Created {model} '{slug}' succesfully."
-msgstr "{model} '{slug}' succesvol aangemaakt."
-
-#: fabric_interface/hosts/views.py:53 fabric_interface/projects/views.py:54
-#: fabric_interface/stages/views.py:85
-#, python-brace-format
-msgid "Updated {model} '{slug}' succesfully."
-msgstr "{model} '{slug}' succesvol bewerkt."
-
-#: fabric_interface/hosts/views.py:72 fabric_interface/projects/views.py:71
-#: fabric_interface/stages/views.py:112
-#, python-brace-format
-msgid "Deleted {model} '{slug}' succesfully."
-msgstr "{model} '{slug}' succesvol verwijderd."
-
-#: fabric_interface/mixins.py:62
-msgid "View"
-msgstr "Bekijk"
-
-#: fabric_interface/mixins.py:67
-msgid "Update"
-msgstr "Bewerk"
-
-#: fabric_interface/mixins.py:72
-msgid "Create"
-msgstr "Voeg toe"
 
 #: fabric_interface/models.py:20
 msgid "email address"
@@ -189,41 +299,50 @@ msgstr "datum aangemaakt"
 msgid "Active"
 msgstr "Actief"
 
-#: fabric_interface/projects/models.py:17
+#: fabric_interface/projects/constants.py:12
+msgid "Boolean"
+msgstr ""
+
+#: fabric_interface/projects/constants.py:13
+msgid "Number"
+msgstr ""
+
+#: fabric_interface/projects/constants.py:14
+msgid "String"
+msgstr ""
+
+#: fabric_interface/projects/models.py:18
 msgid "Can view project"
 msgstr "Mag project bekijken"
-
-#: fabric_interface/projects/templates/projects/project_confirm_delete.html:12
-#: fabric_interface/projects/templates/projects/project_detail.html:12
-#: fabric_interface/projects/templates/projects/project_form.html:12
-#: fabric_interface/stages/templates/stages/stage_confirm_delete.html:12
-#: fabric_interface/stages/templates/stages/stage_detail.html:12
-#: fabric_interface/stages/templates/stages/stage_form.html:12
-msgid "Available hosts"
-msgstr "Beschikbare hosts"
-
-#: fabric_interface/projects/templates/projects/project_confirm_delete.html:15
-#: fabric_interface/projects/templates/projects/project_detail.html:15
-#: fabric_interface/projects/templates/projects/project_form.html:15
-#: fabric_interface/stages/templates/stages/stage_confirm_delete.html:15
-#: fabric_interface/stages/templates/stages/stage_detail.html:15
-#: fabric_interface/stages/templates/stages/stage_form.html:15
-msgid "Privileged users"
-msgstr ""
 
 #: fabric_interface/projects/templates/projects/project_confirm_delete.html:20
 msgid "Delete project"
 msgstr "Verwijder project"
 
-#: fabric_interface/projects/templates/projects/project_detail.html:20
+#: fabric_interface/projects/templates/projects/project_detail.html:21
 msgid "Project"
 msgstr "Project"
 
-#: fabric_interface/projects/templates/projects/project_detail.html:29
-#: fabric_interface/stages/templates/stages/stage_detail.html:27
-#: fabric_interface/stages/templates/stages/stage_form.html:51
-msgid "All stages"
-msgstr "Alle stages"
+#: fabric_interface/projects/templates/projects/project_detail.html:34
+#: fabric_interface/stages/templates/stages/stage_detail.html:34
+msgid "Configurations"
+msgstr "Configuraties"
+
+#: fabric_interface/projects/templates/projects/project_detail.html:40
+msgid ""
+"\n"
+"                                    Configurations below will be available "
+"within formulae using the env prefix and can be\n"
+"                                    overwritten by a stage configuration, e."
+"g.\n"
+"                                "
+msgstr ""
+"\n"
+"                                    Configuraties hier beneden zullen beschikbaar "
+"zijn in formules via de env prefix en kunnen\n"
+"                                    worden overschreven door een stage configuratie, e."
+"g.\n"
+"                                "
 
 #: fabric_interface/projects/templates/projects/project_form.html:20
 msgid "Edit project"
@@ -234,11 +353,11 @@ msgstr "Bewerk project"
 msgid "Add project"
 msgstr "Voeg project toe"
 
-#: fabric_interface/stages/models.py:13
+#: fabric_interface/stages/models.py:14
 msgid "Hosts"
 msgstr "Hosts"
 
-#: fabric_interface/stages/models.py:19
+#: fabric_interface/stages/models.py:20
 msgid "Can view stage"
 msgstr "Mag stage bekijken"
 
@@ -246,7 +365,7 @@ msgstr "Mag stage bekijken"
 msgid "Delete stage"
 msgstr "Verwijder stage"
 
-#: fabric_interface/stages/templates/stages/stage_detail.html:20
+#: fabric_interface/stages/templates/stages/stage_detail.html:21
 msgid "Stage"
 msgstr "Stage"
 
@@ -274,28 +393,44 @@ msgid "Login"
 msgstr "Inloggen"
 
 #: fabric_interface/templates/fabric_interface/navigation.html:18
+msgid "Formulae"
+msgstr "Formules"
+
+#: fabric_interface/templates/fabric_interface/navigation.html:25
 msgid "Documentation"
 msgstr "Documentatie"
 
-#: fabric_interface/templates/fabric_interface/navigation.html:27
+#: fabric_interface/templates/fabric_interface/navigation.html:45
+#: fabric_interface/templates/fabric_interface/users/user_profile_form.html:20
+msgid "Edit profile"
+msgstr "Bewerk profiel"
+
+#: fabric_interface/templates/fabric_interface/navigation.html:47
 msgid "Logout"
 msgstr "Uitloggen"
 
-#: fabric_interface/templates/fabric_interface/navigation.html:37
+#: fabric_interface/templates/fabric_interface/navigation.html:51
 msgid "Apply for account"
 msgstr "Vraag toegang aan"
 
 #: fabric_interface/templates/fabric_interface/panels/panel_actions.html:6
+#: fabric_interface/templates/fabric_interface/panels/panel_configuration_actions.html:6
 #: fabric_interface/templates/fabric_interface/panels/panel_stage_actions.html:6
 #: fabric_interface/templates/fabric_interface/users/user_detail.html:29
 msgid "Danger Zone"
 msgstr "Danger Zone"
 
 #: fabric_interface/templates/fabric_interface/panels/panel_actions.html:12
+#: fabric_interface/templates/fabric_interface/panels/panel_configuration_actions.html:11
 #: fabric_interface/templates/fabric_interface/panels/panel_stage_actions.html:11
 #: fabric_interface/templates/fabric_interface/users/user_detail.html:30
 msgid "Edit"
 msgstr "Bewerk"
+
+#: fabric_interface/templates/fabric_interface/panels/panel_configuration_actions.html:18
+#: fabric_interface/templates/fabric_interface/panels/panel_stage_actions.html:18
+msgid "Remove"
+msgstr "Verwijder"
 
 #: fabric_interface/templates/fabric_interface/panels/panel_hosts.html:14
 msgid "No hosts found."
@@ -304,10 +439,6 @@ msgstr "Geen hosts gevonden."
 #: fabric_interface/templates/fabric_interface/panels/panel_projects.html:15
 msgid "No projects found."
 msgstr "Geen projecten gevonden."
-
-#: fabric_interface/templates/fabric_interface/panels/panel_stage_actions.html:18
-msgid "Remove"
-msgstr ""
 
 #: fabric_interface/templates/fabric_interface/panels/panel_stages.html:6
 msgid "Stages"
@@ -338,32 +469,33 @@ msgstr "Bewerk gebruiker"
 msgid "Edit user permissions"
 msgstr "Bewerk gebruikersrechten"
 
-#: fabric_interface/views.py:31
+#: fabric_interface/views.py:34
 msgid "Home"
 msgstr "Home"
 
 #: fabric_interface/views.py:49
+msgid "Updated profile successfully."
+msgstr "Profiel succesvol bewerkt."
+
+#: fabric_interface/views.py:68
 #, python-brace-format
-msgid "Created {model} '{pk}' succesfully."
+msgid "Created {model} '{pk}' successfully."
 msgstr "{model} '{pk}' succesvol aangemaakt."
 
-#: fabric_interface/views.py:63 fabric_interface/views.py:77
+#: fabric_interface/views.py:82 fabric_interface/views.py:96
 #, python-brace-format
-msgid "Updated {model} '{pk}' succesfully."
+msgid "Updated {model} '{pk}' successfully."
 msgstr "{model} '{pk}' succesvol bewerkt."
 
-#: fabric_interface/views.py:94
+#: fabric_interface/views.py:113
 #, python-brace-format
-msgid "Deleted {model} '{pk}' succesfully."
+msgid "Deleted {model} '{pk}' successfully."
 msgstr "{model} '{pk}' succesvol verwijderd."
 
-#: main/settings.py:135
+#: main/settings.py:142
 msgid "English"
 msgstr "Engels"
 
-#: main/settings.py:136
+#: main/settings.py:143
 msgid "Dutch"
 msgstr "Nederlands"
-
-#~ msgid "Users"
-#~ msgstr "Gebruikers"
