@@ -18,8 +18,8 @@ class ConfigurationForm(forms.ModelForm):
         model = Configuration
 
     def __init__(self, *args, **kwargs):
-        self.project_queryset = Project.objects.filter(slug=kwargs.pop('project_slug'))
-        self.stage_queryset = Stage.objects.filter(slug=kwargs.pop('stage_slug'))
+        self.project_queryset = Project.objects.filter(slug=kwargs.pop('project_slug', None))
+        self.stage_queryset = Stage.objects.filter(slug=kwargs.pop('stage_slug', None))
 
         super(ConfigurationForm, self).__init__(*args, **kwargs)
 
