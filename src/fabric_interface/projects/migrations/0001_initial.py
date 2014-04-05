@@ -20,9 +20,7 @@ class Migration(migrations.Migration):
                 ('slug', models.SlugField(unique=True)),
             ],
             options={
-                u'ordering': ('-modified', '-created'),
-                u'abstract': False,
-                u'get_latest_by': 'modified',
+                u'permissions': (('view_project', u'Can view project'),),
             },
             bases=(models.Model,),
         ),

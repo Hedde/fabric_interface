@@ -7,7 +7,7 @@ import django_extensions.db.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('stages', '__first__'),
+        ('stages', '0001_initial'),
         ('projects', '0001_initial'),
     ]
 
@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
                 ('value', models.CharField(max_length=500, null=True, blank=True)),
                 ('value_number', models.FloatField(default=0, null=True, verbose_name='Value', blank=True)),
                 ('value_boolean', models.BooleanField(default=False, verbose_name='Value')),
-                ('data_type', models.CharField(default='STRING', max_length=10, null=True, blank=True, choices=[('BOOLEAN', 'Boolean'), ('NUMBER', 'Number'), ('STRING', 'String')])),
+                ('data_type', models.CharField(default='STRING', max_length=10, null=True, blank=True, choices=[('BOOLEAN', u'Boolean'), ('NUMBER', u'Number'), ('STRING', u'String')])),
                 ('prompt', models.BooleanField(default=False, help_text=u'Prompt me before deploying')),
                 ('sensitive_value', models.BooleanField(default=False, help_text=u'Sensitive value that should not be logged')),
             ],

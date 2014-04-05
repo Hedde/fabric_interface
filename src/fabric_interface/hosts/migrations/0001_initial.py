@@ -23,9 +23,7 @@ class Migration(migrations.Migration):
                 ('projects', models.ManyToManyField(to='projects.Project', null=True, verbose_name=u'Projects', blank=True)),
             ],
             options={
-                u'ordering': ('-modified', '-created'),
-                u'abstract': False,
-                u'get_latest_by': 'modified',
+                u'permissions': (('view_host', u'Can view host'),),
             },
             bases=(models.Model,),
         ),

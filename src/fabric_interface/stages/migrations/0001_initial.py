@@ -25,6 +25,7 @@ class Migration(migrations.Migration):
             ],
             options={
                 u'unique_together': set([('project', 'slug')]),
+                u'permissions': (('view_stage', u'Can view stage'),),
             },
             bases=(models.Model,),
         ),
