@@ -28,7 +28,7 @@ Quickstart
     $ cd fabric_interface
     $ virtualenv venv
     $ . venv/bin/activate
-    $ pip install -r src/requirements.txt
+    $ pip install -r requirements.txt
     $ redis-server  (or overwrite cache settings in a local_settings.py)
 
 2. Migrate db::
