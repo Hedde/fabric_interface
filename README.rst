@@ -18,7 +18,30 @@ Documentation for this repository can be found at readthedocs.org_
 
 .. _readthedocs.org: http://fabric-interface.readthedocs.org/en/latest/
 
-Example
+
+Quickstart
+----------
+
+1. Install::
+
+    $ git clone https://github.com/Hedde/fabric_interface
+    $ cd fabric_interface
+    $ virtualenv venv
+    $ . venv/bin/activate
+    $ pip install -r src/requirements.txt
+    $ redis-server  (or overwrite cache settings in a local_settings.py)
+
+2. Migrate db::
+
+    $ (venv)python manage.py migrate
+
+3. Run::
+
+    $ (venv)python manage.py runserver
+
+
+Screenshots
+-----------
 
 .. image:: http://s9.postimg.org/8bworvcov/example_2.jpg
     :alt: project screen
