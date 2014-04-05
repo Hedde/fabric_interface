@@ -1,0 +1,23 @@
+{% load i18n guardian_tags utils %}
+
+<!-- panel/danger_zone -->
+<div class="well well-sm">
+    <ul class="nav nav-list">
+        <li class="nav-header">{% trans "Danger Zone" %}</li>
+        {% get_obj_perms request.user for configuration as "configuration_perms" %}
+        {% if "project_configuration_change" in configuration_perms or perms|contains:"change_configuration" %}
+            <li>
+                <a href="{% url "project_configuration_update" slug=object.project.slug pk=object.pk %}">
+                    {% trans "Edit" %}
+                </a>
+            </li>
+        {% endif %}
+        {% if "project_configuration_delete" in configuration_perms or perms|contains:"delete_configuration" %}
+            <li>
+                <a href="{% url "project_configuration_delete" slug=object.project.slug pk=object.pk %}">
+                    {% trans "Remove" %}
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+</div>

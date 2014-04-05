@@ -10,17 +10,20 @@ from django.views.generic import (
 )
 
 # App specific
+from fabric_interface.configurations.views import (
+    ConfigurationDetailView, ConfigurationCreateView, ConfigurationUpdateView, ConfigurationDeleteView
+)
+from fabric_interface.configurations.tables import ConfigurationTable
 from fabric_interface.mixins import (
     DetailContextMixin, CreateContextMixin, UpdateContextMixin, DeleteContextMixin
 )
 from fabric_interface.projects.models import Project
-from fabric_interface.projects.tables import ConfigurationTable
 from fabric_interface.stages.views import (
     StageDetailView, StageCreateView, StageUpdateView, StageDeleteView
 )
 from fabric_interface.mixins import PermissionRequiredMixin
 from fabric_interface.views import RedirectHomeView
-from viewsets import ModelViewSet, SLUG
+from viewsets import ModelViewSet, SLUG, PK
 from viewsets.patterns import PLACEHOLDER_PATTERN
 
 
@@ -46,7 +49,7 @@ class ProjectCreateView(PermissionRequiredMixin, CreateContextMixin, CreateView)
 
     def get_success_url(self):
         messages.add_message(
-            self.request, messages.SUCCESS, _(u"Created {model} '{slug}' succesfully.".format(
+            self.request, messages.SUCCESS, _(u"Created {model} '{slug}' successfully.".format(
                 model=self.model._meta.verbose_name,
                 slug=self.object.slug
             ))
@@ -60,7 +63,7 @@ class ProjectUpdateView(PermissionRequiredMixin, UpdateContextMixin, UpdateView)
 
     def get_success_url(self):
         messages.add_message(
-            self.request, messages.SUCCESS, _(u"Updated {model} '{slug}' succesfully.".format(
+            self.request, messages.SUCCESS, _(u"Updated {model} '{slug}' successfully.".format(
                 model=self.model._meta.verbose_name,
                 slug=self.object.slug
             ))
@@ -77,7 +80,7 @@ class ProjectDeleteView(PermissionRequiredMixin, DeleteContextMixin, DeleteView)
         success_url = self.get_success_url()
 
         messages.add_message(
-            self.request, messages.SUCCESS, _(u"Deleted {model} '{slug}' succesfully.".format(
+            request, messages.SUCCESS, _(u"Deleted {model} '{slug}' successfully.".format(
                 model=self.model._meta.verbose_name,
                 slug=self.object.slug
             ))
@@ -97,6 +100,28 @@ class ProjectViewSet(ModelViewSet):
         self.views[b'create_view']['view'] = ProjectCreateView
         self.views[b'update_view']['view'] = ProjectUpdateView
         self.views[b'delete_view']['view'] = ProjectDeleteView
+
+        # Configuration CRUD
+        self.views[b'configuration_create_view'] = {
+            b'view': ConfigurationCreateView,
+            b'pattern': PLACEHOLDER_PATTERN + br'/configuration/create/',
+            b'name': b'configuration_create',
+        }
+        self.views[b'configuration_update_view'] = {
+            b'view': ConfigurationUpdateView,
+            b'pattern': PLACEHOLDER_PATTERN + br'/configuration/' + PK + br'/update/',
+            b'name': b'configuration_update',
+        }
+        self.views[b'configuration_delete_view'] = {
+            b'view': ConfigurationDeleteView,
+            b'pattern': PLACEHOLDER_PATTERN + br'/configuration/' + PK + br'/delete/',
+            b'name': b'configuration_delete',
+        }
+        self.views[b'configuration_view'] = {
+            b'view': ConfigurationDetailView,
+            b'pattern': PLACEHOLDER_PATTERN + br'/configuration/' + PK,
+            b'name': b'configuration_detail',
+        }
 
         # Stage CRUD
         self.views[b'stage_create_view'] = {

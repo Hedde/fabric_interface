@@ -35,7 +35,7 @@ class HostCreateView(PermissionRequiredMixin, CreateContextMixin, CreateView):
 
     def get_success_url(self):
         messages.add_message(
-            self.request, messages.SUCCESS, _(u"Created {model} '{slug}' succesfully.".format(
+            self.request, messages.SUCCESS, _(u"Created {model} '{slug}' successfully.".format(
                 model=self.model._meta.verbose_name,
                 slug=self.object.slug
             ))
@@ -51,7 +51,7 @@ class HostUpdateView(PermissionRequiredMixin, UpdateContextMixin, UpdateView):
 
     def get_success_url(self):
         messages.add_message(
-            self.request, messages.SUCCESS, _(u"Updated {model} '{slug}' succesfully.".format(
+            self.request, messages.SUCCESS, _(u"Updated {model} '{slug}' successfully.".format(
                 model=self.model._meta.verbose_name,
                 slug=self.object.slug
             ))
@@ -70,7 +70,7 @@ class HostDeleteView(PermissionRequiredMixin, DeleteContextMixin, DeleteView):
         success_url = self.get_success_url()
 
         messages.add_message(
-            self.request, messages.SUCCESS, _(u"Deleted {model} '{slug}' succesfully.".format(
+            request, messages.SUCCESS, _(u"Deleted {model} '{slug}' successfully.".format(
                 model=self.model._meta.verbose_name,
                 slug=self.object.slug
             ))

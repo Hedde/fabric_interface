@@ -18,31 +18,12 @@
 {% endblock %}
 
 {% block content %}
-    <h4>{% trans "Stage" %} '{{ stage }}'</h4>
+    <h4>{% trans "Configuration" %} '{{ configuration }}'</h4>
     <hr />
     <div class="row">
         <div class="col-md-12">
             <div class="well well-sm">
-                {{ object }} HOSTS={{ object.hosts.all }}
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <span class="nav-header">{% trans "Configurations" %}</span>
-                </div>
-                <div class="panel-body">
-                    {% if configurations %}
-                        {% render_table configurations "fabric_interface/tables/bootstrap.html" %}
-                    {% else %}
-                        No configurations found.
-                    {% endif %}
-                    <a href="{% url 'project_configuration_create' slug=object.project.slug %}?stage={{ object.slug }}" class="btn btn-sm">
-                        <i class="glyphicon glyphicon-plus"></i> Add configuration  {# todo label #}
-                    </a>
-                </div>
+                {{ object }}
             </div>
         </div>
     </div>
@@ -53,6 +34,6 @@
         {% include "fabric_interface/panels/panel_stages.html" with panel_label=_("All stages") %}
     {% endblock %}
     {% block panel_actions %}
-        {% include "fabric_interface/panels/panel_stage_actions.html" with panel_label=_("Danger zone") %}
+        {% include "fabric_interface/panels/panel_configuration_actions.html" with panel_label=_("Danger zone") %}
     {% endblock %}
 {% endblock %}

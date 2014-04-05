@@ -1,7 +1,8 @@
-{# Originally written by Dylan Verheul, source: https://gist.github.com/dyve/5458209 #}
+{# Originally written by Dylan Verheul, edited by Hedde van der Heide, source: https://gist.github.com/dyve/5458209 #}
 
 {% load querystring from django_tables2 %}
 {% load trans blocktrans from i18n %}
+{% load debug %}
 
 {% block table %}
     <table class="table table-striped"{% if table.attrs %} {{ table.attrs.as_html }}{% endif %}>
@@ -24,11 +25,22 @@
         {% endblock table.thead %}
         {% block table.tbody %}
             <tbody>
-            {% for row in table.page.object_list|default:table.rows %} {# support pagination #}
+            {% for row in table.page.object_list|default:table.rows %}
                 {% block table.tbody.row %}
                     <tr class="{% cycle "odd" "even" %}">
                         {% for column, cell in row.items %}
-                            <td {{ column.attrs.td.as_html }}>{{ cell }}</td>
+                            <td {{ column.attrs.td.as_html }}>
+                                {# make sure sensitive values are not visible in detail pages #}
+                                {% if column.name == 'value' %}
+                                    {% if row.record.get_display_value %}
+                                        {{ row.record.get_display_value }}
+                                    {% else %}
+                                        {{ cell }}
+                                    {% endif %}
+                                {% else %}
+                                    {{ cell }}
+                                {% endif %}
+                            </td>
                         {% endfor %}
                     </tr>
                 {% endblock table.tbody.row %}

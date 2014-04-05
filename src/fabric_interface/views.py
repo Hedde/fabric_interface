@@ -46,7 +46,7 @@ class UserProfileUpdateView(OwnerOnlyMixin, UpdateContextMixin, UpdateView):
 
     def get_success_url(self):
         messages.add_message(
-            self.request, messages.SUCCESS, _(u"Updated profile succesfully.".format(
+            self.request, messages.SUCCESS, _(u"Updated profile successfully.".format(
                 model=self.model._meta.verbose_name
             ))
         )
@@ -65,7 +65,7 @@ class UserCreateView(SuperuserOnlyMixin, CreateContextMixin, CreateView):
 
     def get_success_url(self):
         messages.add_message(
-            self.request, messages.SUCCESS, _(u"Created {model} '{pk}' succesfully.".format(
+            self.request, messages.SUCCESS, _(u"Created {model} '{pk}' successfully.".format(
                 model=self.model._meta.verbose_name,
                 pk=self.object.pk
             ))
@@ -79,7 +79,7 @@ class UserUpdateView(SuperuserOnlyMixin, UpdateContextMixin, UpdateView):
 
     def get_success_url(self):
         messages.add_message(
-            self.request, messages.SUCCESS, _(u"Updated {model} '{pk}' succesfully.".format(
+            self.request, messages.SUCCESS, _(u"Updated {model} '{pk}' successfully.".format(
                 model=self.model._meta.verbose_name,
                 pk=self.object.pk
             ))
@@ -93,7 +93,7 @@ class UserPermissionsUpdateView(SuperuserOnlyMixin, UpdateContextMixin, UpdateVi
 
     def get_success_url(self):
         messages.add_message(
-            self.request, messages.SUCCESS, _(u"Updated {model} '{pk}' succesfully.".format(
+            self.request, messages.SUCCESS, _(u"Updated {model} '{pk}' successfully.".format(
                 model=self.model._meta.verbose_name,
                 pk=self.object.pk
             ))
@@ -110,7 +110,7 @@ class UserDeleteView(SuperuserOnlyMixin, DeleteContextMixin, DeleteView):
         success_url = self.get_success_url()
 
         messages.add_message(
-            self.request, messages.SUCCESS, _(u"Deleted {model} '{pk}' succesfully.".format(
+            self.request, messages.SUCCESS, _(u"Deleted {model} '{pk}' successfully.".format(
                 model=self.model._meta.verbose_name,
                 pk=self.object.pk
             ))

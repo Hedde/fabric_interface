@@ -30,7 +30,7 @@ urlpatterns = patterns('',
 
     # application
     url('', include(UserViewSet().urls)),
+    url('', include(HostViewSet().urls)),
     url('', include(FormulaViewSet().urls)),
     url('', include(ProjectViewSet().urls)),
-    url('', include(HostViewSet().urls)),
 )

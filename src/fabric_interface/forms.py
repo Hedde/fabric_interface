@@ -95,6 +95,7 @@ class UserPermissionsUpdateForm(forms.ModelForm):
             Q(content_type__model='project') |
             Q(content_type__model='stage') |
             Q(content_type__model='host') |
-            Q(content_type__model='formula')
+            Q(content_type__model='formula') |
+            Q(content_type__model='configuration')
         )
         self.fields['user_permissions'].label = _(u"Global user permissions")

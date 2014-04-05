@@ -15,7 +15,7 @@
                     </li>
                 {% endif %}
             {% empty %}
-                <li>No stages.</li>
+                <li>No stages found.</li>
             {% endfor %}
         {% else %}
             {% for stage in object.project.stage_set.all %}
@@ -28,7 +28,7 @@
                     </li>
                 {% endif %}
             {% empty %}
-                <li>No stages.</li>
+                <li>No stages found.</li>
             {% endfor %}
         {% endif %}
         {% if perms.stages.add_stage %}

@@ -22,7 +22,9 @@
     <hr />
     <div class="row">
         <div class="col-md-12">
-            <div class="well well-sm">{{ object }} SLUG={{ object.slug }}</div>
+            <div class="well well-sm">
+                {{ object }} SLUG={{ object.slug }}
+            </div>
         </div>
     </div>
     <div class="row">
@@ -37,6 +39,9 @@
                     {% else %}
                         No configurations found.
                     {% endif %}
+                    <a href="{% url 'project_configuration_create' slug=object.slug %}" class="btn btn-sm">
+                        <i class="glyphicon glyphicon-plus"></i> Add configuration  {# todo label #}
+                    </a>
                 </div>
             </div>
         </div>

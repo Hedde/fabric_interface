@@ -11,7 +11,7 @@ from django.utils.translation import ugettext_lazy as _
 def add_welcome_message(view_func):
     """
     Decorator that adds a welcome message to a response that
-    succesfully authenticated.
+    successfully authenticated.
     """
     @wraps(view_func, assigned=available_attrs(view_func))
     def _wrapped_view_func(request, *args, **kwargs):

@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     'fabric_interface.projects',
     'fabric_interface.stages',
     'fabric_interface.hosts',
+    'fabric_interface.configurations',
     'fabric_interface.formulae',
 )
 

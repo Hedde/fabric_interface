@@ -10,8 +10,8 @@ from django.views.generic import (
 )
 
 # App specific
+from fabric_interface.configurations.tables import ConfigurationTable
 from fabric_interface.projects.models import Project
-from fabric_interface.projects.tables import ConfigurationTable
 from fabric_interface.mixins import (
     DetailContextMixin, CreateContextMixin, UpdateContextMixin, DeleteContextMixin, PermissionRequiredMixin
 )
@@ -60,7 +60,7 @@ class StageCreateView(PermissionRequiredMixin, CreateContextMixin, CreateView):
 
     def get_success_url(self):
         messages.add_message(
-            self.request, messages.SUCCESS, _(u"Created {model} '{slug}' succesfully.".format(
+            self.request, messages.SUCCESS, _(u"Created {model} '{slug}' successfully.".format(
                 model=self.object._meta.verbose_name,
                 slug=self.object.role
             ))
@@ -91,7 +91,7 @@ class StageUpdateView(PermissionRequiredMixin, UpdateContextMixin, UpdateView):
 
     def get_success_url(self):
         messages.add_message(
-            self.request, messages.SUCCESS, _(u"Updated {model} '{slug}' succesfully.".format(
+            self.request, messages.SUCCESS, _(u"Updated {model} '{slug}' successfully.".format(
                 model=self.object._meta.verbose_name,
                 slug=self.object.role
             ))
@@ -118,7 +118,7 @@ class StageDeleteView(PermissionRequiredMixin, DeleteContextMixin, DeleteView):
         success_url = self.get_success_url()
 
         messages.add_message(
-            self.request, messages.SUCCESS, _(u"Deleted {model} '{slug}' succesfully.".format(
+            request, messages.SUCCESS, _(u"Deleted {model} '{slug}' successfully.".format(
                 model=self.object._meta.verbose_name,
                 slug=self.object.slug
             ))

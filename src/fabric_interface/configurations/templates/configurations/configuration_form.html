@@ -17,12 +17,12 @@
 {% endblock %}
 
 {% block content %}
-    <h4>{% if action == 'update' %}{% trans "Edit stage" %}{% else %}{% trans "Add stage" %}{% endif %}</h4>
+    <h4>{% if action == 'update' %}{% trans "Edit configuration" %}{% else %}{% trans "Add configuration" %}{% endif %}</h4>
     <hr />
     <form method="post" role="form">
         {% csrf_token %}
         {% for field in form %}
-            <div class="form-group">
+            <div class="form-group" id="div_{{ field.auto_id }}">
                 {% bootstrap_field field %}
             </div>
         {% endfor %}
@@ -35,9 +35,9 @@
                 {% endif %}
             </button>
             {% if action != 'create' %}
-                {% get_obj_perms request.user for stage as "stage_perms" %}
-                {% if "project_stage_delete" in stage_perms or perms.stages.delete_stage %}
-                    <a href="{% url 'project_stage_delete' slug=object.project.slug role_slug=object.slug %}" class="btn btn-danger pull-right">
+                {% get_obj_perms request.user for configuration as "configuration_perms" %}
+                {% if "project_configuration_delete" in configuration_perms or perms.configurations.delete_configuration %}
+                    <a href="{% url 'project_configuration_delete' slug=object.project.slug pk=object.pk %}" class="btn btn-danger pull-right">
                         {% bootstrap_icon "remove" %} {% trans "Delete" %}
                     </a>
                 {% endif %}
@@ -46,8 +46,27 @@
     </form>
 {% endblock %}
 
-{% block sidebar_right %}
-    {% block panel_stages %}
-        {% include "fabric_interface/panels/panel_stages.html" with panel_label=_("All stages") %}
-    {% endblock %}
+{% block extrajs %}
+    <script>
+        function form_switch(){
+            var data_type = $('#id_data_type').val();
+
+            $('#div_id_value_boolean, #div_id_value, #div_id_value_number').hide();
+
+            if (data_type == 'BOOLEAN') {
+                $('#div_id_value_boolean').show();
+
+            } else if(data_type == 'NUMBER') {
+                $('#div_id_value_number').show();
+
+            } else {
+                $('#div_id_value').show();
+            }
+        }
+
+        $(function(){
+            form_switch();
+            $('#id_data_type').change(form_switch);
+        });
+    </script>
 {% endblock %}
