@@ -546,9 +546,19 @@
 {
     border-radius: 0;
 }
+.alert
+{
+    border-radius: 0;
+}
+pre
+{
+    margin: 0;
+
+    border-radius: 0;
+}
 .table-superb
 {
-    margin: 0 -10px;
+    margin: 0 -15px;
 }
 .table-superb .table th
 {
