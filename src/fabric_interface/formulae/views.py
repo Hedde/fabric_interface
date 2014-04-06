@@ -1,26 +1,24 @@
-from django.utils.datastructures import SortedDict
-from fabric_interface.formulae.forms import FormulaForm
-from fabric_interface.utils import VIEWSETS_ORDERMAP
-from viewsets.patterns import PLACEHOLDER_PATTERN
-
 __author__ = 'heddevanderheide'
 
 # Django specific
 from django.contrib import messages
 from django.core.urlresolvers import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
+from django.utils.datastructures import SortedDict
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import (
     ListView, DetailView, CreateView, UpdateView, DeleteView
 )
 
 # App specific
+from fabric_interface.formulae.forms import FormulaForm
 from fabric_interface.formulae.models import Formula
 from fabric_interface.mixins import (
-    DetailContextMixin, CreateContextMixin, UpdateContextMixin, DeleteContextMixin
+    PermissionRequiredMixin, DetailContextMixin, CreateContextMixin, UpdateContextMixin, DeleteContextMixin
 )
-from fabric_interface.mixins import PermissionRequiredMixin
+from fabric_interface.utils import VIEWSETS_ORDERMAP
 from viewsets import ModelViewSet, SLUG
+from viewsets.patterns import PLACEHOLDER_PATTERN
 
 
 class FormulaListView(PermissionRequiredMixin, ListView):
