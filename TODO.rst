@@ -15,7 +15,6 @@ Todo's
 
 # Release candidate requires
 
-* automated slugs
 * reset passwords
 * user row level permission interface
 * check orphan permissions, e.g. 'can view stage' => if 'can view project'
