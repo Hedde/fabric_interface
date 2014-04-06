@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
                 ('created', django_extensions.db.fields.CreationDateTimeField(default=django.utils.timezone.now, verbose_name=u'created', editable=False, blank=True)),
                 ('modified', django_extensions.db.fields.ModificationDateTimeField(default=django.utils.timezone.now, verbose_name=u'modified', editable=False, blank=True)),
                 ('title', models.CharField(max_length=125)),
-                ('slug', models.SlugField(unique=True)),
+                ('slug', django_extensions.db.fields.AutoSlugField(editable=False, blank=True)),
             ],
             options={
                 u'permissions': (('view_project', u'Can view project'),),

@@ -1,3 +1,5 @@
+from django_extensions.db.fields import AutoSlugField
+
 __author__ = 'heddevanderheide'
 
 # Django specific
@@ -13,7 +15,7 @@ class Stage(TimeStampedModel):
     project = models.ForeignKey('projects.Project', blank=True, null=True)
     hosts = models.ManyToManyField('hosts.Host', blank=True, null=True, verbose_name=_(u"Hosts"))
     role = models.CharField(max_length=125, blank=True, null=True)
-    slug = models.SlugField(unique=True)
+    slug = AutoSlugField(populate_from=('project', 'role'))
 
     class Meta:
         permissions = (

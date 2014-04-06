@@ -1,8 +1,24 @@
 __author__ = 'heddevanderheide'
 
-import reversion
+import six
 
-# App specific
-from fabric_interface.formulae.models import Formula
+# Django specific
+from django_extensions.db.fields import AutoSlugField
 
-reversion.register(Formula)
+
+def __init__(self, *args, **kwargs):
+    kwargs.setdefault('blank', True)
+    kwargs.setdefault('editable', False)
+
+    populate_from = kwargs.pop('populate_from', None)
+    # if populate_from is None:
+        # raise ValueError("missing 'populate_from' argument")
+    # else:
+    self._populate_from = populate_from
+    self.separator = kwargs.pop('separator', six.u('-'))
+    self.overwrite = kwargs.pop('overwrite', False)
+    self.allow_duplicates = kwargs.pop('allow_duplicates', False)
+    super(AutoSlugField, self).__init__(*args, **kwargs)
+
+
+AutoSlugField.__init__ = __init__

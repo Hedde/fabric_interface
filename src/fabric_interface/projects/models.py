@@ -5,13 +5,14 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 # App specific
+from django_extensions.db.fields import AutoSlugField
 from django_extensions.db.models import TimeStampedModel
 from fabric_interface.configurations.models import Configuration
 
 
 class Project(TimeStampedModel):
     title = models.CharField(max_length=125)
-    slug = models.SlugField(unique=True)
+    slug = AutoSlugField(populate_from='title')
 
     class Meta:
         permissions = (

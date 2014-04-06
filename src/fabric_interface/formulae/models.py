@@ -5,6 +5,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 # App specific
+from django_extensions.db.fields import AutoSlugField
 from django_extensions.db.models import TimeStampedModel
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
@@ -12,7 +13,7 @@ from mptt.models import MPTTModel
 
 class Formula(TimeStampedModel):
     name = models.CharField(max_length=128)
-    slug = models.SlugField(unique=True)
+    slug = AutoSlugField(populate_from='name')
     code = models.TextField()
 
     class Meta:

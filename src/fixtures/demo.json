@@ -64,30 +64,12 @@
 },
 {
     "fields": {
-        "model": "revision",
-        "name": "revision",
-        "app_label": "reversion"
-    },
-    "model": "contenttypes.contenttype",
-    "pk": 8
-},
-{
-    "fields": {
-        "model": "version",
-        "name": "version",
-        "app_label": "reversion"
-    },
-    "model": "contenttypes.contenttype",
-    "pk": 9
-},
-{
-    "fields": {
         "model": "project",
         "name": "project",
         "app_label": "projects"
     },
     "model": "contenttypes.contenttype",
-    "pk": 10
+    "pk": 8
 },
 {
     "fields": {
@@ -96,7 +78,7 @@
         "app_label": "stages"
     },
     "model": "contenttypes.contenttype",
-    "pk": 11
+    "pk": 9
 },
 {
     "fields": {
@@ -105,7 +87,7 @@
         "app_label": "hosts"
     },
     "model": "contenttypes.contenttype",
-    "pk": 12
+    "pk": 10
 },
 {
     "fields": {
@@ -114,7 +96,7 @@
         "app_label": "configurations"
     },
     "model": "contenttypes.contenttype",
-    "pk": 13
+    "pk": 11
 },
 {
     "fields": {
@@ -123,7 +105,7 @@
         "app_label": "formulae"
     },
     "model": "contenttypes.contenttype",
-    "pk": 14
+    "pk": 12
 },
 {
     "fields": {
@@ -132,7 +114,7 @@
         "app_label": "formulae"
     },
     "model": "contenttypes.contenttype",
-    "pk": 15
+    "pk": 13
 },
 {
     "fields": {
@@ -352,78 +334,6 @@
 },
 {
     "fields": {
-        "codename": "add_revision",
-        "name": "Can add revision",
-        "content_type": [
-            "reversion",
-            "revision"
-        ]
-    },
-    "model": "auth.permission",
-    "pk": 19
-},
-{
-    "fields": {
-        "codename": "change_revision",
-        "name": "Can change revision",
-        "content_type": [
-            "reversion",
-            "revision"
-        ]
-    },
-    "model": "auth.permission",
-    "pk": 20
-},
-{
-    "fields": {
-        "codename": "delete_revision",
-        "name": "Can delete revision",
-        "content_type": [
-            "reversion",
-            "revision"
-        ]
-    },
-    "model": "auth.permission",
-    "pk": 21
-},
-{
-    "fields": {
-        "codename": "add_version",
-        "name": "Can add version",
-        "content_type": [
-            "reversion",
-            "version"
-        ]
-    },
-    "model": "auth.permission",
-    "pk": 22
-},
-{
-    "fields": {
-        "codename": "change_version",
-        "name": "Can change version",
-        "content_type": [
-            "reversion",
-            "version"
-        ]
-    },
-    "model": "auth.permission",
-    "pk": 23
-},
-{
-    "fields": {
-        "codename": "delete_version",
-        "name": "Can delete version",
-        "content_type": [
-            "reversion",
-            "version"
-        ]
-    },
-    "model": "auth.permission",
-    "pk": 24
-},
-{
-    "fields": {
         "codename": "add_user",
         "name": "Can add user",
         "content_type": [
@@ -432,7 +342,7 @@
         ]
     },
     "model": "auth.permission",
-    "pk": 25
+    "pk": 19
 },
 {
     "fields": {
@@ -444,7 +354,7 @@
         ]
     },
     "model": "auth.permission",
-    "pk": 26
+    "pk": 20
 },
 {
     "fields": {
@@ -456,7 +366,7 @@
         ]
     },
     "model": "auth.permission",
-    "pk": 27
+    "pk": 21
 },
 {
     "fields": {
@@ -468,7 +378,7 @@
         ]
     },
     "model": "auth.permission",
-    "pk": 28
+    "pk": 22
 },
 {
     "fields": {
@@ -480,7 +390,7 @@
         ]
     },
     "model": "auth.permission",
-    "pk": 29
+    "pk": 23
 },
 {
     "fields": {
@@ -492,7 +402,7 @@
         ]
     },
     "model": "auth.permission",
-    "pk": 30
+    "pk": 24
 },
 {
     "fields": {
@@ -504,7 +414,7 @@
         ]
     },
     "model": "auth.permission",
-    "pk": 31
+    "pk": 25
 },
 {
     "fields": {
@@ -516,7 +426,7 @@
         ]
     },
     "model": "auth.permission",
-    "pk": 32
+    "pk": 26
 },
 {
     "fields": {
@@ -528,7 +438,7 @@
         ]
     },
     "model": "auth.permission",
-    "pk": 33
+    "pk": 27
 },
 {
     "fields": {
@@ -540,7 +450,7 @@
         ]
     },
     "model": "auth.permission",
-    "pk": 34
+    "pk": 28
 },
 {
     "fields": {
@@ -552,7 +462,7 @@
         ]
     },
     "model": "auth.permission",
-    "pk": 35
+    "pk": 29
 },
 {
     "fields": {
@@ -564,7 +474,7 @@
         ]
     },
     "model": "auth.permission",
-    "pk": 36
+    "pk": 30
 },
 {
     "fields": {
@@ -576,7 +486,7 @@
         ]
     },
     "model": "auth.permission",
-    "pk": 37
+    "pk": 31
 },
 {
     "fields": {
@@ -588,7 +498,7 @@
         ]
     },
     "model": "auth.permission",
-    "pk": 38
+    "pk": 32
 },
 {
     "fields": {
@@ -600,7 +510,7 @@
         ]
     },
     "model": "auth.permission",
-    "pk": 39
+    "pk": 33
 },
 {
     "fields": {
@@ -612,7 +522,7 @@
         ]
     },
     "model": "auth.permission",
-    "pk": 40
+    "pk": 34
 },
 {
     "fields": {
@@ -624,7 +534,7 @@
         ]
     },
     "model": "auth.permission",
-    "pk": 41
+    "pk": 35
 },
 {
     "fields": {
@@ -636,7 +546,7 @@
         ]
     },
     "model": "auth.permission",
-    "pk": 42
+    "pk": 36
 },
 {
     "fields": {
@@ -648,7 +558,7 @@
         ]
     },
     "model": "auth.permission",
-    "pk": 43
+    "pk": 37
 },
 {
     "fields": {
@@ -660,7 +570,7 @@
         ]
     },
     "model": "auth.permission",
-    "pk": 44
+    "pk": 38
 },
 {
     "fields": {
@@ -672,7 +582,7 @@
         ]
     },
     "model": "auth.permission",
-    "pk": 45
+    "pk": 39
 },
 {
     "fields": {
@@ -684,7 +594,7 @@
         ]
     },
     "model": "auth.permission",
-    "pk": 46
+    "pk": 40
 },
 {
     "fields": {
@@ -696,7 +606,7 @@
         ]
     },
     "model": "auth.permission",
-    "pk": 47
+    "pk": 41
 },
 {
     "fields": {
@@ -708,7 +618,7 @@
         ]
     },
     "model": "auth.permission",
-    "pk": 48
+    "pk": 42
 },
 {
     "fields": {
@@ -720,7 +630,7 @@
         ]
     },
     "model": "auth.permission",
-    "pk": 49
+    "pk": 43
 },
 {
     "fields": {
@@ -732,7 +642,7 @@
         ]
     },
     "model": "auth.permission",
-    "pk": 50
+    "pk": 44
 },
 {
     "fields": {
@@ -742,7 +652,7 @@
         "is_active": true,
         "family_name_prefix": null,
         "is_superuser": false,
-        "last_login": "2014-04-05T12:23:06.343Z",
+        "last_login": "2014-04-06T14:38:43.974Z",
         "content_type": [
             "fabric_interface",
             "user"
@@ -750,7 +660,7 @@
         "user_permissions": [],
         "password": "",
         "email": "AnonymousUser",
-        "date_joined": "2014-04-05T12:23:06.343Z"
+        "date_joined": "2014-04-06T14:38:43.974Z"
     },
     "model": "fabric_interface.user",
     "pk": -1
@@ -763,15 +673,15 @@
         "is_active": true,
         "family_name_prefix": null,
         "is_superuser": true,
-        "last_login": "2014-04-05T12:23:06.222Z",
+        "last_login": "2014-04-06T14:38:43.862Z",
         "content_type": [
             "fabric_interface",
             "user"
         ],
         "user_permissions": [],
-        "password": "pbkdf2_sha256$12000$IjwIAEo1dyBp$GA3RjMUUkCCqYoRUulw7rBbO1nGB9A/hTjfIaHRN4AM=",
+        "password": "pbkdf2_sha256$12000$VNEk4uImJYc6$DJ6bo+nQSVBhA6Be8crInRomb2ZOzMQbuZwv3Zr+PjM=",
         "email": "admin@example.com",
-        "date_joined": "2014-04-05T12:23:06.222Z"
+        "date_joined": "2014-04-06T14:38:43.862Z"
     },
     "model": "fabric_interface.user",
     "pk": 1

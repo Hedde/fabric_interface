@@ -28,6 +28,9 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+
+from fabric_interface.monkeys import *
+
 # Application definition
 
 INSTALLED_APPS = (
@@ -41,8 +44,8 @@ INSTALLED_APPS = (
     'mptt',
     'guardian',
     'bootstrap3',
-    'reversion',
     'django_tables2',
+    # 'reversion',
 
     # Application
     'fabric_interface',
