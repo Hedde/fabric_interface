@@ -1,4 +1,7 @@
+from django.utils.datastructures import SortedDict
 from fabric_interface.formulae.forms import FormulaForm
+from fabric_interface.utils import VIEWSETS_ORDERMAP
+from viewsets.patterns import PLACEHOLDER_PATTERN
 
 __author__ = 'heddevanderheide'
 
@@ -105,9 +108,31 @@ class FormulaViewSet(ModelViewSet):
     id_pattern = SLUG
 
     def __init__(self, *args, **kwargs):
-        self.views[b'list_view']['view'] = FormulaListView
-        self.views[b'detail_view']['view'] = FormulaDetailView
-        self.views[b'create_view']['view'] = FormulaCreateView
-        self.views[b'update_view']['view'] = FormulaUpdateView
-        self.views[b'delete_view']['view'] = FormulaDeleteView
+        self.views[b'list_view'] = {
+            b'view': FormulaListView,
+            b'pattern': br'',
+            b'name': b'index',
+        }
+        self.views[b'detail_view'] = {
+            b'view': FormulaDetailView,
+            b'pattern': PLACEHOLDER_PATTERN + br'/',
+            b'name': b'detail',
+        }
+        self.views[b'update_view'] = {
+            b'view': FormulaUpdateView,
+            b'pattern': PLACEHOLDER_PATTERN + br'/update/',
+            b'name': b'update',
+        }
+        self.views[b'delete_view'] = {
+            b'view': FormulaDeleteView,
+            b'pattern': PLACEHOLDER_PATTERN + br'/delete/',
+            b'name': b'delete',
+        }
+        self.views[b'create_view'] = {
+            b'view': FormulaCreateView,
+            b'pattern': br'create/',
+            b'name': b'create',
+        }
+        self.views = SortedDict(self.views)
+        self.views.keyOrder = sorted(self.views.keyOrder, key=VIEWSETS_ORDERMAP.__getitem__)
         super(FormulaViewSet, self).__init__(*args, **kwargs)

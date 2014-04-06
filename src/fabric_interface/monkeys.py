@@ -22,3 +22,9 @@ def __init__(self, *args, **kwargs):
 
 
 AutoSlugField.__init__ = __init__
+"""
+Unfortunately django-extensions is not entirely compatible
+with Django's migrations, so we need some patching code
+
+n.b. this file is imported explicitly from the init file.
+"""

@@ -130,7 +130,7 @@ class UserViewSet(ModelViewSet):
         },
         b'detail_view': {
             b'view': UserDetailView,
-            b'pattern': PK,
+            b'pattern': PK + br'/',
             b'name': b'detail',
         },
         b'create_view': {
@@ -140,17 +140,17 @@ class UserViewSet(ModelViewSet):
         },
         b'update_view': {
             b'view': UserUpdateView,
-            b'pattern': PK + br'/update',
+            b'pattern': PK + br'/update/',
             b'name': b'update',
         },
         b'update_permissions_view': {
             b'view': UserPermissionsUpdateView,
-            b'pattern': PK + br'/permissions',
+            b'pattern': PK + br'/permissions/',
             b'name': b'update_permissions',
         },
         b'delete_view': {
             b'view': UserDeleteView,
-            b'pattern': PK + br'/delete',
+            b'pattern': PK + br'/delete/',
             b'name': b'delete',
         },
     }

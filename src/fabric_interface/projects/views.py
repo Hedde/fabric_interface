@@ -90,16 +90,32 @@ class ProjectDeleteView(PermissionRequiredMixin, DeleteContextMixin, DeleteView)
 
 
 class ProjectViewSet(ModelViewSet):
+    """
+    Unfortunately django-viewsets is really inconsistent
+    with trailing slashes, so we need some extra code
+    """
     model = Project
     id_pattern = SLUG
 
     def __init__(self, *args, **kwargs):
         # Project CRUD
         self.views[b'list_view']['view'] = RedirectHomeView
-        self.views[b'detail_view']['view'] = ProjectDetailView
+        self.views[b'detail_view'] = {
+            b'view': ProjectDetailView,
+            b'pattern': PLACEHOLDER_PATTERN + br'/',
+            b'name': b'detail',
+        }
         self.views[b'create_view']['view'] = ProjectCreateView
-        self.views[b'update_view']['view'] = ProjectUpdateView
-        self.views[b'delete_view']['view'] = ProjectDeleteView
+        self.views[b'update_view'] = {
+            b'view': ProjectUpdateView,
+            b'pattern': PLACEHOLDER_PATTERN + br'/update/',
+            b'name': b'update',
+        }
+        self.views[b'delete_view'] = {
+            b'view': ProjectDeleteView,
+            b'pattern': PLACEHOLDER_PATTERN + br'/delete/',
+            b'name': b'delete',
+        }
 
         # Configuration CRUD
         self.views[b'configuration_create_view'] = {
@@ -119,7 +135,7 @@ class ProjectViewSet(ModelViewSet):
         }
         self.views[b'configuration_view'] = {
             b'view': ConfigurationDetailView,
-            b'pattern': PLACEHOLDER_PATTERN + br'/configuration/' + PK,
+            b'pattern': PLACEHOLDER_PATTERN + br'/configuration/' + PK + br'/',
             b'name': b'configuration_detail',
         }
 
@@ -141,7 +157,7 @@ class ProjectViewSet(ModelViewSet):
         }
         self.views[b'stage_view'] = {
             b'view': StageDetailView,
-            b'pattern': PLACEHOLDER_PATTERN + br'/stage/' + br'(?P<role_slug>[\w-]+)',
+            b'pattern': PLACEHOLDER_PATTERN + br'/stage/' + br'(?P<role_slug>[\w-]+)/',
             b'name': b'stage_detail',
         }
 

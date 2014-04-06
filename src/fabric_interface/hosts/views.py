@@ -4,6 +4,7 @@ __author__ = 'heddevanderheide'
 from django.contrib import messages
 from django.core.urlresolvers import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
+from django.utils.datastructures import SortedDict
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import (
     DetailView, CreateView, UpdateView, DeleteView
@@ -15,8 +16,10 @@ from fabric_interface.mixins import (
     DetailContextMixin, CreateContextMixin, UpdateContextMixin, DeleteContextMixin
 )
 from fabric_interface.mixins import PermissionRequiredMixin
+from fabric_interface.utils import VIEWSETS_ORDERMAP
 from fabric_interface.views import RedirectHomeView
 from viewsets import ModelViewSet, SLUG
+from viewsets.patterns import PLACEHOLDER_PATTERN
 
 
 class HostDetailView(PermissionRequiredMixin, DetailContextMixin, DetailView):
@@ -29,9 +32,6 @@ class HostCreateView(PermissionRequiredMixin, CreateContextMixin, CreateView):
     accept_global_perms = True
 
     success_url = reverse_lazy('host_index')
-
-    # def get_object(self, queryset=None):
-    #     return None
 
     def get_success_url(self):
         messages.add_message(
@@ -85,8 +85,26 @@ class HostViewSet(ModelViewSet):
 
     def __init__(self, *args, **kwargs):
         self.views[b'list_view']['view'] = RedirectHomeView
-        self.views[b'detail_view']['view'] = HostDetailView
-        self.views[b'create_view']['view'] = HostCreateView
-        self.views[b'update_view']['view'] = HostUpdateView
-        self.views[b'delete_view']['view'] = HostDeleteView
+        self.views[b'detail_view'] = {
+            b'view': HostDetailView,
+            b'pattern': PLACEHOLDER_PATTERN + br'/',
+            b'name': b'detail',
+        }
+        self.views[b'update_view'] = {
+            b'view': HostUpdateView,
+            b'pattern': PLACEHOLDER_PATTERN + br'/update/',
+            b'name': b'update',
+        }
+        self.views[b'delete_view'] = {
+            b'view': HostDeleteView,
+            b'pattern': PLACEHOLDER_PATTERN + br'/delete/',
+            b'name': b'delete',
+        }
+        self.views[b'create_view'] = {
+            b'view': HostCreateView,
+            b'pattern': br'create/',
+            b'name': b'create',
+        }
+        self.views = SortedDict(self.views)
+        self.views.keyOrder = sorted(self.views.keyOrder, key=VIEWSETS_ORDERMAP.__getitem__)
         super(HostViewSet, self).__init__(*args, **kwargs)
