@@ -1,9 +1,11 @@
+
 __author__ = 'heddevanderheide'
 
 # Django specific
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
+from django.utils.datastructures import SortedDict
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import (
     DetailView, CreateView, UpdateView, DeleteView
@@ -22,6 +24,7 @@ from fabric_interface.stages.views import (
     StageDetailView, StageCreateView, StageUpdateView, StageDeleteView
 )
 from fabric_interface.mixins import PermissionRequiredMixin
+from fabric_interface.utils import VIEWSETS_ORDERMAP
 from fabric_interface.views import RedirectHomeView
 from viewsets import ModelViewSet, SLUG, PK
 from viewsets.patterns import PLACEHOLDER_PATTERN
@@ -133,7 +136,7 @@ class ProjectViewSet(ModelViewSet):
             b'pattern': PLACEHOLDER_PATTERN + br'/configuration/' + PK + br'/delete/',
             b'name': b'configuration_delete',
         }
-        self.views[b'configuration_view'] = {
+        self.views[b'configuration_detail_view'] = {
             b'view': ConfigurationDetailView,
             b'pattern': PLACEHOLDER_PATTERN + br'/configuration/' + PK + br'/',
             b'name': b'configuration_detail',
@@ -155,10 +158,11 @@ class ProjectViewSet(ModelViewSet):
             b'pattern': PLACEHOLDER_PATTERN + br'/stage/' + br'(?P<role_slug>[\w-]+)' + br'/delete/',
             b'name': b'stage_delete',
         }
-        self.views[b'stage_view'] = {
+        self.views[b'stage_detail_view'] = {
             b'view': StageDetailView,
             b'pattern': PLACEHOLDER_PATTERN + br'/stage/' + br'(?P<role_slug>[\w-]+)/',
             b'name': b'stage_detail',
         }
-
+        self.views = SortedDict(self.views)
+        self.views.keyOrder = sorted(self.views.keyOrder, key=VIEWSETS_ORDERMAP.__getitem__)
         super(ProjectViewSet, self).__init__(*args, **kwargs)

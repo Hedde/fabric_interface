@@ -1,5 +1,3 @@
-from django_extensions.db.fields import AutoSlugField
-
 __author__ = 'heddevanderheide'
 
 # Django specific
@@ -7,6 +5,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 # App specific
+from django_extensions.db.fields import AutoSlugField
 from django_extensions.db.models import TimeStampedModel
 from fabric_interface.projects.models import Configuration
 
