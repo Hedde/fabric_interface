@@ -29,7 +29,8 @@ class ConfigurationDetailView(PermissionRequiredMixin, DetailContextMixin, Detai
 
     def get_object(self, queryset=None):
         self.parent = super(ConfigurationDetailView, self).get_object(queryset)
-        return self.parent.configuration_set(manager='objects').get(pk=self.kwargs.get('pk'))
+        # return self.parent.configuration_set(manager='objects').get(pk=self.kwargs.get('pk'))
+        return self.parent.configuration_set.get(pk=self.kwargs.get('pk'))
 
 
 class ConfigurationCreateView(PermissionRequiredMixin, CreateContextMixin, CreateView):
@@ -77,7 +78,8 @@ class ConfigurationUpdateView(PermissionRequiredMixin, UpdateContextMixin, Updat
 
     def get_object(self, queryset=None):
         self.parent = super(ConfigurationUpdateView, self).get_object(queryset)
-        return self.parent.configuration_set(manager='objects').get(pk=self.kwargs.get('pk'))
+        # return self.parent.configuration_set(manager='objects').get(pk=self.kwargs.get('pk'))
+        return self.parent.configuration_set.get(pk=self.kwargs.get('pk'))
 
     def get_form_kwargs(self):
         form_kwargs = super(ConfigurationUpdateView, self).get_form_kwargs()
@@ -110,7 +112,8 @@ class ConfigurationDeleteView(PermissionRequiredMixin, DeleteContextMixin, Delet
 
     def get_object(self, queryset=None):
         self.parent = super(ConfigurationDeleteView, self).get_object(queryset)
-        return self.parent.configuration_set(manager='objects').get(pk=self.kwargs.get('pk'))
+        # return self.parent.configuration_set(manager='objects').get(pk=self.kwargs.get('pk'))
+        return self.parent.configuration_set.get(pk=self.kwargs.get('pk'))
 
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()

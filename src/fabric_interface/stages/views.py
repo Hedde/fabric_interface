@@ -35,7 +35,8 @@ class StageDetailView(PermissionRequiredMixin, DetailContextMixin, DetailView):
 
     def get_object(self, queryset=None):
         self.parent = super(StageDetailView, self).get_object(queryset)
-        return self.parent.stage_set(manager='objects').get(slug=self.kwargs.get('role_slug'))
+        # return self.parent.stage_set(manager='objects').get(slug=self.kwargs.get('role_slug'))
+        return self.parent.stage_set.get(slug=self.kwargs.get('role_slug'))
 
 
 class StageCreateView(PermissionRequiredMixin, CreateContextMixin, CreateView):
@@ -80,7 +81,8 @@ class StageUpdateView(PermissionRequiredMixin, UpdateContextMixin, UpdateView):
 
     def get_object(self, queryset=None):
         self.parent = super(StageUpdateView, self).get_object(queryset)
-        return self.parent.stage_set(manager='objects').get(slug=self.kwargs.get('role_slug'))
+        # return self.parent.stage_set(manager='objects').get(slug=self.kwargs.get('role_slug'))
+        return self.parent.stage_set.get(slug=self.kwargs.get('role_slug'))
 
     def get_form_kwargs(self):
         form_kwargs = super(StageUpdateView, self).get_form_kwargs()
@@ -111,7 +113,8 @@ class StageDeleteView(PermissionRequiredMixin, DeleteContextMixin, DeleteView):
 
     def get_object(self, queryset=None):
         self.parent = super(StageDeleteView, self).get_object(queryset)
-        return self.parent.stage_set(manager='objects').get(slug=self.kwargs.get('role_slug'))
+        # return self.parent.stage_set(manager='objects').get(slug=self.kwargs.get('role_slug'))
+        return self.parent.stage_set.get(slug=self.kwargs.get('role_slug'))
 
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
