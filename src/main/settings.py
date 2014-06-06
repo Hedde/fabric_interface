@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     # 3rd party
+    'south',  # temp until https://code.djangoproject.com/ticket/22605 is resolved
     'mptt',
     'guardian',
     'bootstrap3',

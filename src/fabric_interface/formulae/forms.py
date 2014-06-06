@@ -6,7 +6,7 @@ from django import forms
 # App specific
 from codemirror.widgets import CodeMirrorTextarea
 from fabric_interface.formulae.models import (
-    Formula, FormulaPosition
+    Formula, Fabfile
 )
 
 
@@ -28,6 +28,6 @@ class FormulaForm(forms.ModelForm):
         return code
 
 
-class FormulaPositionForm(forms.ModelForm):
+class FabfileForm(forms.ModelForm):
     class Meta:
-        model = FormulaPosition
+        model = Fabfile

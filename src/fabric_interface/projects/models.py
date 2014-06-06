@@ -14,6 +14,8 @@ class Project(TimeStampedModel):
     title = models.CharField(max_length=125)
     slug = AutoSlugField(populate_from='title')
 
+    fabfile = models.ForeignKey('formulae.Fabfile', verbose_name=_(u"Fabfile"), blank=True, null=True)
+
     class Meta:
         permissions = (
             ('view_project', _(u"Can view project")),

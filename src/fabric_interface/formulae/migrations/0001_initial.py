@@ -8,21 +8,39 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding model 'Project'
-        db.create_table(u'projects_project', (
+        # Adding model 'Formula'
+        db.create_table(u'formulae_formula', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now, blank=True)),
             ('modified', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now, blank=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=125)),
-            ('slug', self.gf('django_extensions.db.fields.AutoSlugField')(allow_duplicates=False, max_length=50, separator=u'-', blank=True, populate_from='title', overwrite=False)),
-            ('fabfile', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['formulae.Fabfile'], null=True, blank=True)),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=128)),
+            ('slug', self.gf('django_extensions.db.fields.AutoSlugField')(allow_duplicates=False, max_length=50, separator=u'-', blank=True, populate_from='name', overwrite=False)),
+            ('code', self.gf('django.db.models.fields.TextField')()),
         ))
-        db.send_create_signal('projects', ['Project'])
+        db.send_create_signal('formulae', ['Formula'])
+
+        # Adding model 'Fabfile'
+        db.create_table(u'formulae_fabfile', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now, blank=True)),
+            ('modified', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now, blank=True)),
+            ('family', self.gf('django.db.models.fields.CharField')(max_length=128, null=True, blank=True)),
+            ('formula', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['formulae.Formula'])),
+            ('parent', self.gf('mptt.fields.TreeForeignKey')(blank=True, related_name='children', null=True, to=orm['formulae.Fabfile'])),
+            (u'lft', self.gf('django.db.models.fields.PositiveIntegerField')(db_index=True)),
+            (u'rght', self.gf('django.db.models.fields.PositiveIntegerField')(db_index=True)),
+            (u'tree_id', self.gf('django.db.models.fields.PositiveIntegerField')(db_index=True)),
+            (u'level', self.gf('django.db.models.fields.PositiveIntegerField')(db_index=True)),
+        ))
+        db.send_create_signal('formulae', ['Fabfile'])
 
 
     def backwards(self, orm):
-        # Deleting model 'Project'
-        db.delete_table(u'projects_project')
+        # Deleting model 'Formula'
+        db.delete_table(u'formulae_formula')
+
+        # Deleting model 'Fabfile'
+        db.delete_table(u'formulae_fabfile')
 
 
     models = {
@@ -47,16 +65,7 @@ class Migration(SchemaMigration):
             'modified': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '128'}),
             'slug': ('django_extensions.db.fields.AutoSlugField', [], {'allow_duplicates': 'False', 'max_length': '50', 'separator': "u'-'", 'blank': 'True', 'populate_from': "'name'", 'overwrite': 'False'})
-        },
-        'projects.project': {
-            'Meta': {'unique_together': '()', 'object_name': 'Project', 'index_together': '()'},
-            'created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
-            'fabfile': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['formulae.Fabfile']", 'null': 'True', 'blank': 'True'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'modified': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
-            'slug': ('django_extensions.db.fields.AutoSlugField', [], {'allow_duplicates': 'False', 'max_length': '50', 'separator': "u'-'", 'blank': 'True', 'populate_from': "'title'", 'overwrite': 'False'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '125'})
         }
     }
 
-    complete_apps = ['projects']
+    complete_apps = ['formulae']

@@ -27,7 +27,7 @@ class Formula(TimeStampedModel):
         return self.name
 
 
-class FormulaPosition(MPTTModel, TimeStampedModel):
+class Fabfile(MPTTModel, TimeStampedModel):
     family = models.CharField(max_length=128, blank=True, null=True)
 
     formula = models.ForeignKey('formulae.Formula')
