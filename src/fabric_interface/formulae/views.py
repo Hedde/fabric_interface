@@ -148,6 +148,8 @@ class FabfileListView(PermissionRequiredMixin, ListView):
     permission_required = 'formulae.view_fabfile'
     accept_global_terms = True
 
+    queryset = Fabfile.objects.filter(parent__isnull=True)
+
     def get_context_data(self, **kwargs):
         context = super(FabfileListView, self).get_context_data(**kwargs)
         context['object'] = self.get_queryset()[0] if self.get_queryset() else None
@@ -161,7 +163,7 @@ class FabfileDetailView(PermissionRequiredMixin, DetailContextMixin, DetailView)
 
     def get_context_data(self, **kwargs):
         context = super(FabfileDetailView, self).get_context_data(**kwargs)
-        context['form'] = Fabfile(instance=self.object)
+        context['form'] = FabfileForm(instance=self.object)
         return context
 
 

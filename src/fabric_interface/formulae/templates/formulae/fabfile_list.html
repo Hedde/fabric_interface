@@ -9,13 +9,13 @@
     <hr />
     <ul class="list-unstyled">
         {% for fabfile in object_list %}
-            <li>{{ fabfile }} (<a href="{% url 'fabfile_detail' pk=fabfile.pk %}">view</a>)</li>
+            <li>{{ fabfile.family }} (<a href="{% url 'fabfile_detail' pk=fabfile.pk %}">view</a>)</li>
         {% endfor %}
     </ul>
 {% endblock %}
 
 {% block sidebar_right %}
-    <h4>{% trans "Create" %} {% trans "fabfile" %}</h4>
+    <h4>{% trans "Create" %} {% trans "fabfile" %} {% trans "or" %} {% trans "particle" %}</h4>
     <hr />{{ form.media }}
     <form action="{% url 'fabfile_create' %}" method="post" role="form">
         {% csrf_token %}

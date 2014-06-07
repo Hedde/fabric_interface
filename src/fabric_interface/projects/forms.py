@@ -19,5 +19,6 @@ class ProjectForm(forms.ModelForm):
 
         # Only select top level structures.
         self.fields['fabfile'] = forms.ModelChoiceField(
-            queryset=Fabfile.objects.filter(parent__isnull=True)
+            queryset=Fabfile.objects.filter(parent__isnull=True),
+            required=False
         )

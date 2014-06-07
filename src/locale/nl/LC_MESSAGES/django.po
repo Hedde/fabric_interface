@@ -212,7 +212,7 @@ msgstr "Bewerk"
 #: fabric_interface/formulae/templates/formulae/formula_list.html:18
 #: fabric_interface/mixins.py:80
 msgid "Create"
-msgstr "Voeg toe"
+msgstr "Maak"
 
 #: fabric_interface/formulae/templates/formulae/test.html:30
 msgid "Testing..."

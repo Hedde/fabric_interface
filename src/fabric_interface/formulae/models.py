@@ -36,9 +36,15 @@ class Formula(TimeStampedModel):
 
 class Fabfile(MPTTModel, TimeStampedModel):
     family = models.CharField(max_length=128, blank=True, null=True)
-
-    formula = models.ForeignKey('formulae.Formula')
+    formula = models.ForeignKey('formulae.Formula', blank=True, null=True)
     parent = TreeForeignKey('self', null=True, blank=True, related_name='children')
 
+    class Meta:
+        permissions = (
+            ('view_fabfile', _(u"Can view fabfile")),
+        )
+        verbose_name = _(u"fabfile")
+        verbose_name_plural = _(u"fabfiles")
+
     def __unicode__(self):
-        return self.formula.name
+        return self.family

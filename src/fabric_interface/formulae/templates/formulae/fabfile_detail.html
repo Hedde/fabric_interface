@@ -1,17 +1,28 @@
 {% extends "fabric_interface/layouts/split_vertical.html" %}
 
-{% load i18n guardian_tags bootstrap3 %}
+{% load i18n guardian_tags bootstrap3 mptt_tags %}
 
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-    <h4>{% trans "View" %} {% trans "fabfile" %} '{{ object.name }}'</h4>
+    <h4>{% trans "View" %} {% trans "fabfile" %} '{{ object.family }}'</h4>
     <hr />
-    {{ object }}
+    <ul>
+        {% recursetree object.get_children %}
+            <li><a href="{% url 'fabfile_update' pk=node.pk %}">{{ node }}</a>
+                {{ node.formula.prettified_code }}
+                {% if not node.is_leaf_node %}
+                    <ul>
+                        {{ children }}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endrecursetree %}
+    </ul>
 {% endblock %}
 
 {% block sidebar_right %}
-    <h4>{% trans "Update" %} {% trans "fabfile" %}</h4>
+    <h4>{% trans "Update" %} {% if object.parent %}{% trans "particle" %}{% else %}{% trans "fabfile" %}{% endif %}</h4>
     <hr />{{ form.media }}
     <form action="{% url 'fabfile_update' pk=object.pk %}" method="post" role="form">
         {% csrf_token %}
