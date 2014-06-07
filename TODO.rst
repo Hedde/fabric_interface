@@ -4,12 +4,12 @@ Todo's
 # Base
 
 * configuration views, models and templates, reverse urls configs
-* formulae/recipes views, models and templates
+* further tweaking of formulae/fabfile views, models and templates
 * raise non field form errors in templates
 
 # Features
 
-* fabfile rendering using configuration inheritance and formulae ordering logic
+* fabfile rendering using configuration inheritance and mptt ordering logic
 * fab execution (sub process) / logging / short polling
 * supressing stdout / verbosity levels
 
@@ -28,7 +28,7 @@ Known bugs
 
 # Migrations
 
-* MPTT doesn't work with django's migrations yet. (NewBase issue)
+* MPTT doesn't work with django's migrations yet. (NewBase issue), so we're using South and django 1.6.5 for the moment
 
 # Translations
 
