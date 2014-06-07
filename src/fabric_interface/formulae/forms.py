@@ -30,19 +30,23 @@ class FormulaForm(forms.ModelForm):
 
 
 class FabfileForm(forms.ModelForm):
+    obj = None
+
     class Meta:
         model = Fabfile
 
     def __init__(self, *args, **kwargs):
         super(FabfileForm, self).__init__(*args, **kwargs)
 
-        self.instance = kwargs.get('instance')
+        self.obj = kwargs.get('instance')
 
-        if self.instance and not self.instance.parent:
-            self.fields.pop('formula')
+        if self.obj and not self.obj.parent:
             self.fields.pop('parent')
 
     def clean_parent(self):
-        if self.instance == self.cleaned_data['parent']:
+        cd = self.cleaned_data['parent']
+
+        if self.obj and self.obj == cd:
             raise forms.ValidationError(_(u"A child's parent cannot point to the child instance."))
-        return self.cleaned_data
+
+        return cd

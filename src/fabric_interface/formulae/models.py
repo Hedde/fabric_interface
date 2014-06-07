@@ -28,7 +28,7 @@ class Formula(TimeStampedModel):
         verbose_name_plural = _(u"formulae")
 
     def __unicode__(self):
-        return self.name
+        return self.name or 'formula'
 
     def prettified_code(self):
         return mark_safe(highlight(self.code, PythonLexer(), HtmlFormatter()))
