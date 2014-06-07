@@ -19,6 +19,7 @@ from fabric_interface.configurations.tables import ConfigurationTable
 from fabric_interface.mixins import (
     DetailContextMixin, CreateContextMixin, UpdateContextMixin, DeleteContextMixin
 )
+from fabric_interface.projects.forms import ProjectForm
 from fabric_interface.projects.models import Project
 from fabric_interface.stages.views import (
     StageDetailView, StageCreateView, StageUpdateView, StageDeleteView
@@ -50,6 +51,8 @@ class ProjectCreateView(PermissionRequiredMixin, CreateContextMixin, CreateView)
     permission_required = 'projects.add_project'
     accept_global_perms = True
 
+    form_class = ProjectForm
+
     def get_success_url(self):
         messages.add_message(
             self.request, messages.SUCCESS, _(u"Created {model} '{slug}' successfully.".format(
@@ -64,6 +67,8 @@ class ProjectUpdateView(PermissionRequiredMixin, UpdateContextMixin, UpdateView)
     permission_required = 'projects.change_project'
     accept_global_perms = True
 
+    form_class = ProjectForm
+
     def get_success_url(self):
         messages.add_message(
             self.request, messages.SUCCESS, _(u"Updated {model} '{slug}' successfully.".format(
@@ -77,6 +82,8 @@ class ProjectUpdateView(PermissionRequiredMixin, UpdateContextMixin, UpdateView)
 class ProjectDeleteView(PermissionRequiredMixin, DeleteContextMixin, DeleteView):
     permission_required = 'projects.delete_project'
     accept_global_perms = True
+
+    form_class = ProjectForm
 
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
