@@ -1,0 +1,33 @@
+{% extends "fabric_interface/layouts/split_vertical.html" %}
+
+{% load i18n guardian_tags bootstrap3 %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <h4>{% trans "View" %} {% trans "fabfile" %}</h4>
+    <hr />
+    <ul class="list-unstyled">
+        {% for fabfile in object_list %}
+            <li>{{ fabfile }} (<a href="{% url 'fabfile_detail' pk=fabfile.pk %}">view</a>)</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block sidebar_right %}
+    <h4>{% trans "Create" %} {% trans "fabfile" %}</h4>
+    <hr />{{ form.media }}
+    <form action="{% url 'fabfile_create' %}" method="post" role="form">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                {% bootstrap_field field %}
+            </div>
+        {% endfor %}
+        {% buttons %}
+            <button type="submit" class="btn btn-default">
+                Submit
+            </button>
+        {% endbuttons %}
+    </form>
+{% endblock %}
