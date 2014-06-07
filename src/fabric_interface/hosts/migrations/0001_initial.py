@@ -17,16 +17,16 @@ class Migration(SchemaMigration):
             ('alias', self.gf('django.db.models.fields.CharField')(max_length=175)),
             ('slug', self.gf('django_extensions.db.fields.AutoSlugField')(allow_duplicates=False, max_length=50, separator=u'-', blank=True, populate_from='alias', overwrite=False)),
         ))
-        db.send_create_signal('hosts', ['Host'])
+        db.send_create_signal(u'hosts', ['Host'])
 
         # Adding M2M table for field projects on 'Host'
         m2m_table_name = db.shorten_name(u'hosts_host_projects')
         db.create_table(m2m_table_name, (
             ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            (u'host', models.ForeignKey(orm['hosts.host'], null=False)),
-            (u'project', models.ForeignKey(orm['projects.project'], null=False))
+            ('host', models.ForeignKey(orm[u'hosts.host'], null=False)),
+            ('project', models.ForeignKey(orm[u'projects.project'], null=False))
         ))
-        db.create_unique(m2m_table_name, [u'host_id', u'project_id'])
+        db.create_unique(m2m_table_name, ['host_id', 'project_id'])
 
 
     def backwards(self, orm):
@@ -38,21 +38,21 @@ class Migration(SchemaMigration):
 
 
     models = {
-        'formulae.fabfile': {
-            'Meta': {'unique_together': '()', 'object_name': 'Fabfile', 'index_together': '()'},
+        u'formulae.fabfile': {
+            'Meta': {'object_name': 'Fabfile'},
             'created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
             'family': ('django.db.models.fields.CharField', [], {'max_length': '128', 'null': 'True', 'blank': 'True'}),
-            'formula': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['formulae.Formula']"}),
+            'formula': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['formulae.Formula']", 'null': 'True', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             u'level': ('django.db.models.fields.PositiveIntegerField', [], {'db_index': 'True'}),
             u'lft': ('django.db.models.fields.PositiveIntegerField', [], {'db_index': 'True'}),
             'modified': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
-            'parent': ('mptt.fields.TreeForeignKey', [], {'blank': 'True', 'related_name': "'children'", 'null': 'True', 'to': "orm['formulae.Fabfile']"}),
+            'parent': ('mptt.fields.TreeForeignKey', [], {'blank': 'True', 'related_name': "'children'", 'null': 'True', 'to': u"orm['formulae.Fabfile']"}),
             u'rght': ('django.db.models.fields.PositiveIntegerField', [], {'db_index': 'True'}),
             u'tree_id': ('django.db.models.fields.PositiveIntegerField', [], {'db_index': 'True'})
         },
-        'formulae.formula': {
-            'Meta': {'unique_together': '()', 'object_name': 'Formula', 'index_together': '()'},
+        u'formulae.formula': {
+            'Meta': {'object_name': 'Formula'},
             'code': ('django.db.models.fields.TextField', [], {}),
             'created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
@@ -60,20 +60,20 @@ class Migration(SchemaMigration):
             'name': ('django.db.models.fields.CharField', [], {'max_length': '128'}),
             'slug': ('django_extensions.db.fields.AutoSlugField', [], {'allow_duplicates': 'False', 'max_length': '50', 'separator': "u'-'", 'blank': 'True', 'populate_from': "'name'", 'overwrite': 'False'})
         },
-        'hosts.host': {
-            'Meta': {'unique_together': '()', 'object_name': 'Host', 'index_together': '()'},
+        u'hosts.host': {
+            'Meta': {'object_name': 'Host'},
             'alias': ('django.db.models.fields.CharField', [], {'max_length': '175'}),
             'created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'ip': ('django.db.models.fields.GenericIPAddressField', [], {'max_length': '39', 'null': 'True', 'blank': 'True'}),
             'modified': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
-            'projects': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': "orm['projects.Project']", 'null': 'True', 'blank': 'True'}),
+            'projects': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': u"orm['projects.Project']", 'null': 'True', 'blank': 'True'}),
             'slug': ('django_extensions.db.fields.AutoSlugField', [], {'allow_duplicates': 'False', 'max_length': '50', 'separator': "u'-'", 'blank': 'True', 'populate_from': "'alias'", 'overwrite': 'False'})
         },
-        'projects.project': {
-            'Meta': {'unique_together': '()', 'object_name': 'Project', 'index_together': '()'},
+        u'projects.project': {
+            'Meta': {'object_name': 'Project'},
             'created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
-            'fabfile': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['formulae.Fabfile']", 'null': 'True', 'blank': 'True'}),
+            'fabfile': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['formulae.Fabfile']", 'null': 'True', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'modified': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
             'slug': ('django_extensions.db.fields.AutoSlugField', [], {'allow_duplicates': 'False', 'max_length': '50', 'separator': "u'-'", 'blank': 'True', 'populate_from': "'title'", 'overwrite': 'False'}),
