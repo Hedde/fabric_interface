@@ -2,6 +2,7 @@ __author__ = 'heddevanderheide'
 
 # Django specific
 from django.db import models
+from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
 # App specific
@@ -9,6 +10,9 @@ from django_extensions.db.fields import AutoSlugField
 from django_extensions.db.models import TimeStampedModel
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
+from pygments import highlight
+from pygments.formatters.html import HtmlFormatter
+from pygments.lexers.agile import PythonLexer
 
 
 class Formula(TimeStampedModel):
@@ -25,6 +29,9 @@ class Formula(TimeStampedModel):
 
     def __unicode__(self):
         return self.name
+
+    def prettified_code(self):
+        return mark_safe(highlight(self.code, PythonLexer(), HtmlFormatter()))
 
 
 class Fabfile(MPTTModel, TimeStampedModel):

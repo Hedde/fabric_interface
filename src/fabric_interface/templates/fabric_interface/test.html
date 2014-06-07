@@ -1,0 +1,23 @@
+{% extends "fabric_interface/layouts/full_width.html" %}
+
+{% load mptt_tags %}
+
+{% block content %}
+    <ul>
+        {% recursetree object_list %}
+            <li>
+                {{ node.formula.prettified_code }}
+                {% if not node.is_leaf_node %}
+                    <ul>
+                        {{ children }}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endrecursetree %}
+    </ul>
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" />
+    </form>
+{% endblock %}
