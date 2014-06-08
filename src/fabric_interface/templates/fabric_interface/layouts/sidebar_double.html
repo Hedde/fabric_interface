@@ -13,14 +13,7 @@
                 {% block sidebar_left %}{% endblock %}
             </div>
             <div class="col-sm-6">
-                {% block messages %}
-                    {% for message in messages %}
-                        <div{% if message.tags %} class="alert alert-{{ message.tags }} alert-dismissable"{% endif %}>
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                {% endblock %}
+                {% include "fabric_interface/layouts/include/messages.html" %}
                 {% block content %}{% endblock %}
             </div>
             <div class="col-sm-3">
