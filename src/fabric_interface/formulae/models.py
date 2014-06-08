@@ -47,4 +47,4 @@ class Fabfile(MPTTModel, TimeStampedModel):
         verbose_name_plural = _(u"fabfiles")
 
     def __unicode__(self):
-        return self.family
+        return self.family or self.formula
