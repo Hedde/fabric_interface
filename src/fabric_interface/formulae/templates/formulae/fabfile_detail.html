@@ -5,16 +5,18 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-    <h4>{% trans "View" %} {% if not object.parent %}{% trans "fabfile" %}{% else %}{% trans "particle" %}{% endif %} '{{ object.family }}'</h4>
+    <h4>{% trans "View" %} {% if not object.parent %}{% trans "fabfile" %}{% else %}{% trans "particle" %}{% endif %} '{{ object }}'</h4>
     <hr />
     {% if object.formula %}
         {{ object.formula.prettified_code }}
+        <a href="{% url 'fabfile_update' pk=object.pk %}">{% trans "Edit fabfile" %}</a> |
         <a href="{% url 'formula_update' slug=object.formula.slug %}">{% trans "Edit formula" %}</a>
     {% endif %}
     <ul>
         {% recursetree object.get_children %}
             <li>
                 {{ node.formula.prettified_code }}
+                <a href="{% url 'fabfile_update' pk=node.pk %}">{% trans "Edit particle" %}</a> |
                 <a href="{% url 'formula_update' slug=node.formula.slug %}">{% trans "Edit formula" %}</a>
                 {% if not node.is_leaf_node %}
                     <ul>
