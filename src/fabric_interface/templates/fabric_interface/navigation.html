@@ -14,6 +14,11 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li>
+                    <a href="{% url 'fabfile_index' %}">
+                        {% trans "Fabfiles" %}
+                    </a>
+                </li>
+                <li>
                     <a href="{% url 'formula_index' %}">
                         {% trans "Formulae" %}
                     </a>

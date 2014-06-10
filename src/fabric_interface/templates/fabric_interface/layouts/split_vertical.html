@@ -10,14 +10,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                {% block messages %}
-                    {% for message in messages %}
-                        <div{% if message.tags %} class="alert alert-{{ message.tags }} alert-dismissable"{% endif %}>
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                {% endblock %}
+                {% include "fabric_interface/layouts/include/messages.html" %}
             </div>
         </div>
         <div class="row">

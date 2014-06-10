@@ -4,7 +4,9 @@ __author__ = 'heddevanderheide'
 from django.conf.urls import patterns, url, include
 
 # App specific
-from fabric_interface.formulae.views import FormulaViewSet
+from fabric_interface.formulae.views import (
+    FormulaViewSet, FabfileViewSet
+)
 from fabric_interface.hosts.views import HostViewSet
 from fabric_interface.projects.views import ProjectViewSet
 from fabric_interface.views import (
@@ -32,5 +34,6 @@ urlpatterns = patterns('',
     url('', include(UserViewSet().urls)),
     url('', include(HostViewSet().urls)),
     url('', include(FormulaViewSet().urls)),
+    url('', include(FabfileViewSet().urls)),
     url('', include(ProjectViewSet().urls)),
 )

@@ -17,7 +17,7 @@ class Migration(SchemaMigration):
             ('slug', self.gf('django_extensions.db.fields.AutoSlugField')(allow_duplicates=False, max_length=50, separator=u'-', blank=True, populate_from='title', overwrite=False)),
             ('fabfile', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['formulae.Fabfile'], null=True, blank=True)),
         ))
-        db.send_create_signal('projects', ['Project'])
+        db.send_create_signal(u'projects', ['Project'])
 
 
     def backwards(self, orm):
@@ -26,21 +26,21 @@ class Migration(SchemaMigration):
 
 
     models = {
-        'formulae.fabfile': {
-            'Meta': {'unique_together': '()', 'object_name': 'Fabfile', 'index_together': '()'},
+        u'formulae.fabfile': {
+            'Meta': {'object_name': 'Fabfile'},
             'created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
             'family': ('django.db.models.fields.CharField', [], {'max_length': '128', 'null': 'True', 'blank': 'True'}),
-            'formula': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['formulae.Formula']"}),
+            'formula': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['formulae.Formula']", 'null': 'True', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             u'level': ('django.db.models.fields.PositiveIntegerField', [], {'db_index': 'True'}),
             u'lft': ('django.db.models.fields.PositiveIntegerField', [], {'db_index': 'True'}),
             'modified': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
-            'parent': ('mptt.fields.TreeForeignKey', [], {'blank': 'True', 'related_name': "'children'", 'null': 'True', 'to': "orm['formulae.Fabfile']"}),
+            'parent': ('mptt.fields.TreeForeignKey', [], {'blank': 'True', 'related_name': "'children'", 'null': 'True', 'to': u"orm['formulae.Fabfile']"}),
             u'rght': ('django.db.models.fields.PositiveIntegerField', [], {'db_index': 'True'}),
             u'tree_id': ('django.db.models.fields.PositiveIntegerField', [], {'db_index': 'True'})
         },
-        'formulae.formula': {
-            'Meta': {'unique_together': '()', 'object_name': 'Formula', 'index_together': '()'},
+        u'formulae.formula': {
+            'Meta': {'object_name': 'Formula'},
             'code': ('django.db.models.fields.TextField', [], {}),
             'created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
@@ -48,10 +48,10 @@ class Migration(SchemaMigration):
             'name': ('django.db.models.fields.CharField', [], {'max_length': '128'}),
             'slug': ('django_extensions.db.fields.AutoSlugField', [], {'allow_duplicates': 'False', 'max_length': '50', 'separator': "u'-'", 'blank': 'True', 'populate_from': "'name'", 'overwrite': 'False'})
         },
-        'projects.project': {
-            'Meta': {'unique_together': '()', 'object_name': 'Project', 'index_together': '()'},
+        u'projects.project': {
+            'Meta': {'object_name': 'Project'},
             'created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
-            'fabfile': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['formulae.Fabfile']", 'null': 'True', 'blank': 'True'}),
+            'fabfile': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['formulae.Fabfile']", 'null': 'True', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'modified': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
             'slug': ('django_extensions.db.fields.AutoSlugField', [], {'allow_duplicates': 'False', 'max_length': '50', 'separator': "u'-'", 'blank': 'True', 'populate_from': "'title'", 'overwrite': 'False'}),

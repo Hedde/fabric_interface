@@ -2,6 +2,7 @@ __author__ = 'heddevanderheide'
 
 # Django specific
 from django import forms
+from django.utils.translation import ugettext_lazy as _
 
 # App specific
 from codemirror.widgets import CodeMirrorTextarea
@@ -29,5 +30,23 @@ class FormulaForm(forms.ModelForm):
 
 
 class FabfileForm(forms.ModelForm):
+    obj = None
+
     class Meta:
         model = Fabfile
+
+    def __init__(self, *args, **kwargs):
+        super(FabfileForm, self).__init__(*args, **kwargs)
+
+        self.obj = kwargs.get('instance')
+
+        if self.obj and not self.obj.parent:
+            self.fields.pop('parent')
+
+    def clean_parent(self):
+        cd = self.cleaned_data['parent']
+
+        if self.obj and self.obj == cd:
+            raise forms.ValidationError(_(u"A child's parent cannot point to the child instance."))
+
+        return cd
